@@ -8,58 +8,49 @@ export default function Dashboard({ cameras, alerts, onNavigate }) {
   const activeCameras = cameras.filter((c) => c.status === 'active').length;
 
   return (
-    <div className="dashboard-layout">
-      {/* Main content area */}
-      <div className="dashboard-main">
-        {/* Quick stats bar */}
-        <div className="dashboard-stats-bar">
-          <div className="stat-card">
-            <div className="stat-card-icon blue">📹</div>
-            <div className="stat-card-info">
-              <div className="stat-card-value">{activeCameras}</div>
-              <div className="stat-card-label">Active Cameras</div>
+    <main className="p-margin-page flex-1 bg-surface relative h-full flex flex-col">
+      <div className="absolute inset-0 pointer-events-none opacity-5" style={{backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '20px 20px'}}></div>
+      
+      <div className="flex flex-col lg:flex-row gap-gutter h-full relative z-10">
+        <div className="flex-1 flex flex-col gap-gutter min-w-0">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-unit">
+            <div className="bg-surface-container-low border border-outline-variant/30 p-container-padding flex flex-col justify-between h-20 rounded-sm relative overflow-hidden group hover:border-primary/50 transition-colors">
+              <span className="font-label-caps text-on-surface-variant z-10">Active Cameras</span>
+              <span className="font-data-display text-headline-lg text-primary z-10">{activeCameras}</span>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-primary/20">
+                <div className="h-full bg-primary" style={{width: `${(activeCameras / Math.max(cameras.length, 1)) * 100}%`}}></div>
+              </div>
+            </div>
+            
+            <div className="bg-surface-container-low border border-outline-variant/30 p-container-padding flex flex-col justify-between h-20 rounded-sm relative overflow-hidden group hover:border-primary/50 transition-colors">
+              <span className="font-label-caps text-on-surface-variant z-10">Humans Detected</span>
+              <span className="font-data-display text-headline-lg text-secondary z-10">12</span>
+            </div>
+            
+            <div className="bg-surface-container-low border border-outline-variant/30 p-container-padding flex flex-col justify-between h-20 rounded-sm relative overflow-hidden group hover:border-primary/50 transition-colors">
+              <span className="font-label-caps text-on-surface-variant z-10">Vehicles Detected</span>
+              <span className="font-data-display text-headline-lg text-secondary z-10">4</span>
+            </div>
+            
+            <div className="bg-surface-container-low border border-outline-variant/30 p-container-padding flex flex-col justify-between h-20 rounded-sm relative overflow-hidden group hover:border-error/50 transition-colors">
+              <span className="font-label-caps text-on-surface-variant z-10">Alerts Today</span>
+              <div className="flex items-center space-x-2 z-10">
+                <span className="font-data-display text-headline-lg text-error">{alerts.length}</span>
+                <span className="material-symbols-outlined text-error text-sm animate-bounce" data-icon="trending_up" style={{fontVariationSettings: "'FILL' 1"}}>trending_up</span>
+              </div>
+            </div>
+            
+            <div className="bg-surface-container-low border border-outline-variant/30 p-container-padding flex flex-col justify-between h-20 rounded-sm relative overflow-hidden group hover:border-primary/50 transition-colors">
+              <span className="font-label-caps text-on-surface-variant z-10">Total Cameras</span>
+              <span className="font-data-display text-headline-lg text-on-surface">{cameras.length}</span>
             </div>
           </div>
 
-          <div className="stat-card">
-            <div className="stat-card-icon green">👤</div>
-            <div className="stat-card-info">
-              <div className="stat-card-value">0</div>
-              <div className="stat-card-label">Humans Detected</div>
-            </div>
-          </div>
-
-          <div className="stat-card">
-            <div className="stat-card-icon orange">🚗</div>
-            <div className="stat-card-info">
-              <div className="stat-card-value">0</div>
-              <div className="stat-card-label">Vehicles Detected</div>
-            </div>
-          </div>
-
-          <div className="stat-card">
-            <div className="stat-card-icon red">⚠️</div>
-            <div className="stat-card-info">
-              <div className="stat-card-value">{alerts.length}</div>
-              <div className="stat-card-label">Alerts Today</div>
-            </div>
-          </div>
-
-          <div className="stat-card">
-            <div className="stat-card-icon purple">🛡️</div>
-            <div className="stat-card-info">
-              <div className="stat-card-value">{cameras.length}</div>
-              <div className="stat-card-label">Total Cameras</div>
-            </div>
-          </div>
+          <CameraGrid cameras={cameras} />
         </div>
 
-        {/* Camera grid */}
-        <CameraGrid cameras={cameras} />
+        <AlertPanel alerts={alerts} />
       </div>
-
-      {/* Alert panel on the right */}
-      <AlertPanel alerts={alerts} />
-    </div>
+    </main>
   );
 }

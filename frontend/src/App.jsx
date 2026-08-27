@@ -122,37 +122,19 @@ export default function App() {
   };
 
   return (
-    <div className="app-layout">
+    <div className="flex h-screen w-full overflow-hidden bg-surface">
       <Sidebar activePage={activePage} onNavigate={setActivePage} />
 
-      <div className="main-area">
+      <div className="flex flex-col flex-1 pl-20 pt-16 transition-all duration-300 w-full h-full relative">
         <Header
-          title={PAGE_TITLES[activePage] || 'IBVAP'}
+          title={PAGE_TITLES[activePage] || 'IBVAP COMMAND'}
           activeCameras={activeCameraCount}
           totalAlerts={alerts.length}
         />
 
-        {!backendOnline && (
-          <div style={{
-            padding: '8px 24px',
-            background: 'rgba(245, 158, 11, 0.1)',
-            borderBottom: '1px solid rgba(245, 158, 11, 0.3)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            fontSize: '12px',
-            color: 'var(--accent-warning)',
-          }}>
-            ⚠️ Backend server not connected. Start it with: <code style={{
-              fontFamily: 'var(--font-mono)',
-              background: 'var(--bg-tertiary)',
-              padding: '2px 8px',
-              borderRadius: '4px',
-            }}>cd backend && uvicorn app.main:app --reload</code>
-          </div>
-        )}
-
-        {renderPage()}
+        <div className="flex-1 overflow-auto bg-surface w-full h-full relative">
+          {renderPage()}
+        </div>
       </div>
     </div>
   );

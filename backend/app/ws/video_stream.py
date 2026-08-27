@@ -46,13 +46,20 @@ async def camera_stream(websocket: WebSocket, camera_id: int):
             if jpeg_bytes:
                 # Send frame as base64 encoded JPEG
                 frame_b64 = base64.b64encode(jpeg_bytes).decode('utf-8')
-                await websocket.send_json({
-                    "type": "frame",
-                    "camera_id": camera_id,
-                    "frame": frame_b64,
-                    "fps": round(stream.fps_actual, 1),
-                    "frame_count": stream.frame_count,
-                })
+                try:
+                    await websocket.send_json({
+                        "type": "frame",
+                        "camera_id": camera_id,
+                        "frame": frame_b64,
+                        "fps": round(stream.fps_actual, 1),
+                        "frame_count": stream.frame_count,
+                    })
+                except RuntimeError:
+                    # Connection closed by client
+                    break
+                except Exception as e:
+                    logger.error(f"Error sending frame for camera {camera_id}: {e}")
+                    break
 
             # Target ~15 FPS sending rate to frontend
             await asyncio.sleep(1.0 / 15)

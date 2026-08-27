@@ -86,7 +86,14 @@ class VideoStream:
             if not ret:
                 if self.source_type == "file":
                     # Loop video files for demo purposes
-                    self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+                    # Releasing and reopening is safer for all video codecs
+                    self.cap.release()
+                    self.cap = cv2.VideoCapture(str(Path(self.source)))
+                    if not self.cap.isOpened():
+                        self.error = "Failed to restart video file"
+                        self.running = False
+                        break
+                    time.sleep(0.1)
                     continue
                 else:
                     # RTSP stream lost — attempt reconnect

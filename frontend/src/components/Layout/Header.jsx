@@ -12,7 +12,7 @@ export default function Header({ title, activeCameras, totalAlerts }) {
   }, []);
 
   const formatTime = (date) => {
-    return date.toLocaleTimeString('en-IN', {
+    return date.toLocaleTimeString('en-US', {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
@@ -20,38 +20,38 @@ export default function Header({ title, activeCameras, totalAlerts }) {
     });
   };
 
-  const formatDate = (date) => {
-    return date.toLocaleDateString('en-IN', {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric',
-    });
-  };
+  const displayText = `IBVAP // ${title.toUpperCase()}`;
 
   return (
-    <header className="header">
-      <h1 className="header-title">{title}</h1>
-
-      <div className="header-actions">
-        <div className="header-stat">
-          <span className="header-stat-label">Active Cameras</span>
-          <span className="header-stat-value">{activeCameras}</span>
-        </div>
-
-        <div className="header-stat">
-          <span className="header-stat-label">Alerts</span>
-          <span className="header-stat-value" style={{
-            color: totalAlerts > 0 ? 'var(--accent-danger)' : 'var(--text-primary)'
-          }}>
-            {totalAlerts}
+    <header className="bg-surface-dim dark:bg-surface-dim text-primary dark:text-primary font-headline-sm text-headline-sm font-data-display text-data-display font-bold tracking-tighter text-primary dark:text-primary docked full-width top-0 border-b border-outline-variant flat no shadows flex justify-between items-center w-full px-gutter h-16 z-50 fixed left-0 right-0 top-0 pl-[calc(5rem+16px)]">
+      <div className="flex items-center space-x-4">
+        <h1 className="glitch-effect text-lg tracking-widest" data-text={displayText}>{displayText}</h1>
+        <div className="flex space-x-2 ml-4">
+          <span className="px-2 py-0.5 rounded-sm bg-primary/10 border border-primary/30 text-primary font-label-caps text-label-caps flex items-center space-x-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            <span>SYSTEM NOMINAL</span>
           </span>
         </div>
-
-        <div className="header-stat">
-          <span style={{ fontSize: '14px' }}>🕐</span>
-          <span className="header-stat-value">{formatTime(currentTime)}</span>
-          <span className="header-stat-label">{formatDate(currentTime)}</span>
+      </div>
+      <div className="flex items-center space-x-2">
+        <div className="text-on-surface-variant font-data-display text-[12px] mr-4 flex items-center space-x-4">
+            <span className="flex items-center space-x-1">
+                <span>Active Cams:</span> <span className="text-primary">{activeCameras}</span>
+            </span>
+            <span className="flex items-center space-x-1">
+                <span>Alerts:</span> <span className={totalAlerts > 0 ? "text-error" : "text-primary"}>{totalAlerts}</span>
+            </span>
+            <span className="ml-2 px-2 py-1 bg-surface-container border border-outline-variant rounded">{formatTime(currentTime)}</span>
         </div>
+        <button className="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-100">
+          <span className="material-symbols-outlined" data-icon="notifications">notifications</span>
+        </button>
+        <button className="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-100">
+          <span className="material-symbols-outlined" data-icon="settings">settings</span>
+        </button>
+        <button className="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-100">
+          <span className="material-symbols-outlined" data-icon="person">person</span>
+        </button>
       </div>
     </header>
   );
