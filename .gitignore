@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.env
+venv/
+env/
+*.db
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Vite
+frontend/dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (large files)
+data/sample_videos/*.mp4
+data/sample_videos/*.avi
+data/sample_videos/*.mkv
+data/sample_videos/*.mov
+
+# Agents
+.agents/
+.gemini/
