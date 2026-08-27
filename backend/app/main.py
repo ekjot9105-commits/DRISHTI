@@ -14,7 +14,9 @@ from app.core.config import FRONTEND_URL, DATA_DIR
 from app.core.database import init_db
 from app.api.cameras import router as camera_router
 from app.ws.video_stream import router as ws_router
-from app.services.video_ingestion import stream_manager
+import asyncio
+from app.services.video_ingestion import stream_manager, alert_queue
+from app.ws.video_stream import broadcast_alert
 
 # Configure logging
 logging.basicConfig(
@@ -24,6 +26,17 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+async def alert_dispatcher():
+    """Background task to poll the alert queue and broadcast via WebSockets."""
+    logger.info("Alert dispatcher started.")
+    while True:
+        try:
+            while not alert_queue.empty():
+                alert = alert_queue.get_nowait()
+                await broadcast_alert(alert)
+        except Exception as e:
+            logger.error(f"Alert dispatcher error: {e}")
+        await asyncio.sleep(0.5)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -35,11 +48,15 @@ async def lifespan(app: FastAPI):
     logger.info("=" * 60)
     init_db()
     logger.info("Database initialized")
+    
+    # Start the alert dispatcher task
+    dispatcher_task = asyncio.create_task(alert_dispatcher())
 
     yield
 
     # Shutdown
     logger.info("Shutting down — stopping all video streams...")
+    dispatcher_task.cancel()
     stream_manager.stop_all()
     logger.info("All streams stopped. Goodbye!")
 

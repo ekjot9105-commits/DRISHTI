@@ -3,22 +3,8 @@
  */
 import { useState } from 'react';
 
-// Sample placeholder alerts for visual design (replaced by real alerts in Phase 2)
-const sampleAlerts = [
-  {
-    id: 1,
-    type: 'info',
-    severity: 'info',
-    title: 'System Online',
-    detail: 'IBVAP platform initialized successfully',
-    time: 'Just now',
-    icon: '✅',
-    level: 'ROUTINE'
-  },
-];
-
 export default function AlertPanel({ alerts = [] }) {
-  const displayAlerts = alerts.length > 0 ? alerts : sampleAlerts;
+  const displayAlerts = alerts;
 
   return (
     <div className="w-full lg:w-80 flex flex-col bg-surface-container-low border border-outline-variant/50 rounded-sm h-full max-h-full">

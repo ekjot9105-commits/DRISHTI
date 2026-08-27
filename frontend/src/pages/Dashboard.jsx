@@ -4,7 +4,7 @@
 import CameraGrid from '../components/CameraGrid/CameraGrid';
 import AlertPanel from '../components/AlertPanel/AlertPanel';
 
-export default function Dashboard({ cameras, alerts, onNavigate }) {
+export default function Dashboard({ cameras, alerts, humanCount, vehicleCount, onNavigate }) {
   const activeCameras = cameras.filter((c) => c.status === 'active').length;
 
   return (
@@ -24,12 +24,12 @@ export default function Dashboard({ cameras, alerts, onNavigate }) {
             
             <div className="bg-surface-container-low border border-outline-variant/30 p-container-padding flex flex-col justify-between h-20 rounded-sm relative overflow-hidden group hover:border-primary/50 transition-colors">
               <span className="font-label-caps text-on-surface-variant z-10">Humans Detected</span>
-              <span className="font-data-display text-headline-lg text-secondary z-10">12</span>
+              <span className="font-data-display text-headline-lg text-secondary z-10">{humanCount}</span>
             </div>
             
             <div className="bg-surface-container-low border border-outline-variant/30 p-container-padding flex flex-col justify-between h-20 rounded-sm relative overflow-hidden group hover:border-primary/50 transition-colors">
               <span className="font-label-caps text-on-surface-variant z-10">Vehicles Detected</span>
-              <span className="font-data-display text-headline-lg text-secondary z-10">4</span>
+              <span className="font-data-display text-headline-lg text-secondary z-10">{vehicleCount}</span>
             </div>
             
             <div className="bg-surface-container-low border border-outline-variant/30 p-container-padding flex flex-col justify-between h-20 rounded-sm relative overflow-hidden group hover:border-error/50 transition-colors">

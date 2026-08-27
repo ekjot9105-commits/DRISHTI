@@ -10,7 +10,7 @@ import Header from './components/Layout/Header';
 import Dashboard from './pages/Dashboard';
 import CameraManagement from './pages/CameraManagement';
 import PlaceholderPage from './pages/PlaceholderPage';
-import { fetchCameras } from './services/api';
+import { fetchCameras, createAlertWebSocket } from './services/api';
 
 const PAGE_TITLES = {
   dashboard: 'Command Center',
@@ -28,6 +28,8 @@ export default function App() {
   const [cameras, setCameras] = useState([]);
   const [alerts, setAlerts] = useState([]);
   const [backendOnline, setBackendOnline] = useState(false);
+  const [humanCount, setHumanCount] = useState(0);
+  const [vehicleCount, setVehicleCount] = useState(0);
 
   // Fetch cameras from backend
   const loadCameras = useCallback(async () => {
@@ -48,6 +50,43 @@ export default function App() {
     return () => clearInterval(interval);
   }, [loadCameras]);
 
+  // Connect to Alert WebSocket
+  useEffect(() => {
+    let ws;
+    let reconnectTimer;
+    
+    const connect = () => {
+      ws = createAlertWebSocket((alert) => {
+        setAlerts(prev => {
+          // Prevent duplicate keys if backend sends multiple alerts within the same second
+          if (prev.some(a => a.id === alert.id)) return prev;
+          return [alert, ...prev].slice(0, 50);
+        });
+        
+        // Update KPI stats
+        if (alert.detail && alert.detail.includes('person')) {
+          setHumanCount(prev => prev + 1);
+        } else if (alert.detail && alert.detail.includes('vehicle')) {
+          setVehicleCount(prev => prev + 1);
+        }
+      });
+      
+      ws.onclose = () => {
+        reconnectTimer = setTimeout(connect, 3000);
+      };
+    };
+    
+    connect();
+    
+    return () => {
+      clearTimeout(reconnectTimer);
+      if (ws) {
+        ws.onclose = null;
+        ws.close();
+      }
+    };
+  }, []);
+
   const activeCameraCount = cameras.filter((c) => c.status === 'active').length;
 
   // Render the active page
@@ -58,6 +97,8 @@ export default function App() {
           <Dashboard
             cameras={cameras}
             alerts={alerts}
+            humanCount={humanCount}
+            vehicleCount={vehicleCount}
             onNavigate={setActivePage}
           />
         );

@@ -10,8 +10,12 @@ from pathlib import Path
 from typing import Optional
 
 from app.core.config import DEFAULT_FPS, FRAME_WIDTH, FRAME_HEIGHT, JPEG_QUALITY
+import queue
 
 logger = logging.getLogger(__name__)
+
+# Global queue to bridge sync OpenCV thread to async FastAPI websocket
+alert_queue = queue.Queue()
 
 
 class VideoStream:
@@ -105,6 +109,31 @@ class VideoStream:
             # Resize frame to standard dimensions
             frame = cv2.resize(frame, (FRAME_WIDTH, FRAME_HEIGHT))
 
+            # Run ML inference on every frame (overall FPS is throttled to 10)
+            from app.services.ml_inference import ml_service
+            alerts, drawn_boxes = ml_service.process_frame(self.camera_id, frame)
+            
+            for alert in alerts:
+                alert_queue.put(alert)
+                
+            # Draw bounding boxes onto the frame
+            for obj in drawn_boxes:
+                x1, y1, x2, y2 = [int(v) for v in obj['box']]
+                label = f"{obj['class']} {obj['id']}"
+                
+                # Cyan color for person, Amber for vehicle (BGR format for OpenCV)
+                color = (255, 235, 138) if obj['class'] == 'person' else (0, 165, 255)
+                
+                # Draw box
+                cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
+                
+                # Draw label background
+                (tw, th), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
+                cv2.rectangle(frame, (x1, y1 - th - 5), (x1 + tw, y1), color, -1)
+                
+                # Draw label text
+                cv2.putText(frame, label, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
+
             # Encode as JPEG for streaming
             encode_params = [cv2.IMWRITE_JPEG_QUALITY, JPEG_QUALITY]
             _, jpeg = cv2.imencode('.jpg', frame, encode_params)
@@ -172,7 +201,7 @@ class StreamManager:
         self.lock = threading.Lock()
 
     def start_stream(self, camera_id: int, source: str,
-                     source_type: str, target_fps: int = DEFAULT_FPS) -> bool:
+                     source_type: str, target_fps: int = 10) -> bool:
         """Start a new video stream for a camera."""
         with self.lock:
             # Stop existing stream if any
