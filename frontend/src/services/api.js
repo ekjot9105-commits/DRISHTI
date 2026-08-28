@@ -163,4 +163,26 @@ export async function deletePlate(id) {
   return request(`/api/watchlist/plates/${id}`, { method: 'DELETE' });
 }
 
+// ---- Events API ----
+
+export async function getEvents(skip = 0, limit = 100, camera_id = null, severity = null, status = null) {
+  let url = `/api/events/?skip=${skip}&limit=${limit}`;
+  if (camera_id) url += `&camera_id=${camera_id}`;
+  if (severity) url += `&severity=${severity}`;
+  if (status) url += `&status=${status}`;
+  return request(url);
+}
+
+export async function updateEventStatus(eventId, status) {
+  return request(`/api/events/${eventId}/status?status=${status}`, { method: 'PATCH' });
+}
+
+export async function getEventStats() {
+  return request('/api/events/stats');
+}
+
+export async function getEventHeatmap() {
+  return request('/api/events/heatmap');
+}
+
 export { API_BASE, WS_BASE };

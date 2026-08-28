@@ -47,6 +47,8 @@ class Event(Base):
     confidence = Column(Float, default=0.0)
     details = Column(Text, default="")  # JSON string with extra info
     thumbnail_path = Column(Text, default="")
+    status = Column(String(20), default="new") # new, acknowledged, resolved, archived
+    resolved_at = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
 

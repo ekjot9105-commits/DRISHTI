@@ -10,6 +10,8 @@ import Header from './components/Layout/Header';
 import Dashboard from './pages/Dashboard';
 import CameraManagement from './pages/CameraManagement';
 import PlaceholderPage from './pages/PlaceholderPage';
+import AlertCenter from './pages/AlertCenter';
+import AnalyticsDashboard from './pages/AnalyticsDashboard';
 import WatchlistManagement from './pages/WatchlistManagement';
 import { fetchCameras, createAlertWebSocket } from './services/api';
 
@@ -19,7 +21,7 @@ const PAGE_TITLES = {
   alerts: 'Alert Center',
   analytics: 'Analytics Dashboard',
   watchlist: 'Watchlist Management',
-  map: 'Geospatial Map View',
+  map: 'Geospatial View',
   evidence: 'Evidence Vault',
   settings: 'System Settings',
 };
@@ -111,21 +113,9 @@ export default function App() {
           />
         );
       case 'alerts':
-        return (
-          <PlaceholderPage
-            title="Alert Center"
-            description="Real-time alert management — Coming in Phase 2"
-            icon="🔔"
-          />
-        );
+        return <AlertCenter />;
       case 'analytics':
-        return (
-          <PlaceholderPage
-            title="Analytics Dashboard"
-            description="Detection charts and heatmaps — Coming in Phase 4"
-            icon="📊"
-          />
-        );
+        return <AnalyticsDashboard />;
       case 'watchlist':
         return <WatchlistManagement />;
       case 'map':

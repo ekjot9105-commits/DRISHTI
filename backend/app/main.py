@@ -15,6 +15,7 @@ from app.core.database import init_db
 from app.api.cameras import router as camera_router
 from app.ws.video_stream import router as ws_router
 from app.api.watchlist import router as watchlist_router
+from app.api.events import router as events_router
 import asyncio
 from app.services.video_ingestion import stream_manager, alert_queue
 from app.ws.video_stream import broadcast_alert
@@ -28,13 +29,41 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+from app.core.database import SessionLocal, Event
+import json
+
 async def alert_dispatcher():
-    """Background task to poll the alert queue and broadcast via WebSockets."""
+    """Background task to poll the alert queue, save to DB, and broadcast via WebSockets."""
     logger.info("Alert dispatcher started.")
     while True:
         try:
             while not alert_queue.empty():
                 alert = alert_queue.get_nowait()
+                
+                # Save to database
+                db = SessionLocal()
+                try:
+                    new_event = Event(
+                        camera_id=alert.get("camera_id", 0),
+                        event_type=alert.get("type", "unknown"),
+                        severity=alert.get("severity", "info"),
+                        object_class=alert.get("icon", "??").replace("👤", "person").replace("🚗", "vehicle"),
+                        details=json.dumps({
+                            "title": alert.get("title", ""),
+                            "detail": alert.get("detail", ""),
+                            "id": alert.get("id", "")
+                        })
+                    )
+                    db.add(new_event)
+                    db.commit()
+                    db.refresh(new_event)
+                    
+                    # Attach DB ID to alert before broadcasting
+                    alert["db_id"] = new_event.id
+                finally:
+                    db.close()
+                
+                # Broadcast via WebSocket
                 await broadcast_alert(alert)
         except Exception as e:
             logger.error(f"Alert dispatcher error: {e}")
@@ -86,6 +115,7 @@ app.mount("/data", StaticFiles(directory=str(DATA_DIR)), name="data")
 app.include_router(camera_router)
 app.include_router(ws_router)
 app.include_router(watchlist_router)
+app.include_router(events_router)
 
 
 @app.get("/")
