@@ -45,6 +45,7 @@ def get_events(
             "status": event.status,
             "created_at": event.created_at,
             "resolved_at": event.resolved_at,
+            "thumbnail_path": event.thumbnail_path,
             "title": details.get("title", ""),
             "detail": details.get("detail", ""),
         })

@@ -13,6 +13,9 @@ import PlaceholderPage from './pages/PlaceholderPage';
 import AlertCenter from './pages/AlertCenter';
 import AnalyticsDashboard from './pages/AnalyticsDashboard';
 import WatchlistManagement from './pages/WatchlistManagement';
+import MapView from './pages/MapView';
+import EvidenceVault from './pages/EvidenceVault';
+import Settings from './pages/Settings';
 import { fetchCameras, createAlertWebSocket } from './services/api';
 
 const PAGE_TITLES = {
@@ -119,29 +122,11 @@ export default function App() {
       case 'watchlist':
         return <WatchlistManagement />;
       case 'map':
-        return (
-          <PlaceholderPage
-            title="Geospatial Map View"
-            description="Camera locations and events on map — Coming in Phase 5"
-            icon="🗺️"
-          />
-        );
+        return <MapView />;
       case 'evidence':
-        return (
-          <PlaceholderPage
-            title="Evidence Vault"
-            description="Blockchain-verified video evidence — Coming in Phase 5"
-            icon="🔒"
-          />
-        );
+        return <EvidenceVault />;
       case 'settings':
-        return (
-          <PlaceholderPage
-            title="System Settings"
-            description="User management and configuration — Coming in Phase 5"
-            icon="⚙️"
-          />
-        );
+        return <Settings />;
       default:
         return <Dashboard cameras={cameras} alerts={alerts} onNavigate={setActivePage} />;
     }

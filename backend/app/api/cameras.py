@@ -30,6 +30,7 @@ def list_cameras(db: Session = Depends(get_db)):
             "location": cam.location,
             "latitude": cam.latitude,
             "longitude": cam.longitude,
+            "tripwire_line": cam.tripwire_line,
             "status": "active" if stream and stream.is_active() else "inactive",
             "fps": stream.fps_actual if stream else 0,
             "created_at": cam.created_at.isoformat() if cam.created_at else None,
@@ -148,6 +149,20 @@ def delete_camera(camera_id: int, db: Session = Depends(get_db)):
     logger.info(f"Deleted camera: {camera.name} (ID: {camera_id})")
     return {"message": f"Camera '{camera.name}' deleted"}
 
+from pydantic import BaseModel
+class TripwireUpdate(BaseModel):
+    tripwire_line: str # JSON string
+
+@router.patch("/{camera_id}/tripwire")
+def update_tripwire(camera_id: int, data: TripwireUpdate, db: Session = Depends(get_db)):
+    """Set the tripwire line coordinates for a camera."""
+    camera = db.query(Camera).filter(Camera.id == camera_id).first()
+    if not camera:
+        raise HTTPException(status_code=404, detail="Camera not found")
+        
+    camera.tripwire_line = data.tripwire_line
+    db.commit()
+    return {"message": "Tripwire updated", "tripwire_line": camera.tripwire_line}
 
 @router.get("/streams/status")
 def stream_status():

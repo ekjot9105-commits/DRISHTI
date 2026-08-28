@@ -4,9 +4,11 @@
  */
 import { useState, useRef } from 'react';
 import { addCamera, startCamera, stopCamera, deleteCamera } from '../services/api';
+import TripwireModal from './TripwireModal';
 
 export default function CameraManagement({ cameras, onCamerasChange }) {
   const [showModal, setShowModal] = useState(false);
+  const [tripwireCamera, setTripwireCamera] = useState(null);
   const [sourceType, setSourceType] = useState('file');
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
@@ -154,8 +156,11 @@ export default function CameraManagement({ cameras, onCamerasChange }) {
                         <span className="material-symbols-outlined mr-1 text-[12px]" style={{fontVariationSettings: "'FILL' 1"}}>play_circle</span> START
                       </button>
                     )}
-                    <button className="flex-1 bg-error/10 hover:bg-error/20 text-error border border-error/30 py-1.5 rounded-sm font-label-caps text-[10px] transition-colors flex items-center justify-center" onClick={() => handleDelete(camera.id)}>
-                      <span className="material-symbols-outlined mr-1 text-[12px]">delete</span> DELETE
+                    <button className="flex-[0.8] bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-500 border border-yellow-500/30 py-1.5 rounded-sm font-label-caps text-[10px] transition-colors flex items-center justify-center" onClick={() => setTripwireCamera(camera)}>
+                      <span className="material-symbols-outlined mr-1 text-[12px]">polyline</span> FENCE
+                    </button>
+                    <button className="flex-[0.8] bg-error/10 hover:bg-error/20 text-error border border-error/30 py-1.5 rounded-sm font-label-caps text-[10px] transition-colors flex items-center justify-center" onClick={() => handleDelete(camera.id)}>
+                      <span className="material-symbols-outlined mr-1 text-[12px]">delete</span> DEL
                     </button>
                   </div>
                 </div>
@@ -165,6 +170,15 @@ export default function CameraManagement({ cameras, onCamerasChange }) {
         )}
       </div>
 
+      {tripwireCamera && (
+        <TripwireModal 
+          camera={tripwireCamera} 
+          onClose={(shouldReload) => {
+            setTripwireCamera(null);
+            if (shouldReload) onCamerasChange();
+          }} 
+        />
+      )}
       {/* Add Camera Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">

@@ -32,6 +32,7 @@ class Camera(Base):
     location = Column(String(200), default="")  # descriptive location
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
+    tripwire_line = Column(Text, nullable=True) # JSON string [{"x": 0.1, "y": 0.5}, {"x": 0.9, "y": 0.5}]
     created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
 

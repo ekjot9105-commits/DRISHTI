@@ -134,6 +134,15 @@ class VideoStream:
             with self.lock:
                 current_boxes = list(self.latest_boxes)
 
+            # Draw Tripwire if exists
+            from app.services.ml_inference import ml_service
+            tripwire = ml_service.tripwires.get(self.camera_id)
+            if tripwire and len(tripwire) == 2:
+                h, w = frame.shape[:2]
+                pt1 = (int(tripwire[0]['x'] * w), int(tripwire[0]['y'] * h))
+                pt2 = (int(tripwire[1]['x'] * w), int(tripwire[1]['y'] * h))
+                cv2.line(frame, pt1, pt2, (0, 0, 255), 2)
+
             # Draw bounding boxes onto the frame
             for obj in current_boxes:
                 x1, y1, x2, y2 = [int(v) for v in obj['box']]
@@ -143,7 +152,8 @@ class VideoStream:
                     label = f"[{identity}]"
                     color = (0, 0, 255) # Red for identified matches
                 else:
-                    label = f"{obj['class']} {obj['id']}"
+                    conf_pct = int(obj.get('conf', 0.0) * 100)
+                    label = f"{obj['class']} {conf_pct}%"
                     # Cyan color for person, Amber for vehicle (BGR format for OpenCV)
                     color = (255, 235, 138) if obj['class'] == 'person' else (0, 165, 255)
                 

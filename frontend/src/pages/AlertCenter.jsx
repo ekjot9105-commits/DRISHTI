@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { ShieldAlert, AlertTriangle, Info, CheckCircle, Archive, Eye } from 'lucide-react';
-import { getEvents, updateEventStatus } from '../services/api';
+import { ShieldAlert, AlertTriangle, Info, CheckCircle, Archive, Eye, Image as ImageIcon } from 'lucide-react';
+import { getEvents, updateEventStatus, API_BASE } from '../services/api';
 
 const AlertCenter = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState({ severity: '', status: 'new' });
+  const [evidenceImage, setEvidenceImage] = useState(null);
 
   useEffect(() => {
     fetchEvents();
@@ -158,6 +159,15 @@ const AlertCenter = () => {
                           <Archive className="w-4 h-4" />
                         </button>
                       )}
+                      {event.thumbnail_path && (
+                        <button 
+                          onClick={() => setEvidenceImage(`${API_BASE}${event.thumbnail_path}`)}
+                          className="p-2 bg-blue-500/10 hover:bg-blue-500/20 text-blue-500 rounded border border-blue-500/20 transition-colors"
+                          title="View Evidence Snapshot"
+                        >
+                          <ImageIcon className="w-4 h-4" />
+                        </button>
+                      )}
                     </div>
                   </td>
                 </tr>
@@ -166,6 +176,20 @@ const AlertCenter = () => {
           </table>
         </div>
       </div>
+
+      {evidenceImage && (
+        <div className="fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4 backdrop-blur-sm" onClick={() => setEvidenceImage(null)}>
+          <div className="relative max-w-5xl w-full" onClick={e => e.stopPropagation()}>
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-bold tracking-wider text-cyan-500 flex items-center gap-2">
+                <ImageIcon className="w-5 h-5" /> EVIDENCE VAULT SNAPSHOT
+              </h3>
+              <button className="text-slate-400 hover:text-white" onClick={() => setEvidenceImage(null)}>✕</button>
+            </div>
+            <img src={evidenceImage} className="w-full h-auto rounded border border-[#1e293b]" alt="Event Evidence" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

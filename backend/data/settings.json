@@ -1,0 +1,6 @@
+{
+    "confidence_threshold": 0.35,
+    "intrusion_cooldown": 1,
+    "dwelling_time": 1,
+    "night_mode": true
+}

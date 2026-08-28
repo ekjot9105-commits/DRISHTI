@@ -16,6 +16,7 @@ from app.api.cameras import router as camera_router
 from app.ws.video_stream import router as ws_router
 from app.api.watchlist import router as watchlist_router
 from app.api.events import router as events_router
+from app.api.settings import router as settings_router
 import asyncio
 from app.services.video_ingestion import stream_manager, alert_queue
 from app.ws.video_stream import broadcast_alert
@@ -29,8 +30,29 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+from fastapi.staticfiles import StaticFiles
 from app.core.database import SessionLocal, Event
 import json
+import cv2
+import os
+
+# Mount evidence directory for serving images
+os.makedirs("data/evidence", exist_ok=True)
+
+async def _save_evidence(event_id: int, frame):
+    """Background task to save numpy frame to disk."""
+    try:
+        path = f"data/evidence/evt_{event_id}.jpg"
+        cv2.imwrite(path, frame)
+        # Update database with thumbnail path
+        db = SessionLocal()
+        event = db.query(Event).filter(Event.id == event_id).first()
+        if event:
+            event.thumbnail_path = f"/evidence/evt_{event_id}.jpg"
+            db.commit()
+        db.close()
+    except Exception as e:
+        logger.error(f"Failed to save evidence: {e}")
 
 async def alert_dispatcher():
     """Background task to poll the alert queue, save to DB, and broadcast via WebSockets."""
@@ -39,6 +61,9 @@ async def alert_dispatcher():
         try:
             while not alert_queue.empty():
                 alert = alert_queue.get_nowait()
+                
+                # Extract frame data if present (don't save to DB or broadcast it directly)
+                frame_data = alert.pop("frame_data", None)
                 
                 # Save to database
                 db = SessionLocal()
@@ -60,6 +85,12 @@ async def alert_dispatcher():
                     
                     # Attach DB ID to alert before broadcasting
                     alert["db_id"] = new_event.id
+                    
+                    # If we have frame evidence (like from a tripwire intrusion), save it asynchronously
+                    if frame_data is not None:
+                        asyncio.create_task(_save_evidence(new_event.id, frame_data))
+                        alert["has_evidence"] = True
+                        
                 finally:
                     db.close()
                 
@@ -99,6 +130,8 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+app.mount("/evidence", StaticFiles(directory="data/evidence"), name="evidence")
+
 # CORS — allow frontend to connect
 app.add_middleware(
     CORSMiddleware,
@@ -116,6 +149,7 @@ app.include_router(camera_router)
 app.include_router(ws_router)
 app.include_router(watchlist_router)
 app.include_router(events_router)
+app.include_router(settings_router)
 
 
 @app.get("/")
