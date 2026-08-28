@@ -10,6 +10,7 @@ import Header from './components/Layout/Header';
 import Dashboard from './pages/Dashboard';
 import CameraManagement from './pages/CameraManagement';
 import PlaceholderPage from './pages/PlaceholderPage';
+import WatchlistManagement from './pages/WatchlistManagement';
 import { fetchCameras, createAlertWebSocket } from './services/api';
 
 const PAGE_TITLES = {
@@ -126,13 +127,7 @@ export default function App() {
           />
         );
       case 'watchlist':
-        return (
-          <PlaceholderPage
-            title="Watchlist Management"
-            description="Face and vehicle plate watchlists — Coming in Phase 3"
-            icon="👤"
-          />
-        );
+        return <WatchlistManagement />;
       case 'map':
         return (
           <PlaceholderPage

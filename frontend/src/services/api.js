@@ -109,4 +109,58 @@ export function createAlertWebSocket(onAlert) {
   return ws;
 }
 
+// ---- Watchlist API ----
+
+export async function getFaces() {
+  return request('/api/watchlist/faces');
+}
+
+export async function addFace(name, description, imageFile) {
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('description', description);
+  formData.append('image', imageFile);
+  
+  const response = await fetch(`${API_BASE}/api/watchlist/faces`, {
+    method: 'POST',
+    body: formData,
+  });
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({ detail: 'Unknown error' }));
+    throw new Error(error.detail || `HTTP ${response.status}`);
+  }
+  return response.json();
+}
+
+export async function deleteFace(id) {
+  return request(`/api/watchlist/faces/${id}`, { method: 'DELETE' });
+}
+
+export async function getPlates() {
+  return request('/api/watchlist/plates');
+}
+
+export async function addPlate(plateNumber, vehicleDesc, ownerName) {
+  const formData = new FormData();
+  formData.append('plate_number', plateNumber);
+  formData.append('vehicle_description', vehicleDesc);
+  formData.append('owner_name', ownerName);
+  // Setting a default critical level as designed in Phase 3
+  formData.append('alert_level', 'critical');
+  
+  const response = await fetch(`${API_BASE}/api/watchlist/plates`, {
+    method: 'POST',
+    body: formData,
+  });
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({ detail: 'Unknown error' }));
+    throw new Error(error.detail || `HTTP ${response.status}`);
+  }
+  return response.json();
+}
+
+export async function deletePlate(id) {
+  return request(`/api/watchlist/plates/${id}`, { method: 'DELETE' });
+}
+
 export { API_BASE, WS_BASE };

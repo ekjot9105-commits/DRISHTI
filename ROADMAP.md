@@ -16,10 +16,16 @@ This document outlines the master implementation plan for the Intelligent Border
 - [x] Wire live alerts into the frontend UI (Incident Log & KPI Bar).
 - [x] Visually draw AI bounding boxes and tracking IDs directly onto the live camera feeds.
 
+## 🟡 Phase 2.5: Stabilization & Bug Fixes (Planned)
+- [ ] Lower YOLO confidence threshold to properly detect vehicles.
+- [ ] Fix YOLO ID tracking bug causing bounding boxes to flicker or disappear.
+- [ ] Fix video looping memory leak / thread freeze by rewinding frames instead of reopening files.
+
 ## ⚪ Phase 3: Watchlist Management (Planned)
-- [ ] Implement facial recognition pipeline.
-- [ ] Implement Automated License Plate Recognition (ALPR).
+- [ ] Integrate Facial Recognition (using `face_recognition` or `DeepFace`).
+- [ ] Implement Automated License Plate Recognition (ALPR) via OCR (EasyOCR / PyTesseract).
 - [ ] Create UI for adding/managing individuals and vehicles on a watchlist.
+- [ ] Build backend Database models and CRUD APIs for Watchlist entities.
 - [ ] Trigger CRITICAL alerts when watchlist entities are detected in the camera feeds.
 
 ## ⚪ Phase 4: Analytics Dashboard (Planned)

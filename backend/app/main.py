@@ -14,9 +14,11 @@ from app.core.config import FRONTEND_URL, DATA_DIR
 from app.core.database import init_db
 from app.api.cameras import router as camera_router
 from app.ws.video_stream import router as ws_router
+from app.api.watchlist import router as watchlist_router
 import asyncio
 from app.services.video_ingestion import stream_manager, alert_queue
 from app.ws.video_stream import broadcast_alert
+
 
 # Configure logging
 logging.basicConfig(
@@ -83,6 +85,7 @@ app.mount("/data", StaticFiles(directory=str(DATA_DIR)), name="data")
 # Register routers
 app.include_router(camera_router)
 app.include_router(ws_router)
+app.include_router(watchlist_router)
 
 
 @app.get("/")

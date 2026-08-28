@@ -36,6 +36,9 @@ class VideoStream:
         self.running = False
         self.lock = threading.Lock()
         self.thread: Optional[threading.Thread] = None
+        self.inference_thread: Optional[threading.Thread] = None
+        self.inference_queue = queue.Queue(maxsize=1)
+        self.latest_boxes = []
         self.error: Optional[str] = None
         self.frame_count = 0
         self.fps_actual = 0.0
@@ -59,10 +62,20 @@ class VideoStream:
                 logger.error(self.error)
                 return False
 
+            # Lock to native FPS to prevent file streams from playing in fast-forward
+            if self.source_type == "file":
+                native_fps = self.cap.get(cv2.CAP_PROP_FPS)
+                if native_fps > 0:
+                    self.target_fps = native_fps
+
             self.running = True
             self.error = None
             self.thread = threading.Thread(target=self._capture_loop, daemon=True)
             self.thread.start()
+            
+            self.inference_thread = threading.Thread(target=self._inference_loop, daemon=True)
+            self.inference_thread.start()
+            
             logger.info(f"Camera {self.camera_id}: Started stream from {self.source}")
             return True
 
@@ -89,16 +102,13 @@ class VideoStream:
 
             if not ret:
                 if self.source_type == "file":
-                    # Loop video files for demo purposes
-                    # Releasing and reopening is safer for all video codecs
-                    self.cap.release()
-                    self.cap = cv2.VideoCapture(str(Path(self.source)))
-                    if not self.cap.isOpened():
-                        self.error = "Failed to restart video file"
+                    # Loop video files by rewinding to frame 0 (fast and prevents thread blocking)
+                    self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+                    ret, frame = self.cap.read()
+                    if not ret:
+                        self.error = "Failed to rewind video file"
                         self.running = False
                         break
-                    time.sleep(0.1)
-                    continue
                 else:
                     # RTSP stream lost — attempt reconnect
                     logger.warning(f"Camera {self.camera_id}: Stream lost, reconnecting...")
@@ -109,20 +119,33 @@ class VideoStream:
             # Resize frame to standard dimensions
             frame = cv2.resize(frame, (FRAME_WIDTH, FRAME_HEIGHT))
 
-            # Run ML inference on every frame (overall FPS is throttled to 10)
-            from app.services.ml_inference import ml_service
-            alerts, drawn_boxes = ml_service.process_frame(self.camera_id, frame)
-            
-            for alert in alerts:
-                alert_queue.put(alert)
-                
+            # Send every 3rd frame to the async inference queue
+            if self.frame_count % 3 == 0:
+                try:
+                    if self.inference_queue.full():
+                        self.inference_queue.get_nowait()
+                except queue.Empty:
+                    pass
+                try:
+                    self.inference_queue.put_nowait(frame.copy())
+                except queue.Full:
+                    pass
+
+            with self.lock:
+                current_boxes = list(self.latest_boxes)
+
             # Draw bounding boxes onto the frame
-            for obj in drawn_boxes:
+            for obj in current_boxes:
                 x1, y1, x2, y2 = [int(v) for v in obj['box']]
-                label = f"{obj['class']} {obj['id']}"
                 
-                # Cyan color for person, Amber for vehicle (BGR format for OpenCV)
-                color = (255, 235, 138) if obj['class'] == 'person' else (0, 165, 255)
+                identity = obj.get('identity')
+                if identity:
+                    label = f"[{identity}]"
+                    color = (0, 0, 255) # Red for identified matches
+                else:
+                    label = f"{obj['class']} {obj['id']}"
+                    # Cyan color for person, Amber for vehicle (BGR format for OpenCV)
+                    color = (255, 235, 138) if obj['class'] == 'person' else (0, 165, 255)
                 
                 # Draw box
                 cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
@@ -157,6 +180,28 @@ class VideoStream:
             if sleep_time > 0:
                 time.sleep(sleep_time)
 
+    def _inference_loop(self):
+        """Background thread specifically for running ML inference asynchronously."""
+        from app.services.ml_inference import ml_service
+        while self.running:
+            try:
+                frame = self.inference_queue.get(timeout=1.0)
+                if frame is None:
+                    break
+                    
+                alerts, drawn_boxes = ml_service.process_frame(self.camera_id, frame)
+                
+                for alert in alerts:
+                    alert_queue.put(alert)
+                    
+                with self.lock:
+                    self.latest_boxes = drawn_boxes
+                    
+            except queue.Empty:
+                continue
+            except Exception as e:
+                logger.error(f"Camera {self.camera_id} Inference error: {e}")
+
     def get_frame(self):
         """Get the latest raw frame (numpy array)."""
         with self.lock:
@@ -172,6 +217,16 @@ class VideoStream:
         self.running = False
         if self.thread and self.thread.is_alive():
             self.thread.join(timeout=3)
+            
+        if self.inference_thread and self.inference_thread.is_alive():
+            try:
+                if self.inference_queue.full():
+                    self.inference_queue.get_nowait()
+            except queue.Empty:
+                pass
+            self.inference_queue.put(None)
+            self.inference_thread.join(timeout=3)
+            
         if self.cap:
             self.cap.release()
             self.cap = None
