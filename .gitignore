@@ -37,3 +37,5 @@ data/sample_videos/*.mov
 # Agents
 .agents/
 .gemini/
+backend/data/evidence/
+backend/data/reports/

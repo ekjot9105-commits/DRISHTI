@@ -48,12 +48,13 @@ class RecognitionService:
         if camera_id not in self.checked_objects:
             self.checked_objects[camera_id] = {}
             
-        # Only check once per track ID
-        if track_id in self.checked_objects[camera_id]:
+        status = self.checked_objects[camera_id].get(track_id)
+        # If successfully recognized or explicitly marked unknown, skip.
+        # But if pending, let it finish. If not present, start.
+        if status not in [None, "checking"]:
             return
             
-        # Mark as pending/checked so we don't spam the executor
-        self.checked_objects[camera_id][track_id] = "pending"
+        self.checked_objects[camera_id][track_id] = "checking"
         
         if obj_class == "vehicle":
             self.executor.submit(self._recognize_plate, camera_id, track_id, cropped_img, current_time)
@@ -99,68 +100,72 @@ class RecognitionService:
         try:
             self._init_deepface()
             from deepface import DeepFace
-            
-            # Apply CLAHE to normalize extreme lighting (dark/blue tints)
-            try:
-                lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
-                l, a, b = cv2.split(lab)
-                clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8,8))
-                cl = clahe.apply(l)
-                limg = cv2.merge((cl,a,b))
-                img_clahe = cv2.cvtColor(limg, cv2.COLOR_LAB2BGR)
-            except Exception:
-                img_clahe = img # Fallback if crop is too small/invalid
+            import numpy as np
+            import time
+            import os
+            from sqlalchemy.orm import Session
+            from app.core.database import SessionLocal, WatchlistFace
                 
-            # Temporary save for DeepFace (it prefers paths for searching directories)
-            tmp_path = f"tmp_face_{camera_id}_{track_id}.jpg"
-            cv2.imwrite(tmp_path, img_clahe)
-            
-            # Ensure FACES_DIR exists
-            if not os.path.exists(FACES_DIR):
-                os.makedirs(FACES_DIR)
-                
-            # If the watchlist directory is empty, skip
-            if not any(f.endswith('.jpg') or f.endswith('.png') for f in os.listdir(FACES_DIR)):
+            # If the watchlist directory is empty, skip completely
+            if not os.path.exists(FACES_DIR) or not any(f.endswith('.jpg') or f.endswith('.png') for f in os.listdir(FACES_DIR)):
                 self.checked_objects[camera_id][track_id] = "unknown"
-                if os.path.exists(tmp_path): os.remove(tmp_path)
                 return
 
-            # Find matching face
-            results = DeepFace.find(
-                img_path=tmp_path, 
-                db_path=str(FACES_DIR), 
-                model_name="VGG-Face", 
-                enforce_detection=False,
-                detector_backend="retinaface",
-                silent=True
-            )
+            # Temporary save for DeepFace
+            tmp_path = f"tmp_face_{camera_id}_{track_id}_{int(time.time()*1000)}.jpg"
+            cv2.imwrite(tmp_path, img)
+
+            try:
+                # Find matching face
+                results = DeepFace.find(
+                    img_path=tmp_path, 
+                    db_path=str(FACES_DIR), 
+                    model_name="VGG-Face", 
+                    enforce_detection=True,  # Now strictly enforce face detection
+                    detector_backend="retinaface",
+                    silent=True
+                )
+            except Exception as d_e:
+                # Face not detected by deepface backend
+                self.checked_objects[camera_id][track_id] = None
+                if os.path.exists(tmp_path): os.remove(tmp_path)
+                return
             
             if os.path.exists(tmp_path):
                 os.remove(tmp_path)
                 
             if len(results) > 0 and len(results[0]) > 0:
-                # We found a match
                 best_match_path = results[0].iloc[0]['identity']
                 
-                db: Session = SessionLocal()
-                try:
-                    match = db.query(WatchlistFace).filter(WatchlistFace.image_path == best_match_path).first()
-                    if match:
-                        self.checked_objects[camera_id][track_id] = match.name
-                        self._trigger_alert("person", match, camera_id, track_id, current_time)
-                    else:
-                        self.checked_objects[camera_id][track_id] = "unknown"
-                finally:
-                    db.close()
+                # Multi-observation confirmation logic
+                if not hasattr(self, 'watchlist_hits'):
+                    self.watchlist_hits = {}
+                key = f"{camera_id}_{track_id}_{best_match_path}"
+                self.watchlist_hits[key] = self.watchlist_hits.get(key, 0) + 1
+                
+                if self.watchlist_hits[key] >= 3:
+                    # Confirmed match
+                    db: Session = SessionLocal()
+                    try:
+                        match = db.query(WatchlistFace).filter(WatchlistFace.image_path == best_match_path).first()
+                        if match:
+                            self.checked_objects[camera_id][track_id] = match.name
+                            self._trigger_alert("person", match, camera_id, track_id, current_time)
+                        else:
+                            self.checked_objects[camera_id][track_id] = "unknown"
+                    finally:
+                        db.close()
+                else:
+                    # Found a match, but need more confirmations
+                    self.checked_objects[camera_id][track_id] = None
             else:
                 self.checked_objects[camera_id][track_id] = "unknown"
                 
         except Exception as e:
             logger.error(f"FaceRec error: {e}")
-            self.checked_objects[camera_id][track_id] = "error"
+            self.checked_objects[camera_id][track_id] = None
             if 'tmp_path' in locals() and os.path.exists(tmp_path):
                 os.remove(tmp_path)
-
     def _trigger_alert(self, entity_type, match_obj, camera_id, track_id, current_time):
         from app.services.video_ingestion import alert_queue
         
@@ -191,7 +196,7 @@ class RecognitionService:
 
     def get_identity(self, camera_id, track_id):
         ident = self.checked_objects.get(camera_id, {}).get(track_id)
-        if ident in ["pending", "unknown", "error", None]:
+        if ident in ["pending", "checking", "unknown", "error", None]:
             return None
         return ident
 

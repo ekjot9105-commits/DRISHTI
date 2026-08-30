@@ -29,7 +29,9 @@ export default function AlertPanel({ alerts = [] }) {
               </div>
               
               <h3 className="font-body-md text-on-surface font-semibold text-sm leading-tight mb-1 relative z-10">{alert.title}</h3>
+              <p className="font-body-md text-[11px] text-cyan-400 font-bold leading-tight relative z-10 mb-1">{alert.camera_name || `Camera ${alert.camera_id}`}</p>
               <p className="font-body-md text-[11px] text-on-surface-variant leading-tight relative z-10">{alert.detail}</p>
+              <p className="font-body-md text-[9px] text-slate-500 mt-1 uppercase tracking-widest relative z-10">Subject Track ID: #{alert.id.split('_').pop()}</p>
               
               {isHigh && (
                 <div className="mt-2 flex space-x-2 relative z-10">

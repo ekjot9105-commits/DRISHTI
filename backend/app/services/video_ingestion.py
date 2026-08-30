@@ -134,14 +134,24 @@ class VideoStream:
             with self.lock:
                 current_boxes = list(self.latest_boxes)
 
-            # Draw Tripwire if exists
+            # Draw Tripwires if exist
             from app.services.ml_inference import ml_service
-            tripwire = ml_service.tripwires.get(self.camera_id)
-            if tripwire and len(tripwire) == 2:
+            tripwires = ml_service.tripwires.get(self.camera_id)
+            if tripwires and isinstance(tripwires, list) and len(tripwires) > 0:
                 h, w = frame.shape[:2]
-                pt1 = (int(tripwire[0]['x'] * w), int(tripwire[0]['y'] * h))
-                pt2 = (int(tripwire[1]['x'] * w), int(tripwire[1]['y'] * h))
-                cv2.line(frame, pt1, pt2, (0, 0, 255), 2)
+                
+                # Check if new multi-line format
+                if isinstance(tripwires[0], list):
+                    for line in tripwires:
+                        if len(line) == 2:
+                            pt1 = (int(line[0]['x'] * w), int(line[0]['y'] * h))
+                            pt2 = (int(line[1]['x'] * w), int(line[1]['y'] * h))
+                            cv2.line(frame, pt1, pt2, (0, 0, 255), 2)
+                # Fallback for old single-line format
+                elif len(tripwires) == 2:
+                    pt1 = (int(tripwires[0]['x'] * w), int(tripwires[0]['y'] * h))
+                    pt2 = (int(tripwires[1]['x'] * w), int(tripwires[1]['y'] * h))
+                    cv2.line(frame, pt1, pt2, (0, 0, 255), 2)
 
             # Draw bounding boxes onto the frame
             for obj in current_boxes:
@@ -193,13 +203,24 @@ class VideoStream:
     def _inference_loop(self):
         """Background thread specifically for running ML inference asynchronously."""
         from app.services.ml_inference import ml_service
+        from app.core.system_monitor import sys_monitor
+        import time
+        
         while self.running:
             try:
                 frame = self.inference_queue.get(timeout=1.0)
                 if frame is None:
                     break
-                    
+                
+                start_time = time.time()
                 alerts, drawn_boxes = ml_service.process_frame(self.camera_id, frame)
+                latency = time.time() - start_time
+                
+                sys_monitor.update_inference_stats(latency)
+                sys_monitor.update_processing_stats(latency + 0.05, self.fps_actual, self.fps_actual)
+                sys_monitor.set_service_status("yolo", "active")
+                sys_monitor.set_service_status("tracker", "active")
+                sys_monitor.set_service_status("tripwire", "active")
                 
                 for alert in alerts:
                     alert_queue.put(alert)

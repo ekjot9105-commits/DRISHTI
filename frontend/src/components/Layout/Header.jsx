@@ -3,7 +3,7 @@
  */
 import { useState, useEffect } from 'react';
 
-export default function Header({ title, activeCameras, totalAlerts }) {
+export default function Header({ title, activeCameras, totalAlerts, onNavigate }) {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function Header({ title, activeCameras, totalAlerts }) {
     });
   };
 
-  const displayText = `IBVAP // ${title.toUpperCase()}`;
+  const displayText = `DRISHTI // ${title.toUpperCase()}`;
 
   return (
     <header className="bg-surface-dim dark:bg-surface-dim text-primary dark:text-primary font-headline-sm text-headline-sm font-data-display text-data-display font-bold tracking-tighter text-primary dark:text-primary docked full-width top-0 border-b border-outline-variant flat no shadows flex justify-between items-center w-full px-gutter h-16 z-50 fixed left-0 right-0 top-0 pl-[calc(5rem+16px)]">
@@ -43,10 +43,21 @@ export default function Header({ title, activeCameras, totalAlerts }) {
             </span>
             <span className="ml-2 px-2 py-1 bg-surface-container border border-outline-variant rounded">{formatTime(currentTime)}</span>
         </div>
-        <button className="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-100">
+        <button 
+          onClick={() => onNavigate && onNavigate('alerts')}
+          className="relative w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-cyan-400 hover:bg-surface-container-high transition-all active:scale-95 duration-100"
+        >
           <span className="material-symbols-outlined" data-icon="notifications">notifications</span>
+          {totalAlerts > 0 && (
+            <span className="absolute top-1 right-1 w-3.5 h-3.5 bg-red-500 rounded-full text-[9px] text-white flex items-center justify-center font-bold border border-black animate-pulse">
+              {totalAlerts > 99 ? '99+' : totalAlerts}
+            </span>
+          )}
         </button>
-        <button className="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-100">
+        <button 
+          onClick={() => onNavigate && onNavigate('settings')}
+          className="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-cyan-400 hover:bg-surface-container-high transition-all active:scale-95 duration-100"
+        >
           <span className="material-symbols-outlined" data-icon="settings">settings</span>
         </button>
         <button className="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-100">

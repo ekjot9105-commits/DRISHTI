@@ -17,6 +17,8 @@ from app.ws.video_stream import router as ws_router
 from app.api.watchlist import router as watchlist_router
 from app.api.events import router as events_router
 from app.api.settings import router as settings_router
+from app.api.system import router as system_router
+from app.api.reports import router as reports_router
 import asyncio
 from app.services.video_ingestion import stream_manager, alert_queue
 from app.ws.video_stream import broadcast_alert
@@ -31,7 +33,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 from fastapi.staticfiles import StaticFiles
-from app.core.database import SessionLocal, Event
+from app.core.database import SessionLocal, Event, Camera
 import json
 import cv2
 import os
@@ -86,6 +88,11 @@ async def alert_dispatcher():
                     # Attach DB ID to alert before broadcasting
                     alert["db_id"] = new_event.id
                     
+                    # Fetch camera name for better context
+                    cam = db.query(Camera).filter(Camera.id == alert.get("camera_id")).first()
+                    alert["camera_name"] = cam.name if cam else f"Camera {alert.get('camera_id')}"
+
+                    
                     # If we have frame evidence (like from a tripwire intrusion), save it asynchronously
                     if frame_data is not None:
                         asyncio.create_task(_save_evidence(new_event.id, frame_data))
@@ -93,6 +100,23 @@ async def alert_dispatcher():
                         
                 finally:
                     db.close()
+                
+                # Dispatch Webhook if configured
+                try:
+                    from app.core.settings_manager import load_settings
+                    import httpx
+                    settings = load_settings()
+                    webhook_url = settings.get("webhook_url", "")
+                    if webhook_url and alert.get("severity") in ["high", "critical", "warning"]:
+                        async def send_webhook(url, payload):
+                            try:
+                                async with httpx.AsyncClient() as client:
+                                    await client.post(url, json=payload, timeout=5.0)
+                            except Exception as we:
+                                logger.error(f"Webhook failed: {we}")
+                        asyncio.create_task(send_webhook(webhook_url, alert))
+                except Exception as e:
+                    logger.error(f"Failed to dispatch webhook: {e}")
                 
                 # Broadcast via WebSocket
                 await broadcast_alert(alert)
@@ -150,6 +174,8 @@ app.include_router(ws_router)
 app.include_router(watchlist_router)
 app.include_router(events_router)
 app.include_router(settings_router)
+app.include_router(system_router)
+app.include_router(reports_router)
 
 
 @app.get("/")

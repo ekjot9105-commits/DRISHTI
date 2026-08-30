@@ -138,9 +138,10 @@ export default function App() {
 
       <div className="flex flex-col flex-1 pl-20 pt-16 transition-all duration-300 w-full h-full relative">
         <Header
-          title={PAGE_TITLES[activePage] || 'IBVAP COMMAND'}
+          title={PAGE_TITLES[activePage] || 'DRISHTI COMMAND'}
           activeCameras={activeCameraCount}
           totalAlerts={alerts.length}
+          onNavigate={setActivePage}
         />
 
         <div className="flex-1 overflow-auto bg-surface w-full h-full relative">

@@ -3,8 +3,11 @@
  */
 import CameraGrid from '../components/CameraGrid/CameraGrid';
 import AlertPanel from '../components/AlertPanel/AlertPanel';
+import SystemMonitor from '../components/SystemMonitor';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Dashboard({ cameras, alerts, humanCount, vehicleCount, onNavigate }) {
+  const { t } = useLanguage();
   const activeCameras = cameras.filter((c) => c.status === 'active').length;
 
   return (
@@ -15,7 +18,7 @@ export default function Dashboard({ cameras, alerts, humanCount, vehicleCount, o
         <div className="flex-1 flex flex-col gap-gutter min-w-0">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-unit">
             <div className="bg-surface-container-low border border-outline-variant/30 p-container-padding flex flex-col justify-between h-20 rounded-sm relative overflow-hidden group hover:border-primary/50 transition-colors">
-              <span className="font-label-caps text-on-surface-variant z-10">Active Cameras</span>
+              <span className="font-label-caps text-on-surface-variant z-10">{t('active_cameras')}</span>
               <span className="font-data-display text-headline-lg text-primary z-10">{activeCameras}</span>
               <div className="absolute bottom-0 left-0 w-full h-1 bg-primary/20">
                 <div className="h-full bg-primary" style={{width: `${(activeCameras / Math.max(cameras.length, 1)) * 100}%`}}></div>
@@ -23,17 +26,17 @@ export default function Dashboard({ cameras, alerts, humanCount, vehicleCount, o
             </div>
             
             <div className="bg-surface-container-low border border-outline-variant/30 p-container-padding flex flex-col justify-between h-20 rounded-sm relative overflow-hidden group hover:border-primary/50 transition-colors">
-              <span className="font-label-caps text-on-surface-variant z-10">Humans Detected</span>
+              <span className="font-label-caps text-on-surface-variant z-10">{t('humans_detected')}</span>
               <span className="font-data-display text-headline-lg text-secondary z-10">{humanCount}</span>
             </div>
             
             <div className="bg-surface-container-low border border-outline-variant/30 p-container-padding flex flex-col justify-between h-20 rounded-sm relative overflow-hidden group hover:border-primary/50 transition-colors">
-              <span className="font-label-caps text-on-surface-variant z-10">Vehicles Detected</span>
+              <span className="font-label-caps text-on-surface-variant z-10">{t('vehicles_detected')}</span>
               <span className="font-data-display text-headline-lg text-secondary z-10">{vehicleCount}</span>
             </div>
             
             <div className="bg-surface-container-low border border-outline-variant/30 p-container-padding flex flex-col justify-between h-20 rounded-sm relative overflow-hidden group hover:border-error/50 transition-colors">
-              <span className="font-label-caps text-on-surface-variant z-10">Alerts Today</span>
+              <span className="font-label-caps text-on-surface-variant z-10">{t('alerts_today')}</span>
               <div className="flex items-center space-x-2 z-10">
                 <span className="font-data-display text-headline-lg text-error">{alerts.length}</span>
                 <span className="material-symbols-outlined text-error text-sm animate-bounce" data-icon="trending_up" style={{fontVariationSettings: "'FILL' 1"}}>trending_up</span>
@@ -41,12 +44,16 @@ export default function Dashboard({ cameras, alerts, humanCount, vehicleCount, o
             </div>
             
             <div className="bg-surface-container-low border border-outline-variant/30 p-container-padding flex flex-col justify-between h-20 rounded-sm relative overflow-hidden group hover:border-primary/50 transition-colors">
-              <span className="font-label-caps text-on-surface-variant z-10">Total Cameras</span>
+              <span className="font-label-caps text-on-surface-variant z-10">{t('total_cameras')}</span>
               <span className="font-data-display text-headline-lg text-on-surface">{cameras.length}</span>
             </div>
           </div>
 
           <CameraGrid cameras={cameras} />
+          
+          <div className="mt-2">
+            <SystemMonitor />
+          </div>
         </div>
 
         <AlertPanel alerts={alerts} />

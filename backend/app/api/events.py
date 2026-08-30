@@ -1,4 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi.responses import FileResponse
+import os
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 from typing import List, Optional
@@ -117,3 +119,23 @@ def get_heatmap_data(db: Session = Depends(get_db)):
             })
             
     return heat_data
+
+@router.get("/{event_id}/evidence/download")
+def download_evidence(event_id: int, db: Session = Depends(get_db)):
+    event = db.query(Event).filter(Event.id == event_id).first()
+    if not event or not event.thumbnail_path:
+        raise HTTPException(status_code=404, detail="Evidence not found")
+    
+    # Path is something like '/evidence/evt_123.jpg', but we serve it from 'data/evidence'
+    file_name = event.thumbnail_path.split('/')[-1]
+    file_path = os.path.join("data", "evidence", file_name)
+    
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=404, detail="File missing from disk")
+        
+    return FileResponse(
+        path=file_path, 
+        filename=f"IBVAP_Evidence_CAM{event.camera_id}_{file_name}",
+        media_type="image/jpeg",
+        headers={"Content-Disposition": f"attachment; filename=IBVAP_Evidence_CAM{event.camera_id}_{file_name}"}
+    )

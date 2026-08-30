@@ -48,12 +48,12 @@ export default function MapView() {
 
   useEffect(() => {
     fetchCameras().then(data => {
-      // Fake coordinates if they don't have them in the DB yet, for demo purposes
+      // Use actual coordinates or default to fixed center
       const enriched = data.map((cam, i) => ({
         ...cam,
-        lat: cam.latitude || (28.6139 + (Math.random() * 0.05 - 0.025)),
-        lng: cam.longitude || (77.2090 + (Math.random() * 0.05 - 0.025)),
-        isAlerting: Math.random() > 0.8 // Random alert state for demo
+        lat: cam.latitude || 28.6139,
+        lng: cam.longitude || 77.2090,
+        isAlerting: false
       }));
       setCameras(enriched);
     });
@@ -74,8 +74,8 @@ export default function MapView() {
       <div className="flex-1 w-full bg-[#0b101e]">
         <MapContainer center={[28.6139, 77.2090]} zoom={13} style={{ height: '100%', width: '100%' }}>
           <TileLayer
-            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
           
           {cameras.map(camera => (

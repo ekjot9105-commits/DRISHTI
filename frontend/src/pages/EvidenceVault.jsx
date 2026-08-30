@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getEvents, API_BASE } from '../services/api';
-import { Lock, Download } from 'lucide-react';
+import { Lock, Download, FileText } from 'lucide-react';
 
 export default function EvidenceVault() {
   const [events, setEvents] = useState([]);
@@ -22,16 +22,12 @@ export default function EvidenceVault() {
     }
   };
 
-  const downloadImage = (url, filename) => {
-    fetch(url)
-      .then(response => response.blob())
-      .then(blob => {
-        const link = document.createElement("a");
-        link.href = URL.createObjectURL(blob);
-        link.download = filename;
-        link.click();
-      })
-      .catch(console.error);
+  const downloadImage = (eventId) => {
+    window.location.href = `${API_BASE}/api/events/${eventId}/evidence/download`;
+  };
+
+  const downloadReport = (eventId) => {
+    window.location.href = `${API_BASE}/api/reports/${eventId}/download`;
   };
 
   return (
@@ -63,12 +59,18 @@ export default function EvidenceVault() {
                     alt={event.title}
                     className="w-full h-full object-contain"
                   />
-                  <div className="absolute inset-0 bg-cyan-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="absolute inset-0 bg-cyan-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2">
                     <button 
-                      onClick={() => downloadImage(`${API_BASE}${event.thumbnail_path}`, `evidence_cam${event.camera_id}_evt${event.id}.jpg`)}
-                      className="bg-cyan-500 hover:bg-cyan-400 text-black px-4 py-2 rounded font-bold tracking-wider flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform"
+                      onClick={() => downloadImage(event.id)}
+                      className="bg-slate-800 border border-slate-600 hover:bg-slate-700 text-white px-3 py-1.5 rounded text-xs font-bold tracking-wider flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform"
                     >
-                      <Download className="w-4 h-4" /> EXPORT
+                      <Download className="w-3 h-3" /> JPG EVIDENCE
+                    </button>
+                    <button 
+                      onClick={() => downloadReport(event.id)}
+                      className="bg-cyan-500 hover:bg-cyan-400 text-black px-3 py-1.5 rounded text-xs font-bold tracking-wider flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform delay-75"
+                    >
+                      <FileText className="w-3 h-3" /> PDF REPORT
                     </button>
                   </div>
                 </div>

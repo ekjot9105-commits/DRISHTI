@@ -52,12 +52,18 @@ def delete_face(face_id: int, db: Session = Depends(get_db)):
     if not face:
         raise HTTPException(status_code=404, detail="Not found")
     
-    if os.path.exists(face.image_path):
-        os.remove(face.image_path)
+    try:
+        if os.path.exists(face.image_path):
+            os.remove(face.image_path)
+    except Exception as e:
+        print(f"Warning: could not delete image file {face.image_path} - {e}")
         
-    pkl_path = FACES_DIR / "representations_vgg_face.pkl"
-    if pkl_path.exists():
-        os.remove(pkl_path)
+    try:
+        pkl_path = FACES_DIR / "representations_vgg_face.pkl"
+        if pkl_path.exists():
+            os.remove(pkl_path)
+    except Exception as e:
+        pass
         
     db.delete(face)
     db.commit()
