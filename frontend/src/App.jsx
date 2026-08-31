@@ -9,7 +9,6 @@ import Sidebar from './components/Layout/Sidebar';
 import Header from './components/Layout/Header';
 import Dashboard from './pages/Dashboard';
 import CameraManagement from './pages/CameraManagement';
-import PlaceholderPage from './pages/PlaceholderPage';
 import AlertCenter from './pages/AlertCenter';
 import AnalyticsDashboard from './pages/AnalyticsDashboard';
 import WatchlistManagement from './pages/WatchlistManagement';
