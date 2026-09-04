@@ -7,11 +7,13 @@ from sqlalchemy.orm import Session
 from app.core.database import get_db, Event, Camera
 import json
 import uuid
+import qrcode
+from app.services.blockchain import blockchain_service
 import asyncio
 
 try:
     from reportlab.lib.pagesizes import letter
-    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Table, TableStyle
+    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Table, TableStyle, KeepTogether
     from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
     from reportlab.lib import colors
     from reportlab.lib.units import inch
@@ -98,6 +100,20 @@ def generate_pdf_sync(event_id: int, db: Session):
     story.append(Spacer(1, 0.2 * inch))
     
     # Image
+    # Fetch Blockchain Ledger Data
+    block = blockchain_service.get_block_by_event(event.id)
+    block_status = "VERIFIED IMMUTABLE" if block else "PENDING MINING"
+    
+    if block:
+        # Create QR Code for verification
+        qr = qrcode.QRCode(version=1, box_size=2, border=1)
+        qr_data = f"DRISHTI_VERIFY:{block['hash']}"
+        qr.add_data(qr_data)
+        qr.make(fit=True)
+        qr_img = qr.make_image(fill_color="black", back_color="white")
+        qr_path = os.path.join("data", "reports", f"qr_{event.id}.png")
+        qr_img.save(qr_path)
+    
     if file_path:
         story.append(Paragraph("<b>Evidence Snapshot:</b>", styles['Heading3']))
         try:
@@ -106,11 +122,47 @@ def generate_pdf_sync(event_id: int, db: Session):
         except Exception:
             story.append(Paragraph("[Error embedding image]", normal_style))
         story.append(Spacer(1, 0.1 * inch))
-        
-        story.append(Paragraph(f"<b>Evidence SHA-256 Checksum:</b>", normal_style))
-        story.append(Paragraph(f"<font size=8>{file_hash}</font>", normal_style))
     else:
         story.append(Paragraph("<b>Evidence Snapshot:</b> None Captured.", styles['Heading3']))
+        story.append(Spacer(1, 0.1 * inch))
+
+    # Blockchain Cryptographic Ledger Table
+    ledger_elements = []
+    ledger_elements.append(Paragraph("<b>Immutable Cryptographic Ledger (Blockchain):</b>", styles['Heading3']))
+    
+    if block:
+        ledger_data = [
+            ["Verification Status:", block_status],
+            ["Block Number:", f"#{block['index']}"],
+            ["Block Hash:", Paragraph(f"<font size=7>{block['hash']}</font>", normal_style)],
+            ["Previous Block Hash:", Paragraph(f"<font size=7>{block['previous_hash']}</font>", normal_style)],
+            ["Evidence SHA-256:", Paragraph(f"<font size=7>{block['evidence_hash']}</font>", normal_style)],
+            ["Event Hash:", Paragraph(f"<font size=7>{block['event_hash']}</font>", normal_style)],
+        ]
+        
+        lt = Table(ledger_data, colWidths=[1.8*inch, 4.2*inch])
+        lt.setStyle(TableStyle([
+            ('BACKGROUND', (0,0), (-1,-1), colors.HexColor('#f0fdfa')), # Teal tint
+            ('TEXTCOLOR', (0,0), (-1,-1), colors.HexColor('#004d40')),
+            ('ALIGN', (0,0), (-1,-1), 'LEFT'),
+            ('FONTNAME', (0,0), (0,-1), 'Helvetica-Bold'),
+            ('BOTTOMPADDING', (0,0), (-1,-1), 6),
+            ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor('#14b8a6')),
+        ]))
+        ledger_elements.append(lt)
+        
+        # Add QR Code next to text
+        ledger_elements.append(Spacer(1, 0.1 * inch))
+        ledger_elements.append(Paragraph("<i>Scan QR code to verify cryptographic signature on the DRISHTI Network.</i>", subtitle_style))
+        try:
+            qr_pdf_img = Image(qr_path, width=1*inch, height=1*inch)
+            ledger_elements.append(qr_pdf_img)
+        except:
+            pass
+    else:
+        ledger_elements.append(Paragraph("<i>Ledger transaction pending... (Mining in progress)</i>", normal_style))
+        
+    story.append(KeepTogether(ledger_elements))
         
     story.append(Spacer(1, 0.5 * inch))
     story.append(Paragraph(f"<i>Report generated securely by DRISHTI Engine on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</i>", subtitle_style))

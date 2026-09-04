@@ -19,7 +19,7 @@ export default function CameraGrid({ cameras, onExpandCamera }) {
   const gridClass = cameras.length === 1 ? 'grid-cols-1' : 'grid-cols-1 lg:grid-cols-2';
 
   return (
-    <div className={`flex-1 grid ${gridClass} gap-gutter min-h-0`}>
+    <div className={`grid ${gridClass} gap-gutter`}>
       {cameras.map((camera) => (
         <CameraFeed
           key={camera.id}

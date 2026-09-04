@@ -17,6 +17,7 @@ async def add_face(
     name: str = Form(...),
     description: str = Form(""),
     image: UploadFile = File(...),
+    is_authorized: bool = Form(False),
     db: Session = Depends(get_db)
 ):
     try:
@@ -40,7 +41,7 @@ async def add_face(
     if pkl_path.exists():
         os.remove(pkl_path)
     
-    face = WatchlistFace(name=name, description=description, image_path=str(file_path))
+    face = WatchlistFace(name=name, description=description, image_path=str(file_path), is_authorized=is_authorized)
     db.add(face)
     db.commit()
     db.refresh(face)

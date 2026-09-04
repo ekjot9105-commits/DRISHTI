@@ -15,7 +15,7 @@ export default function Dashboard({ cameras, alerts, humanCount, vehicleCount, o
       <div className="absolute inset-0 pointer-events-none opacity-5" style={{backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '20px 20px'}}></div>
       
       <div className="flex flex-col lg:flex-row gap-gutter h-full relative z-10">
-        <div className="flex-1 flex flex-col gap-gutter min-w-0">
+        <div className="flex-1 flex flex-col gap-gutter min-w-0 overflow-y-auto custom-scrollbar pr-2 pb-4">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-unit">
             <div className="bg-surface-container-low border border-outline-variant/30 p-container-padding flex flex-col justify-between h-20 rounded-sm relative overflow-hidden group hover:border-primary/50 transition-colors">
               <span className="font-label-caps text-on-surface-variant z-10">{t('active_cameras')}</span>

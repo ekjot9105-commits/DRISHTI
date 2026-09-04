@@ -37,15 +37,29 @@ from app.core.database import SessionLocal, Event, Camera
 import json
 import cv2
 import os
+import hashlib
+from app.services.blockchain import blockchain_service
 
 # Mount evidence directory for serving images
 os.makedirs("data/evidence", exist_ok=True)
 
-async def _save_evidence(event_id: int, frame):
-    """Background task to save numpy frame to disk."""
+async def _save_evidence(event_id: int, frame, event_metadata: str):
+    """Background task to save numpy frame to disk and secure on blockchain."""
     try:
         path = f"data/evidence/evt_{event_id}.jpg"
         cv2.imwrite(path, frame)
+        
+        # Calculate cryptographic hashes
+        evidence_hash = "No Image"
+        if os.path.exists(path):
+            with open(path, "rb") as f:
+                evidence_hash = hashlib.sha256(f.read()).hexdigest()
+                
+        event_hash = hashlib.sha256(event_metadata.encode()).hexdigest()
+        
+        # Queue to Blockchain without blocking YOLO or WebSockets
+        blockchain_service.queue_transaction(event_id, evidence_hash, event_hash)
+        
         # Update database with thumbnail path
         db = SessionLocal()
         event = db.query(Event).filter(Event.id == event_id).first()
@@ -95,7 +109,7 @@ async def alert_dispatcher():
                     
                     # If we have frame evidence (like from a tripwire intrusion), save it asynchronously
                     if frame_data is not None:
-                        asyncio.create_task(_save_evidence(new_event.id, frame_data))
+                        asyncio.create_task(_save_evidence(new_event.id, frame_data, str(alert)))
                         alert["has_evidence"] = True
                         
                 finally:

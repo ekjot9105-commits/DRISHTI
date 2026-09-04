@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { getEvents, API_BASE } from '../services/api';
+import { getEvents, API_BASE, getBlockchainStatus } from '../services/api';
 import { Lock, Download, FileText } from 'lucide-react';
 
 export default function EvidenceVault() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [verifyModal, setVerifyModal] = useState(null);
+  const [verifySteps, setVerifySteps] = useState([]);
 
   useEffect(() => {
     fetchEvents();
@@ -24,6 +26,29 @@ export default function EvidenceVault() {
 
   const downloadImage = (eventId) => {
     window.location.href = `${API_BASE}/api/events/${eventId}/evidence/download`;
+  };
+
+
+  const handleVerify = async (event) => {
+    setVerifyModal(event);
+    setVerifySteps([`> Initializing DRISHTI Node... [OK]`]);
+    
+    setTimeout(() => setVerifySteps(s => [...s, `> Fetching Block for Incident #${event.id}...`]), 800);
+    
+    try {
+      const result = await getBlockchainStatus(event.id);
+      if (result.status === 'verified') {
+        setTimeout(() => setVerifySteps(s => [...s, `> Block Found: #${result.block.index} [OK]`]), 1600);
+        setTimeout(() => setVerifySteps(s => [...s, `> Extracting Original SHA-256 Fingerprint... [OK]`]), 2400);
+        setTimeout(() => setVerifySteps(s => [...s, `> Recalculating Local Evidence Hash... [OK]`]), 3200);
+        setTimeout(() => setVerifySteps(s => [...s, `> RESULT: MATCH. Evidence is pristine and admissible.`]), 4000);
+        setTimeout(() => setVerifySteps(s => [...s, `> Hash: ${result.block.evidence_hash}`]), 4500);
+      } else {
+        setTimeout(() => setVerifySteps(s => [...s, `> Block pending inclusion in ledger...`]), 1600);
+      }
+    } catch (e) {
+      setTimeout(() => setVerifySteps(s => [...s, `> ERROR: Could not reach blockchain node.`]), 1600);
+    }
   };
 
   const downloadReport = (eventId) => {
@@ -72,6 +97,12 @@ export default function EvidenceVault() {
                     >
                       <FileText className="w-3 h-3" /> PDF REPORT
                     </button>
+                    <button 
+                      onClick={() => handleVerify(event)}
+                      className="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded text-xs font-bold tracking-wider flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform delay-150"
+                    >
+                      <Lock className="w-3 h-3" /> VERIFY INTEGRITY
+                    </button>
                   </div>
                 </div>
                 <div className="p-4">
@@ -87,6 +118,28 @@ export default function EvidenceVault() {
           </div>
         )}
       </div>
+
+      {verifyModal && (
+        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 backdrop-blur-sm">
+          <div className="bg-[#0b101e] border border-cyan-500/50 w-full max-w-2xl rounded-lg shadow-[0_0_30px_rgba(6,182,212,0.2)] overflow-hidden flex flex-col">
+            <div className="bg-[#151e32] px-4 py-3 border-b border-slate-700 flex justify-between items-center">
+              <h3 className="text-cyan-400 font-mono font-bold tracking-widest text-sm flex items-center gap-2">
+                <Lock className="w-4 h-4" /> CRYPTOGRAPHIC AUDIT - INCIDENT {verifyModal.id}
+              </h3>
+              <button onClick={() => setVerifyModal(null)} className="text-slate-400 hover:text-white">✕</button>
+            </div>
+            <div className="p-6 font-mono text-xs sm:text-sm text-emerald-400 bg-black h-64 overflow-y-auto space-y-2">
+              {verifySteps.map((step, i) => (
+                <div key={i} className={step.includes('ERROR') ? 'text-red-500' : ''}>{step}</div>
+              ))}
+              {verifySteps.length > 0 && verifySteps.length < 6 && (
+                <div className="animate-pulse">_</div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

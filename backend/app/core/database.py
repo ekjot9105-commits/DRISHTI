@@ -29,6 +29,7 @@ class Camera(Base):
     source_type = Column(String(20), nullable=False)  # "file" or "rtsp"
     source_url = Column(Text, nullable=False)  # file path or RTSP URL
     status = Column(String(20), default="inactive")  # active, inactive, error
+    camera_type = Column(String(20), default="fixed")  # fixed or ptz
     location = Column(String(200), default="")  # descriptive location
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
@@ -61,6 +62,7 @@ class WatchlistFace(Base):
     name = Column(String(100), nullable=False)
     description = Column(Text, default="")
     image_path = Column(Text, nullable=False)
+    is_authorized = Column(Boolean, default=False)
     embedding_path = Column(Text, default="")  # path to stored embedding
     created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 

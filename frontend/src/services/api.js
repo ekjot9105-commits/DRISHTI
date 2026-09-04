@@ -115,11 +115,12 @@ export async function getFaces() {
   return request('/api/watchlist/faces');
 }
 
-export async function addFace(name, description, imageFile) {
+export async function addFace(name, description, imageFile, isAuthorized = false) {
   const formData = new FormData();
   formData.append('name', name);
   formData.append('description', description);
   formData.append('image', imageFile);
+  formData.append('is_authorized', isAuthorized);
   
   const response = await fetch(`${API_BASE}/api/watchlist/faces`, {
     method: 'POST',
@@ -186,3 +187,10 @@ export async function getEventHeatmap() {
 }
 
 export { API_BASE, WS_BASE };
+
+
+export const getBlockchainStatus = async (eventId) => {
+  const response = await fetch(`${API_BASE}/api/events/${eventId}/blockchain`);
+  if (!response.ok) throw new Error('Failed to fetch blockchain status');
+  return await response.json();
+};

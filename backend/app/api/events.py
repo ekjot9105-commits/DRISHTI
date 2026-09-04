@@ -45,8 +45,8 @@ def get_events(
             "severity": event.severity,
             "object_class": event.object_class,
             "status": event.status,
-            "created_at": event.created_at,
-            "resolved_at": event.resolved_at,
+            "created_at": event.created_at.replace(tzinfo=timezone.utc) if event.created_at else None,
+            "resolved_at": event.resolved_at.replace(tzinfo=timezone.utc) if event.resolved_at else None,
             "thumbnail_path": event.thumbnail_path,
             "title": details.get("title", ""),
             "detail": details.get("detail", ""),
@@ -139,3 +139,16 @@ def download_evidence(event_id: int, db: Session = Depends(get_db)):
         media_type="image/jpeg",
         headers={"Content-Disposition": f"attachment; filename=IBVAP_Evidence_CAM{event.camera_id}_{file_name}"}
     )
+
+
+from app.services.blockchain import blockchain_service
+
+@router.get("/{event_id}/blockchain")
+def get_blockchain_verification(event_id: int):
+    block = blockchain_service.get_block_by_event(event_id)
+    if not block:
+        return {"status": "pending", "message": "Transaction pending inclusion in block"}
+    return {
+        "status": "verified",
+        "block": block
+    }

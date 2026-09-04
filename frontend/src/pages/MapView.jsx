@@ -49,12 +49,15 @@ export default function MapView() {
   useEffect(() => {
     fetchCameras().then(data => {
       // Use actual coordinates or default to fixed center
-      const enriched = data.map((cam, i) => ({
-        ...cam,
-        lat: cam.latitude || 28.6139,
-        lng: cam.longitude || 77.2090,
-        isAlerting: false
-      }));
+      // Only include cameras with valid coordinates
+      const enriched = data
+        .filter(cam => cam.latitude != null && cam.longitude != null && cam.latitude !== 0 && cam.longitude !== 0)
+        .map(cam => ({
+          ...cam,
+          lat: cam.latitude,
+          lng: cam.longitude,
+          isAlerting: false
+        }));
       setCameras(enriched);
     });
   }, []);

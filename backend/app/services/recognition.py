@@ -64,36 +64,55 @@ class RecognitionService:
     def _recognize_plate(self, camera_id: int, track_id: int, img, current_time: float):
         try:
             self._init_ocr()
-            # Fast simple OCR on the cropped box
+            if self.reader is None:
+                self.checked_objects[camera_id][track_id] = "unknown"
+                return
+                
             results = self.reader.readtext(img)
             plate_text = ""
             best_conf = 0
             
             for (bbox, text, conf) in results:
-                # filter out obvious noise
                 cleaned = "".join([c for c in text if c.isalnum()]).upper()
                 if len(cleaned) > 4 and conf > best_conf:
                     plate_text = cleaned
                     best_conf = conf
                     
             if plate_text:
-                logger.info(f"ALPR detected plate: {plate_text} (conf: {best_conf:.2f})")
+                if not hasattr(self, 'alpr_hits'):
+                    self.alpr_hits = {}
+                key = f"{camera_id}_{track_id}"
+                if key not in self.alpr_hits:
+                    self.alpr_hits[key] = []
+                self.alpr_hits[key].append(plate_text)
                 
-                # Check Database
-                db: Session = SessionLocal()
-                try:
-                    match = db.query(WatchlistPlate).filter(WatchlistPlate.plate_number.like(f"%{plate_text}%")).first()
-                    if match:
-                        self.checked_objects[camera_id][track_id] = match.plate_number
-                        self._trigger_alert("vehicle", match, camera_id, track_id, current_time)
+                # Consensus: need at least 2 reads of the same plate
+                if len(self.alpr_hits[key]) >= 2:
+                    from collections import Counter
+                    most_common, num_most_common = Counter(self.alpr_hits[key]).most_common(1)[0]
+                    if num_most_common >= 2:
+                        # Confirmed ALPR
+                        logger.info(f"ALPR confirmed plate: {most_common} (conf: {best_conf:.2f})")
+                        db: Session = SessionLocal()
+                        try:
+                            match = db.query(WatchlistPlate).filter(WatchlistPlate.plate_number.like(f"%{most_common}%")).first()
+                            if match:
+                                self.checked_objects[camera_id][track_id] = match.plate_number
+                                self._trigger_alert("vehicle", match, camera_id, track_id, current_time)
+                            else:
+                                self.checked_objects[camera_id][track_id] = "unknown"
+                        finally:
+                            db.close()
                     else:
-                        self.checked_objects[camera_id][track_id] = "unknown"
-                finally:
-                    db.close()
+                        self.checked_objects[camera_id][track_id] = None
+                else:
+                    self.checked_objects[camera_id][track_id] = None
             else:
-                self.checked_objects[camera_id][track_id] = "unknown"
+                self.checked_objects[camera_id][track_id] = None
+                
         except Exception as e:
-            logger.error(f"ALPR error: {e}")
+            if "corrupt_msg" not in str(e):
+                logger.error(f"ALPR error: {e}")
             self.checked_objects[camera_id][track_id] = "error"
 
     def _recognize_face(self, camera_id: int, track_id: int, img, current_time: float):
@@ -149,8 +168,9 @@ class RecognitionService:
                     try:
                         match = db.query(WatchlistFace).filter(WatchlistFace.image_path == best_match_path).first()
                         if match:
-                            self.checked_objects[camera_id][track_id] = match.name
-                            self._trigger_alert("person", match, camera_id, track_id, current_time)
+                            self.checked_objects[camera_id][track_id] = {"name": match.name, "is_authorized": getattr(match, "is_authorized", False)}
+                            if not getattr(match, "is_authorized", False):
+                                self._trigger_alert("person", match, camera_id, track_id, current_time)
                         else:
                             self.checked_objects[camera_id][track_id] = "unknown"
                     finally:
@@ -198,6 +218,14 @@ class RecognitionService:
         ident = self.checked_objects.get(camera_id, {}).get(track_id)
         if ident in ["pending", "checking", "unknown", "error", None]:
             return None
+        if isinstance(ident, dict):
+            return ident["name"]
         return ident
+        
+    def is_authorized(self, camera_id, track_id):
+        ident = self.checked_objects.get(camera_id, {}).get(track_id)
+        if isinstance(ident, dict):
+            return ident.get("is_authorized", False)
+        return False
 
 recognition_service = RecognitionService()

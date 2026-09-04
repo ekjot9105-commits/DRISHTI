@@ -13,6 +13,7 @@ export default function WatchlistManagement() {
   const [faceName, setFaceName] = useState('');
   const [faceDesc, setFaceDesc] = useState('');
   const [faceImage, setFaceImage] = useState(null);
+  const [isAuthorized, setIsAuthorized] = useState(false);
   
   const [plateNumber, setPlateNumber] = useState('');
   const [vehicleDesc, setVehicleDesc] = useState('');
@@ -40,10 +41,11 @@ export default function WatchlistManagement() {
     if (!faceImage || !faceName) return;
     
     try {
-      await addFace(faceName, faceDesc, faceImage);
+      await addFace(faceName, faceDesc, faceImage, isAuthorized);
       setFaceName('');
       setFaceDesc('');
       setFaceImage(null);
+      setIsAuthorized(false);
       e.target.reset();
       loadData();
     } catch (err) {
@@ -148,7 +150,18 @@ export default function WatchlistManagement() {
                   className="w-full bg-surface border border-outline-variant/50 text-on-surface rounded-sm p-2 text-sm focus:border-primary focus:outline-none h-24 resize-none"
                 />
               </div>
-              <div className="mt-auto">
+              
+              <div className="flex items-center mt-2">
+                <input 
+                  type="checkbox" 
+                  id="isAuthorized"
+                  checked={isAuthorized}
+                  onChange={(e) => setIsAuthorized(e.target.checked)}
+                  className="mr-2"
+                />
+                <label htmlFor="isAuthorized" className="text-xs font-label-caps text-on-surface-variant">Mark as Authorized Personnel (Suppresses Alerts)</label>
+              </div>
+<div className="mt-auto">
                 <button type="submit" className="w-full bg-primary text-on-primary py-2 rounded-sm font-label-caps text-xs tracking-wider flex items-center justify-center hover:bg-primary/90 transition-colors">
                   <span className="material-symbols-outlined text-[16px] mr-2">person_add</span>
                   SAVE TO WATCHLIST

@@ -15,6 +15,7 @@ import WatchlistManagement from './pages/WatchlistManagement';
 import MapView from './pages/MapView';
 import EvidenceVault from './pages/EvidenceVault';
 import Settings from './pages/Settings';
+import Landing from './pages/Landing';
 import { fetchCameras, createAlertWebSocket } from './services/api';
 
 const PAGE_TITLES = {
@@ -29,7 +30,7 @@ const PAGE_TITLES = {
 };
 
 export default function App() {
-  const [activePage, setActivePage] = useState('dashboard');
+  const [activePage, setActivePage] = useState('landing');
   const [cameras, setCameras] = useState([]);
   const [alerts, setAlerts] = useState([]);
   const [backendOnline, setBackendOnline] = useState(false);
@@ -130,6 +131,10 @@ export default function App() {
         return <Dashboard cameras={cameras} alerts={alerts} onNavigate={setActivePage} />;
     }
   };
+
+  if (activePage === 'landing') {
+    return <Landing onNavigate={setActivePage} />;
+  }
 
   return (
     <div className="flex h-screen w-full overflow-hidden bg-surface">

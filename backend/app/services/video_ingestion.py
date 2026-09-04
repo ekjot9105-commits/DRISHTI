@@ -147,6 +147,11 @@ class VideoStream:
                             pt1 = (int(line[0]['x'] * w), int(line[0]['y'] * h))
                             pt2 = (int(line[1]['x'] * w), int(line[1]['y'] * h))
                             cv2.line(frame, pt1, pt2, (0, 0, 255), 2)
+                            # Security Boundary UI Enhancements
+                            cx, cy = (pt1[0] + pt2[0]) // 2, (pt1[1] + pt2[1]) // 2
+                            cv2.putText(frame, f"RESTRICTED BOUNDARY [ARMED]", (cx - 100, cy - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
+                            # Direction arrows (simple offset)
+                            cv2.arrowedLine(frame, (cx, cy), (cx, cy - 30), (0, 255, 255), 1, tipLength=0.3)
                 # Fallback for old single-line format
                 elif len(tripwires) == 2:
                     pt1 = (int(tripwires[0]['x'] * w), int(tripwires[0]['y'] * h))

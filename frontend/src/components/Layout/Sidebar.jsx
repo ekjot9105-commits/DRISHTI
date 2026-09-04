@@ -49,6 +49,14 @@ export default function Sidebar({ activePage, onNavigate }) {
       </div>
       <div className="px-2 pb-4 mt-auto">
         <button
+          onClick={() => onNavigate('landing')}
+          className="text-on-surface-variant hover:text-red-400 hover:bg-surface-container-highest transition-all duration-200 ease-in-out flex items-center px-3 py-3 rounded-lg w-full mb-2"
+          title="Disconnect / Exit"
+        >
+          <span className="material-symbols-outlined shrink-0 text-red-500">logout</span>
+          <span className="ml-4 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 tracking-wider text-xs text-red-400">DISCONNECT</span>
+        </button>
+        <button
           onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
           className="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all duration-200 ease-in-out flex items-center px-3 py-3 rounded-lg w-full"
           title={t("language")}

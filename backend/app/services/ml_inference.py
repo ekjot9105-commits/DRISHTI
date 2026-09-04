@@ -11,6 +11,8 @@ from app.core.settings_manager import load_settings
 
 logger = logging.getLogger(__name__)
 
+from app.services.recognition import recognition_service
+
 class MLService:
     def __init__(self):
         self.model = None
@@ -42,6 +44,7 @@ class MLService:
         
         # Track object history per camera: {camera_id: {track_id: {"first_seen": float, "last_seen": float, "crossed_tripwire": bool}}}
         self.object_history: Dict[int, Dict[int, dict]] = {}
+        self.incident_cache = {}  # { "camera_id_type_zone": last_trigger_time }
         
         # Classes of interest (COCO dataset: 0=person, 2=car, 3=motorcycle, 5=bus, 7=truck)
         self.target_classes = {0: 'person', 2: 'vehicle', 3: 'vehicle', 5: 'vehicle', 7: 'vehicle'}
@@ -67,12 +70,23 @@ class MLService:
             pass
 
     def _ccw(self, A, B, C):
-        """Helper for line intersection math. Checks if A,B,C are counterclockwise."""
         return (C['y'] - A['y']) * (B['x'] - A['x']) > (B['y'] - A['y']) * (C['x'] - A['x'])
 
     def _intersect(self, A, B, C, D):
         """Return true if line segments AB and CD intersect."""
         return self._ccw(A, C, D) != self._ccw(B, C, D) and self._ccw(A, B, C) != self._ccw(A, B, D)
+
+    def _get_side(self, A, B, P, tolerance_px=5.0):
+        # Calculate cross product (B.x - A.x)*(P.y - A.y) - (B.y - A.y)*(P.x - A.x)
+        cp = (B["x"] - A["x"]) * (P["y"] - A["y"]) - (B["y"] - A["y"]) * (P["x"] - A["x"])
+        # Distance from point P to line AB
+        l2 = (B["x"] - A["x"])**2 + (B["y"] - A["y"])**2
+        if l2 == 0: return 0
+        import math
+        dist = abs(cp) / math.sqrt(l2)
+        if dist <= tolerance_px:
+            return 0 # Within buffer zone
+        return 1 if cp > 0 else -1
 
     def process_frame(self, camera_id: int, frame):
         if not self.active or self.model is None:
@@ -192,12 +206,20 @@ class MLService:
                         
                         dwelling_thresh = settings.get("dwelling_time", 10.0)
                         if dwelling_time > dwelling_thresh:
-                            # Per-track dwelling cooldown (alert once per 60 seconds)
-                            last_dw = self.object_history[camera_id][track_id].get("last_dwelling_time", 0)
-                            if current_time - last_dw > 60.0:
-                                self.object_history[camera_id][track_id]["last_dwelling_time"] = current_time
-                                alerts.append({
-                                    "id": f"evt_dw_{int(current_time)}_{track_id}",
+                            # Incident-Level deduplication
+                            incident_key = f"{camera_id}_dwelling_{obj_class}"
+                            last_inc = self.incident_cache.get(incident_key, 0)
+                            if current_time - last_inc > 30.0:
+                                if not recognition_service.is_authorized(camera_id, track_id):
+                                    self.incident_cache[incident_key] = current_time
+                                    # Still update per-track so it doesn't fire immediately again if track is isolated
+                                    self.object_history[camera_id][track_id]["last_dwelling_time"] = current_time
+                                    
+                                    # Create mathematically unique incident ID
+                                    import uuid
+                                    incident_id = f"inc_{int(current_time)}_{uuid.uuid4().hex[:6]}"
+                                    alerts.append({
+                                        "id": incident_id,
                                     "camera_id": camera_id,
                                     "type": "dwelling",
                                     "severity": "high",
@@ -216,7 +238,9 @@ class MLService:
                     cy = (xyxy[1] + xyxy[3]) / 2.0
                     
                     positions = hist.get("positions", [])
-                    positions.append((cx, cy, current_time))
+                    bx = (xyxy[0] + xyxy[2]) / 2.0
+                    by = xyxy[3]
+                    positions.append((cx, cy, current_time, bx, by))
                     
                     # Keep only last 3 seconds of positions for smoothing
                     positions = [p for p in positions if current_time - p[2] <= 3.0]
@@ -241,11 +265,17 @@ class MLService:
                                     hist["fleeing_start"] = current_time
                                 elif current_time - hist["fleeing_start"] >= fleeing_dur:
                                     # Trigger Fleeing Alert
-                                    fleeing_cooldown = current_time - hist.get("last_fleeing_time", 0)
-                                    if fleeing_cooldown > 15.0:
-                                        hist["last_fleeing_time"] = current_time
-                                        alerts.append({
-                                            "id": f"evt_run_{int(current_time)}_{track_id}",
+                                    incident_key = f"{camera_id}_fleeing"
+                                    last_inc = self.incident_cache.get(incident_key, 0)
+                                    if current_time - last_inc > 15.0:
+                                        if not recognition_service.is_authorized(camera_id, track_id):
+                                            self.incident_cache[incident_key] = current_time
+                                            hist["last_fleeing_time"] = current_time
+                                            
+                                            import uuid
+                                            incident_id = f"inc_{int(current_time)}_{uuid.uuid4().hex[:6]}"
+                                            alerts.append({
+                                                "id": incident_id,
                                             "camera_id": camera_id,
                                             "type": "behavioral",
                                             "severity": "high",
@@ -260,10 +290,8 @@ class MLService:
                                     del hist["fleeing_start"]
 
                     # --- TRIPWIRE INTRUSION LOGIC ---
-                    if "last_box" in hist and camera_id in self.tripwires:
+                    if "positions" in hist and len(hist["positions"]) >= 2 and camera_id in self.tripwires:
                         tripwires_data = self.tripwires[camera_id]
-                        
-                        # Normalize to list of lines
                         lines_to_check = []
                         if tripwires_data and isinstance(tripwires_data, list) and len(tripwires_data) > 0:
                             if isinstance(tripwires_data[0], list):
@@ -273,41 +301,49 @@ class MLService:
                                 
                         if lines_to_check:
                             fh, fw = frame.shape[:2]
-                            
-                            # Previous bottom-center
-                            p_x1, p_y1, p_x2, p_y2 = hist["last_box"]
-                            C = {"x": (p_x1 + p_x2)/2.0, "y": p_y2}
-                            
-                            # Current bottom-center
-                            c_x1, c_y1, c_x2, c_y2 = xyxy
-                            D = {"x": (c_x1 + c_x2)/2.0, "y": c_y2}
-                            
                             cooldown = current_time - hist.get("last_intrusion_time", 0)
                             
                             if cooldown > settings.get("intrusion_cooldown", 10.0):
                                 crossed = False
+                                pos_history = hist["positions"]
+                                
                                 for line in lines_to_check:
                                     A = {"x": line[0]["x"] * fw, "y": line[0]["y"] * fh}
                                     B = {"x": line[1]["x"] * fw, "y": line[1]["y"] * fh}
-                                    if self._intersect(A, B, C, D):
-                                        crossed = True
+                                    
+                                    # Ultra-resilient geometric check: check every single segment in history
+                                    for i in range(len(pos_history) - 1):
+                                        C = {"x": pos_history[i][3], "y": pos_history[i][4]}
+                                        D = {"x": pos_history[i+1][3], "y": pos_history[i+1][4]}
+                                        if self._intersect(A, B, C, D):
+                                            crossed = True
+                                            break
+                                            
+                                    if crossed:
                                         break
                                         
                                 if crossed:
-                                    hist["last_intrusion_time"] = current_time
-                                    alerts.append({
-                                        "id": f"evt_int_{int(current_time)}_{track_id}",
-                                        "camera_id": camera_id,
-                                        "type": "intrusion",
-                                        "severity": "critical",
-                                        "level": "CRITICAL",
-                                        "title": f"Tripwire Intrusion: {obj_class.capitalize()}",
-                                        "detail": f"A {obj_class} crossed a virtual perimeter line.",
-                                        "time": time.strftime("%H:%M:%S"),
-                                        "icon": "🚨",
-                                        "frame_data": frame # Passed internally for evidence vault
-                                    })
-                    # --------------------------------
+                                    incident_key = f"{camera_id}_intrusion_{obj_class}"
+                                    last_inc = self.incident_cache.get(incident_key, 0)
+                                    if current_time - last_inc > 5.0:
+                                        if not recognition_service.is_authorized(camera_id, track_id):
+                                            self.incident_cache[incident_key] = current_time
+                                            hist["last_intrusion_time"] = current_time
+                                            
+                                            import uuid
+                                            incident_id = f"inc_{int(current_time)}_{uuid.uuid4().hex[:6]}"
+                                            alerts.append({
+                                                "id": incident_id,
+                                                "camera_id": camera_id,
+                                                "type": "intrusion",
+                                                "severity": "critical",
+                                                "level": "CRITICAL",
+                                                "title": f"Tripwire Intrusion: {obj_class.capitalize()}",
+                                                "detail": f"A {obj_class} crossed a virtual perimeter line.",
+                                                "time": time.strftime("%H:%M:%S"),
+                                                "icon": "🚨",
+                                                "frame_data": frame
+                                            })                    # --------------------------------
                     
                     # Store latest tracking features for ghosting
                     self.object_history[camera_id][track_id].update({
@@ -357,8 +393,11 @@ class MLService:
                     if crowd_cooldown > 60.0:
                         if not hasattr(self, "last_crowd_alert"): self.last_crowd_alert = {}
                         self.last_crowd_alert[camera_id] = current_time
+                        
+                        import uuid
+                        incident_id = f"inc_{int(current_time)}_{uuid.uuid4().hex[:6]}"
                         alerts.append({
-                            "id": f"evt_crowd_{int(current_time)}_{camera_id}",
+                            "id": incident_id,
                             "camera_id": camera_id,
                             "type": "behavioral",
                             "severity": "warning",
