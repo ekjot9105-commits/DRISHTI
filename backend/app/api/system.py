@@ -6,6 +6,8 @@ from fastapi import APIRouter, Query
 from fastapi.responses import StreamingResponse, JSONResponse
 
 from app.core.system_monitor import sys_monitor
+from app.services.threat_score import threat_service
+from app.core.settings_manager import load_settings
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/system", tags=["System"])
@@ -14,6 +16,14 @@ router = APIRouter(prefix="/api/system", tags=["System"])
 @router.get("/status")
 def get_system_status():
     return sys_monitor.get_stats()
+
+
+@router.get("/threat")
+def get_threat_score():
+    """Rolling 0-100 threat score with decay, band, trend and contributors."""
+    # Half-life is operator-tunable; picked up without a restart.
+    threat_service.half_life = float(load_settings().get("threat_half_life", 120.0))
+    return threat_service.get_state()
 
 
 def _lan_ip() -> str:

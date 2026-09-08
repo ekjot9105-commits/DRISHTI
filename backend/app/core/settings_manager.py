@@ -51,7 +51,8 @@ DEFAULT_SETTINGS = {
     # --- Operator console (browser push + alarm) ---
     "alarm_muted": False,             # persisted mute toggle for the alarm tone
     "alarm_cooldown": 3.0,            # min seconds between alarm plays (anti-spam)
-    "browser_push_enabled": True
+    "browser_push_enabled": True,
+    "threat_half_life": 120.0         # seconds for an alert's threat weight to halve
 }
 
 def load_settings():

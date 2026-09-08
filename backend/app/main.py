@@ -43,6 +43,7 @@ import hashlib
 from app.services.blockchain import blockchain_service
 from app.services import notify  # registers notification channels
 from app.services.notify import dispatch as notify_dispatch
+from app.services.threat_score import threat_service
 
 # Mount evidence directory for serving images
 os.makedirs("data/evidence", exist_ok=True)
@@ -138,6 +139,9 @@ async def alert_dispatcher():
                 
                 # Broadcast via WebSocket
                 await broadcast_alert(alert)
+
+                # Feed the rolling threat score (in-memory, non-blocking).
+                threat_service.record(alert)
 
                 # Fan out to notification channels. Fire-and-forget by design:
                 # dispatch() schedules tasks and returns, so a dead SMTP server

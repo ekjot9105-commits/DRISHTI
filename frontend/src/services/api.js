@@ -71,6 +71,12 @@ export async function fetchHealth() {
   return request('/api/health');
 }
 
+// ---- Threat score ----
+
+export async function fetchThreat() {
+  return request('/api/system/threat');
+}
+
 // ---- Settings ----
 
 export async function fetchSettings() {
