@@ -20,7 +20,10 @@ DEFAULT_SETTINGS = {
     "fight_iou": 0.10,             # min box overlap between two persons
     "fight_motion_energy": 12.0,   # mean frame-diff inside the pair ROI
     "fight_duration": 1.2,         # seconds both conditions must hold
-    "fight_cooldown": 20.0,        # seconds between alerts for the same pair
+    "fight_streak_tolerance": 3,   # sub-threshold frames forgiven before reset
+    "fight_min_hit_ratio": 0.30,   # min share of frames in the window that hit
+    "fight_max_gap": 0.5,          # wall-clock seconds allowed between hits
+    "fight_cooldown": 20.0,        # seconds between alerts on the same camera
     "fire_enabled": True,
     # Structural flame gates - see services/detectors/fire.py. All are required;
     # no single one separates fire from a sunlit street, the conjunction does.

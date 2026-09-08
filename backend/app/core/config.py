@@ -6,13 +6,18 @@ from pathlib import Path
 
 # Load .env before anything reads os.getenv(). Optional dependency: a fresh
 # clone without python-dotenv still boots, it just ignores .env files.
+#
+# override=True so an edited .env wins over a value already in the environment:
+# with override=False a rotated SMTP app password was silently ignored, because
+# the stale value was loaded at first import and never replaced. Note this
+# still only takes effect on restart - nothing re-reads .env mid-process.
 try:
     from dotenv import load_dotenv
     _here = Path(__file__).resolve()
     for _candidate in (_here.parent.parent.parent / ".env",        # backend/.env
                        _here.parent.parent.parent.parent / ".env"):  # repo root
         if _candidate.exists():
-            load_dotenv(_candidate, override=False)
+            load_dotenv(_candidate, override=True)
 except ImportError:
     pass
 

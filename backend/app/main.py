@@ -137,11 +137,21 @@ async def alert_dispatcher():
                 except Exception as e:
                     logger.error(f"Failed to dispatch webhook: {e}")
                 
-                # Broadcast via WebSocket
-                await broadcast_alert(alert)
+                # Broadcast, score and notify. broadcast_alert is inside the
+                # try: a WebSocket failure used to escape to the outer handler,
+                # which left the event persisted but silently skipped both the
+                # threat score and every notification channel — and abandoned
+                # the rest of the queued alerts until the next tick.
+                try:
+                    await broadcast_alert(alert)
+                except Exception as e:
+                    logger.error(f"Alert broadcast failed: {e}")
 
-                # Feed the rolling threat score (in-memory, non-blocking).
-                threat_service.record(alert)
+                try:
+                    # Feed the rolling threat score (in-memory, non-blocking).
+                    threat_service.record(alert)
+                except Exception as e:
+                    logger.error(f"Threat score update failed: {e}")
 
                 # Fan out to notification channels. Fire-and-forget by design:
                 # dispatch() schedules tasks and returns, so a dead SMTP server
