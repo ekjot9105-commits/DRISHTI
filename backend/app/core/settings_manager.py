@@ -19,7 +19,18 @@ DEFAULT_SETTINGS = {
     "fight_enabled": True,
     "fight_iou": 0.10,             # min box overlap between two persons
     "fight_motion_energy": 12.0,   # mean frame-diff inside the pair ROI
-    "fight_duration": 1.2,         # seconds both conditions must hold
+    "fight_duration": 0.5,         # seconds both conditions must hold.
+                                   # Measured on real CCTV (UCF-Crime style
+                                   # school brawl): motion energy is never the
+                                   # limit (97% of contact frames clear 12.0,
+                                   # median 30.5), but YOLO/ByteTrack lose the
+                                   # person boxes constantly, so the longest
+                                   # unbroken two-person contact stretch was
+                                   # only 0.70s. 1.2s was unreachable on real
+                                   # footage. 0.5s sits clear of that 0.70s
+                                   # stretch; 0.6 landed exactly on the
+                                   # boundary, where float accumulation in
+                                   # the frame clock decided it.
     "fight_streak_tolerance": 3,   # sub-threshold frames forgiven before reset
     "fight_min_hit_ratio": 0.30,   # min share of frames in the window that hit
     "fight_max_gap": 0.5,          # wall-clock seconds allowed between hits
