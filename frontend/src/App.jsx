@@ -1,5 +1,5 @@
 /**
- * IBVAP — Intelligent Border Video Analytics Platform
+ * DRISHTI — AI Safety Monitoring Platform
  * Main Application Component
  *
  * Manages navigation, camera state, and renders the appropriate page.

@@ -1,5 +1,5 @@
 /**
- * IBVAP API Service
+ * DRISHTI API Service
  * Central API client for communicating with the FastAPI backend.
  */
 

@@ -120,7 +120,7 @@ class VideoStream:
                         cv2.line(frame, pt1, pt2, (0, 0, 255), 2)
                         # Security Boundary UI Enhancements
                         cx, cy = (pt1[0] + pt2[0]) // 2, (pt1[1] + pt2[1]) // 2
-                        cv2.putText(frame, f"RESTRICTED BOUNDARY [ARMED]", (cx - 100, cy - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
+                        cv2.putText(frame, f"MONITORED BOUNDARY [ACTIVE]", (cx - 100, cy - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
                         # Direction arrows (simple offset)
                         cv2.arrowedLine(frame, (cx, cy), (cx, cy - 30), (0, 255, 255), 1, tipLength=0.3)
             # Fallback for old single-line format

@@ -1,1 +1,1 @@
-# IBVAP Backend Application
+# DRISHTI Backend Application

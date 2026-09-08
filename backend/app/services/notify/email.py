@@ -169,7 +169,7 @@ def _html_body(event: NotificationEvent, cid: Optional[str]) -> str:
       </div>
       <div style="padding:14px 24px;background:#f8fafc;color:#94a3b8;font-size:11px;
                   border-top:1px solid #e2e8f0;">
-        Automated message from the DRISHTI border surveillance platform.
+        Automated message from the DRISHTI safety monitoring platform.
         Evidence is SHA-256 hashed at report generation for chain-of-custody.
       </div>
     </div>

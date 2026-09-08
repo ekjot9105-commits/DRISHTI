@@ -6,7 +6,7 @@ import json
 API_BASE = "http://localhost:8000"
 
 print("==================================================")
-print("  IBVAP END-TO-END SYSTEM PERFORMANCE TEST  ")
+print("  DRISHTI END-TO-END SYSTEM PERFORMANCE TEST  ")
 print("==================================================\n")
 
 print("Checking if backend is active...")

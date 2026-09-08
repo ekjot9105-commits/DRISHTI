@@ -1,5 +1,5 @@
 """
-IBVAP — Intelligent Border Video Analytics Platform
+DRISHTI — AI Safety Monitoring Platform
 Main FastAPI Application Entry Point
 
 Run with: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
@@ -159,7 +159,7 @@ async def lifespan(app: FastAPI):
     """Application startup and shutdown lifecycle."""
     # Startup
     logger.info("=" * 60)
-    logger.info("  IBVAP — Intelligent Border Video Analytics Platform")
+    logger.info("  DRISHTI — AI Safety Monitoring Platform")
     logger.info("  Starting backend server...")
     logger.info("=" * 60)
     init_db()
@@ -178,8 +178,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="IBVAP API",
-    description="Intelligent Border Video Analytics Platform — AI-driven surveillance backend",
+    title="DRISHTI API",
+    description="AI safety monitoring platform — real-time video analytics backend",
     version="1.0.0",
     lifespan=lifespan,
 )
@@ -213,10 +213,10 @@ app.include_router(reports_router)
 @app.get("/")
 def root():
     return {
-        "name": "IBVAP API",
+        "name": "DRISHTI API",
         "version": "1.0.0",
         "status": "running",
-        "description": "Intelligent Border Video Analytics Platform",
+        "description": "AI Safety Monitoring Platform",
     }
 
 

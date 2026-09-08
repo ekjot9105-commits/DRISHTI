@@ -1,5 +1,5 @@
 """
-IBVAP Backend Configuration
+DRISHTI Backend Configuration
 """
 import os
 from pathlib import Path

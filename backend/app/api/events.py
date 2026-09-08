@@ -135,9 +135,9 @@ def download_evidence(event_id: int, db: Session = Depends(get_db)):
         
     return FileResponse(
         path=file_path, 
-        filename=f"IBVAP_Evidence_CAM{event.camera_id}_{file_name}",
+        filename=f"DRISHTI_Evidence_CAM{event.camera_id}_{file_name}",
         media_type="image/jpeg",
-        headers={"Content-Disposition": f"attachment; filename=IBVAP_Evidence_CAM{event.camera_id}_{file_name}"}
+        headers={"Content-Disposition": f"attachment; filename=DRISHTI_Evidence_CAM{event.camera_id}_{file_name}"}
     )
 
 

@@ -1,14 +1,16 @@
 # DRISHTI
 
-**AI-Based Intelligent Video Analytics Platform for Border Surveillance**
+**AI Safety Monitoring for Schools, Shops, Streets, Homes and Factories**
 
-DRISHTI (Intelligent Border Video Analytics Platform) is a powerful, real-time edge AI surveillance system designed specifically to integrate with existing CCTV infrastructure. It provides military-grade intrusion detection, behavioral analytics, and evidence generation without requiring expensive proprietary hardware.
+DRISHTI is a real-time edge AI safety platform that turns the CCTV you already own into an active early-warning system. Instead of footage you review after something has gone wrong, it watches live and raises the alarm as it happens — a fight breaking out, a fire starting, someone crossing a line they shouldn't, a crowd building. It runs on ordinary hardware and needs no proprietary cameras.
 
 ## Key Features
 
-- **Real-Time CCTV Monitoring:** Seamlessly ingest RTSP, WebRTC, or local video feeds.
+- **Real-Time CCTV Monitoring:** Seamlessly ingest RTSP, WebRTC, phone cameras, or local video feeds.
+- **Fight Detection:** Flags physical altercations from sustained contact plus violent motion between two tracked people.
+- **Fire & Smoke Detection:** Dual-band flame colour with in-mask flicker analysis; optional fire/smoke model weights.
 - **Advanced Object Detection & Tracking:** High-speed, highly accurate detection of persons and vehicles using YOLO architecture and ByteTrack.
-- **Virtual Tripwires (Multiple per Camera):** Draw multiple virtual perimeters directly on the live feed. Intrusions trigger immediate critical alerts with a configurable cooldown to prevent spam.
+- **Virtual Tripwires (Multiple per Camera):** Draw multiple virtual boundaries directly on the live feed. Intrusions trigger immediate critical alerts with a configurable cooldown to prevent spam.
 - **Watchlist & Face Recognition:** Upload target faces or suspect vehicle license plates. Matches are confirmed across multiple frames using DeepFace/RetinaFace before triggering alerts.
 - **Behavioral Analytics:** Detect suspicious activities like prolonged dwelling and crowd gathering based on configurable spatial density thresholds.
 - **Alert Center & C2 Webhooks:** Centralized, deduped alert feed categorized by severity. Integrated webhook support to instantly push events to external Command & Control systems.
@@ -129,18 +131,18 @@ The application primarily runs on sensible defaults for local development. Howev
 | WS | `/ws/camera/{id}` | Real-time JPEG frame streaming |
 
 ## Security Considerations
-- **Authentication:** The current implementation is an internal dashboard designed for secure, air-gapped Control Rooms. API Authentication (JWT) is stubbed but disabled by default for hackathon demonstration purposes.
-- **Evidence Integrity:** Every captured evidence frame is cryptographically hashed (SHA-256) at the time of report generation to ensure chain-of-custody validity in a legal/border enforcement context.
+- **Authentication:** The current implementation is an internal dashboard designed for a trusted local network or control room. API Authentication (JWT) is stubbed but disabled by default for hackathon demonstration purposes.
+- **Evidence Integrity:** Every captured evidence frame is cryptographically hashed (SHA-256) at the time of report generation to ensure chain-of-custody validity for insurance, HR or law-enforcement follow-up.
 
 ## Known Limitations
 - **PTZ Cameras:** Virtual tripwires currently do not compensate for Pan-Tilt-Zoom camera movement.
 - **Compute Optimization:** While highly optimized for CPU using threaded workers, running >4 simultaneous high-res video streams with Face Recognition enabled is recommended on systems with a dedicated GPU (CUDA) and Intel OpenVINO.
 - **Weapon/Drone Detection:** The base model classifies Persons and Vehicles. Detection of specific anomalies (drones, firearms) requires swapping the `yolov8s.pt` weights with a fine-tuned custom model (refer to `README_CUSTOM_MODEL.md`).
 
-## SIH Demonstration Workflow
+## Demonstration Workflow
 1. **Initialize:** Open DRISHTI Command Center (Dashboard).
 2. **Detection:** Demonstrate real-time bounding boxes around persons and vehicles.
-3. **Tripwire:** Draw a multi-line perimeter on a camera feed. Wait for a person to cross it to trigger a **Critical Alert**.
+3. **Tripwire:** Draw a multi-line boundary on a camera feed. Wait for a person to cross it to trigger a **Critical Alert**.
 4. **Behavior:** Show how ordinary movement does not trigger alerts, but a person loitering/dwelling for a prolonged time triggers an **Alpha Priority** alert.
 5. **Watchlist:** Add a known face to the watchlist. Show the system confirming the identity across 3 consecutive frames before alarming.
 6. **Reporting:** Open the Evidence Vault, select the intrusion, and generate a **PDF Incident Report** to highlight the SHA-256 legal hash feature.
