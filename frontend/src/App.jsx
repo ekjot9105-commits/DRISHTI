@@ -16,7 +16,7 @@ import MapView from './pages/MapView';
 import EvidenceVault from './pages/EvidenceVault';
 import Settings from './pages/Settings';
 import Landing from './pages/Landing';
-import PhoneCam from './pages/PhoneCam';
+import LandingV2 from './pages/LandingV2';
 import { fetchCameras, createAlertWebSocket } from './services/api';
 
 const PAGE_TITLES = {
@@ -30,8 +30,11 @@ const PAGE_TITLES = {
   settings: 'System Settings',
 };
 
-export default function App() {
-  const [activePage, setActivePage] = useState('landing');
+export default function App({ initialPage = 'landing' }) {
+  // `initialPage` lets main.jsx open the 3D landing at /landing. Everything
+  // else about the operator shell is unchanged; navigation is still the same
+  // setActivePage / onNavigate pattern, so no router is involved.
+  const [activePage, setActivePage] = useState(initialPage);
   const [cameras, setCameras] = useState([]);
   const [alerts, setAlerts] = useState([]);
   const [backendOnline, setBackendOnline] = useState(false);
@@ -134,13 +137,12 @@ export default function App() {
     }
   };
 
-  // Phones joining as cameras open /phone directly — no dashboard chrome.
-  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/phone')) {
-    return <PhoneCam />;
-  }
-
   if (activePage === 'landing') {
     return <Landing onNavigate={setActivePage} />;
+  }
+
+  if (activePage === 'landing-v2') {
+    return <LandingV2 onNavigate={setActivePage} />;
   }
 
   return (

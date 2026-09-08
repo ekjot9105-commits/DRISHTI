@@ -145,6 +145,20 @@ export default function PhoneCam() {
         />
         <canvas ref={canvasRef} style={{ display: 'none' }} />
 
+        {status === 'live' && (
+          <div style={{ marginTop: 12, padding: '12px 14px', borderRadius: 8,
+                        border: '1px solid #14532d', background: '#052e1a' }}>
+            <strong style={{ display: 'block', color: '#4ade80', fontSize: 15 }}>
+              You are now a camera.
+            </strong>
+            <span style={{ color: '#86efac', fontSize: 13 }}>
+              This phone is feeding DRISHTI live
+              {cameraId != null && ` as camera #${cameraId}`}. Leave this page open
+              and the screen awake. Tap STOP when you are done.
+            </span>
+          </div>
+        )}
+
         {error && (
           <div style={{ background: '#7f1d1d', padding: 10, borderRadius: 6, marginTop: 12, fontSize: 13 }}>
             {error}

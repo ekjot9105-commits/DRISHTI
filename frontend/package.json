@@ -10,12 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "framer-motion": "^13.2.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^1.35.0",
     "react": "^19.2.8",
+    "react-countup": "^6.5.3",
     "react-dom": "^19.2.8",
+    "react-globe.gl": "^2.38.0",
     "react-leaflet": "^5.0.0",
-    "recharts": "^3.10.1"
+    "recharts": "^3.10.1",
+    "three": "^0.185.1"
   },
   "devDependencies": {
     "@types/react": "^19.2.18",

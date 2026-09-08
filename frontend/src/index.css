@@ -1,3 +1,7 @@
+/* Must stay first: a CSS @import is ignored unless it precedes every other
+   rule, which is why this cannot live in an injected <style> block. */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -64,4 +68,21 @@ body, html, #root {
     padding: 0;
     width: 100%;
     height: 100%;
+}
+
+/* HowItWorks pipeline: a light pulse runs left-to-right along the connector rail
+   linking the four steps. The element is w-1/3 of the rail, so it travels from
+   fully off the left edge to fully off the right. */
+@keyframes pipelineFlow {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(300%); opacity: 0; }
+}
+.pipeline-flow {
+  animation: pipelineFlow 3.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pipeline-flow { animation: none; opacity: 0.6; transform: translateX(100%); }
 }

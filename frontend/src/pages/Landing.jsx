@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Shield, Eye, Database, ArrowRight, Activity, Camera, Bell,
-  GraduationCap, Banknote, TrafficCone, Home, Factory, Flame, Users, Zap,
+  GraduationCap, Banknote, TrafficCone, Home, Factory, Flame, Users, Zap, Smartphone,
 } from 'lucide-react';
 
 /**
@@ -135,10 +135,24 @@ const Landing = ({ onNavigate }) => {
                 className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-cyan-500 hover:bg-cyan-400 transition-all rounded-lg overflow-hidden font-bold text-slate-900 tracking-wide"
               >
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform" />
-                <span className="relative">ENTER COMMAND CENTER</span>
+                <span className="relative">OPEN COMMAND CENTER</span>
                 <ArrowRight className="w-5 h-5 relative group-hover:translate-x-1 transition-transform" />
               </button>
+
+              {/* Public entry point. A full navigation, not a state change: /phone
+                  mounts on its own outside the operator app. */}
+              <a
+                href="/phone"
+                className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-lg border border-slate-700 hover:border-cyan-500/50 hover:bg-slate-800/40 transition-all font-bold tracking-wide text-slate-200"
+              >
+                <Smartphone className="w-5 h-5 text-cyan-400" />
+                <span>JOIN AS CAMERA</span>
+              </a>
             </div>
+
+            <p className="mt-4 text-xs font-mono text-slate-500">
+              JOIN AS CAMERA TURNS THIS DEVICE INTO A FEED — NO LOGIN, NO CONSOLE ACCESS
+            </p>
 
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-8 text-xs font-mono text-slate-500">
               <span className="flex items-center gap-1.5"><Users className="w-3.5 h-3.5" /> FIGHT</span>
