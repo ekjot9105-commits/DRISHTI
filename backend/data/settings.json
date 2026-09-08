@@ -30,7 +30,7 @@
     "fire_cooldown": 60.0,
     "smoke_enabled": false,
     "smoke_area_ratio": 0.15,
-    "crash_enabled": true,
+    "crash_enabled": false,
     "crash_min_speed": 0.45,
     "crash_decel_ratio": 0.25,
     "crash_recent_window": 0.5,
