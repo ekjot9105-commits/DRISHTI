@@ -71,6 +71,21 @@ export async function fetchHealth() {
   return request('/api/health');
 }
 
+// ---- Settings ----
+
+export async function fetchSettings() {
+  return request('/api/settings/');
+}
+
+/** Merge-patch the shared settings store (settings.json on the backend). */
+export async function updateSettings(patch) {
+  return request('/api/settings/', {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(patch),
+  });
+}
+
 // ---- Demo mode / phone camera / QR ----
 
 export async function fetchDemoVideos() {

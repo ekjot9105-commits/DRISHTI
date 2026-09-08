@@ -4,6 +4,18 @@ IBVAP Backend Configuration
 import os
 from pathlib import Path
 
+# Load .env before anything reads os.getenv(). Optional dependency: a fresh
+# clone without python-dotenv still boots, it just ignores .env files.
+try:
+    from dotenv import load_dotenv
+    _here = Path(__file__).resolve()
+    for _candidate in (_here.parent.parent.parent / ".env",        # backend/.env
+                       _here.parent.parent.parent.parent / ".env"):  # repo root
+        if _candidate.exists():
+            load_dotenv(_candidate, override=False)
+except ImportError:
+    pass
+
 
 # Base directories
 BASE_DIR = Path(__file__).resolve().parent.parent.parent

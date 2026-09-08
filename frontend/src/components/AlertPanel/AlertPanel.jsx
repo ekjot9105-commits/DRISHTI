@@ -1,16 +1,49 @@
 /**
  * AlertPanel — Live alerts sidebar showing real-time detection notifications.
  */
-import { useState } from 'react';
+import useAlertAlarms from './useAlertAlarms';
 
 export default function AlertPanel({ alerts = [] }) {
   const displayAlerts = alerts;
 
+  // Browser push (1.3) + alarm tone (1.4), both driven by the same alert feed
+  // this list renders. Permission is requested from the button below, never on
+  // mount, because browsers reject (and Chrome remembers) unprompted requests.
+  const { permission, requestPermission, muted, toggleMute } = useAlertAlarms(alerts);
+  const pushOff = permission !== 'granted' && permission !== 'unsupported';
+
   return (
     <div className="w-full lg:w-80 flex flex-col bg-surface-container-low border border-outline-variant/50 rounded-sm h-full max-h-full">
-      <div className="p-3 border-b border-outline-variant/30 bg-surface/50 flex justify-between items-center">
-        <h2 className="font-label-caps text-on-surface tracking-widest">INCIDENT LOG</h2>
-        <span className="font-data-display text-[10px] text-on-surface-variant bg-surface-container-high px-1.5 py-0.5 rounded-sm border border-outline-variant">LIVE FEED</span>
+      <div className="p-3 border-b border-outline-variant/30 bg-surface/50">
+        <div className="flex justify-between items-center">
+          <h2 className="font-label-caps text-on-surface tracking-widest">INCIDENT LOG</h2>
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={toggleMute}
+              title={muted ? 'Alarm muted — click to unmute' : 'Alarm audible — click to mute'}
+              aria-label={muted ? 'Unmute alarm' : 'Mute alarm'}
+              aria-pressed={muted}
+              className={`material-symbols-outlined text-[16px] leading-none px-1.5 py-1 rounded-sm border transition-colors ${
+                muted
+                  ? 'text-on-surface-variant border-outline-variant/50 hover:bg-surface-variant'
+                  : 'text-primary border-primary/40 hover:bg-primary/10'
+              }`}
+            >
+              {muted ? 'volume_off' : 'volume_up'}
+            </button>
+            <span className="font-data-display text-[10px] text-on-surface-variant bg-surface-container-high px-1.5 py-0.5 rounded-sm border border-outline-variant">LIVE FEED</span>
+          </div>
+        </div>
+
+        {pushOff && (
+          <button
+            onClick={requestPermission}
+            className="mt-2 w-full font-label-caps text-[10px] text-primary border border-primary/40 px-2 py-1 rounded-sm hover:bg-primary/10 transition-colors flex items-center justify-center gap-1"
+          >
+            <span className="material-symbols-outlined text-[13px] leading-none">notifications_active</span>
+            {permission === 'denied' ? 'DESKTOP ALERTS BLOCKED' : 'ENABLE DESKTOP ALERTS'}
+          </button>
+        )}
       </div>
       
       <div className="flex-1 overflow-y-auto p-2 space-y-2 custom-scrollbar">

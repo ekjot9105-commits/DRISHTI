@@ -33,7 +33,25 @@ DEFAULT_SETTINGS = {
     # (99.6% of a road scene), so it is opt-in. Smoke from real fire/smoke
     # weights is unaffected by this flag.
     "smoke_enabled": False,
-    "smoke_area_ratio": 0.15
+    "smoke_area_ratio": 0.15,
+
+    # --- Notification fan-out ---
+    # Master switch, plus a per-channel enable + severity threshold.
+    # Thresholds are one of: info < warning < high < critical.
+    "notify_enabled": True,
+    "notify_timeout": 10.0,           # seconds before a channel send is abandoned
+    "notify_max_blocking_threads": 16,  # cap on hung blocking-channel threads
+    "notify_null_enabled": True,      # log-only channel, safe to leave on
+    "notify_null_min_severity": "info",
+    # Email: credentials come from .env (SMTP_*), never from here.
+    "notify_email_enabled": True,
+    "notify_email_min_severity": "critical",
+    "notify_email_evidence_wait": 3.0,   # bounded wait for the evidence JPEG
+    "notify_email_smtp_timeout": 20.0,
+    # --- Operator console (browser push + alarm) ---
+    "alarm_muted": False,             # persisted mute toggle for the alarm tone
+    "alarm_cooldown": 3.0,            # min seconds between alarm plays (anti-spam)
+    "browser_push_enabled": True
 }
 
 def load_settings():

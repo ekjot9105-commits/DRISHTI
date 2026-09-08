@@ -16,3 +16,4 @@ deepface
 easyocr
 tf-keras
 qrcode[pil]
+python-dotenv

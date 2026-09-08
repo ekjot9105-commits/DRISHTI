@@ -41,6 +41,8 @@ import cv2
 import os
 import hashlib
 from app.services.blockchain import blockchain_service
+from app.services import notify  # registers notification channels
+from app.services.notify import dispatch as notify_dispatch
 
 # Mount evidence directory for serving images
 os.makedirs("data/evidence", exist_ok=True)
@@ -136,6 +138,14 @@ async def alert_dispatcher():
                 
                 # Broadcast via WebSocket
                 await broadcast_alert(alert)
+
+                # Fan out to notification channels. Fire-and-forget by design:
+                # dispatch() schedules tasks and returns, so a dead SMTP server
+                # cannot stall this loop or back up alert_queue.
+                try:
+                    notify_dispatch(alert)
+                except Exception as e:
+                    logger.error(f"Notification dispatch failed: {e}")
         except Exception as e:
             logger.error(f"Alert dispatcher error: {e}")
         await asyncio.sleep(0.5)
