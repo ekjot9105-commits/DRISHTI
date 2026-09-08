@@ -14,3 +14,4 @@ from app.services.detectors.base import (  # noqa: F401
 # Import side effects register the detectors. Keep new detectors listed here.
 from app.services.detectors import fight  # noqa: F401,E402
 from app.services.detectors import fire   # noqa: F401,E402
+from app.services.detectors import crash  # noqa: F401,E402

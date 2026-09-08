@@ -3,15 +3,22 @@
  * Central API client for communicating with the FastAPI backend.
  */
 
-// The backend always runs on :8000 of whatever host served this page, so a
-// phone opening the LAN URL talks to the LAN backend rather than its own
-// localhost. Override with VITE_API_HOST when the backend lives elsewhere.
-const API_HOST =
-  import.meta.env?.VITE_API_HOST ||
-  `${window.location.hostname || 'localhost'}:8000`;
+// Same-origin by default: the dev server proxies /api, /ws, /evidence and
+// /data to the backend (see vite.config.js). Relative URLs inherit the page's
+// scheme, so an https page issues https + wss and never triggers a mixed
+// content block — which is what lets the /phone page use getUserMedia over the
+// LAN. Set VITE_API_HOST to talk to a backend on another host instead, e.g.
+// when the built bundle is served by something other than Vite.
+const API_HOST = import.meta.env?.VITE_API_HOST || '';
 
-export const API_BASE = `http://${API_HOST}`;
-const WS_BASE = `ws://${API_HOST}`;
+const pageIsSecure =
+  typeof window !== 'undefined' && window.location.protocol === 'https:';
+
+export const API_BASE = API_HOST ? `${pageIsSecure ? 'https' : 'http'}://${API_HOST}` : '';
+
+const WS_BASE = API_HOST
+  ? `${pageIsSecure ? 'wss' : 'ws'}://${API_HOST}`
+  : `${pageIsSecure ? 'wss' : 'ws'}://${typeof window !== 'undefined' ? window.location.host : 'localhost:5173'}`;
 
 /**
  * Generic fetch wrapper with error handling.

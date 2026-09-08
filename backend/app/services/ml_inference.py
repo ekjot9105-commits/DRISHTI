@@ -206,7 +206,8 @@ class MLService:
                     "class": obj_class,
                     "conf": conf,
                     "box": xyxy,
-                    "identity": identity
+                    "identity": identity,
+                    "ghost": False
                 })
                 
                 # Check if new object or dwelling (only for valid track IDs)
@@ -447,12 +448,15 @@ class MLService:
                         del self.object_history[camera_id][tid]
                     elif time_since_seen > 0.05: # if it missed at least one frame
                         hist = self.object_history[camera_id][tid]
+                        # Frozen replay of the last known box. Flagged so motion
+                        # detectors do not read the frozen position as "stopped".
                         drawn_boxes.append({
                             "id": tid,
                             "class": hist.get("last_class", "unknown"),
                             "conf": hist.get("last_conf", 0.0),
                             "box": hist.get("last_box", [0, 0, 0, 0]),
-                            "identity": hist.get("last_identity", None)
+                            "identity": hist.get("last_identity", None),
+                            "ghost": True
                         })
                     
             return alerts, drawn_boxes

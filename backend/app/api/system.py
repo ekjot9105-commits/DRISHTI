@@ -43,10 +43,19 @@ def _lan_ip() -> str:
 
 
 @router.get("/lan-url")
-def lan_url(path: str = Query("/phone"), port: int = Query(5173)):
-    """The URL a phone on the same network should open to join as a camera."""
+def lan_url(path: str = Query("/phone"), port: int = Query(5173),
+            scheme: str = Query("https")):
+    """The URL a phone on the same network should open to join as a camera.
+
+    https by default: browsers only expose getUserMedia on a secure origin, so
+    the dev server runs TLS (see frontend/vite.config.js) and the QR has to
+    point at https or the phone page cannot open its camera. The certificate is
+    self-signed, so the phone shows a one-time "not private" warning to accept.
+    """
     ip = _lan_ip()
-    return {"ip": ip, "url": f"http://{ip}:{port}{path}", "port": port}
+    scheme = scheme if scheme in ("http", "https") else "https"
+    return {"ip": ip, "url": f"{scheme}://{ip}:{port}{path}",
+            "port": port, "scheme": scheme}
 
 
 @router.get("/qr")

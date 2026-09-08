@@ -43,7 +43,9 @@ export default function PhoneJoinCard() {
           <div className="min-w-0">
             <p className="text-xs text-on-surface-variant mb-2">
               Scan with a phone on the same network. The handset streams straight
-              into the detection pipeline.
+              into the detection pipeline. The link is HTTPS with a self-signed
+              certificate — accept the one-time browser warning to allow camera
+              access.
             </p>
             <code className="block text-xs text-primary break-all mb-2">{url}</code>
             <button

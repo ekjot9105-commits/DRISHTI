@@ -22,8 +22,16 @@ DEFAULT_SETTINGS = {
     "fight_duration": 1.2,         # seconds both conditions must hold
     "fight_cooldown": 20.0,        # seconds between alerts for the same pair
     "fire_enabled": True,
-    "fire_area_ratio": 0.04,       # frame fraction matching the dual-band flame mask
-    "fire_flicker": 12.0,          # min mean frame-diff INSIDE the flame mask
+    # Structural flame gates - see services/detectors/fire.py. All are required;
+    # no single one separates fire from a sunlit street, the conjunction does.
+    "fire_area_ratio": 0.004,      # min share of frame for one candidate region
+    "fire_min_region_px": 250,     # ignore specks smaller than this
+    "fire_core_frac_min": 0.01,    # must have SOME bright core
+    "fire_core_frac_max": 0.95,    # but not be all core (sky, glare, headlights)
+    "fire_adjacency_min": 0.15,    # core must physically touch the orange surround
+    "fire_sat_std_min": 12.0,      # saturation must vary (paintwork is uniform)
+    "fire_hue_std_min": 1.5,       # hue must vary (flame shifts, panels do not)
+    "fire_flicker": 6.0,           # min mean frame-diff INSIDE the region
     "fire_duration": 1.5,          # seconds the signature must hold
     "fire_streak_tolerance": 3,    # consecutive sub-threshold frames forgiven
     "fire_min_hit_ratio": 0.6,     # streak must be >=60% actual hits to fire
@@ -34,6 +42,24 @@ DEFAULT_SETTINGS = {
     # weights is unaffected by this flag.
     "smoke_enabled": False,
     "smoke_area_ratio": 0.15,
+    # Vehicle crash (heuristic, no extra weights). FIXED CAMERAS ONLY - see the
+    # scope notes in services/detectors/crash.py; dashcam/moving-camera feeds are
+    # deliberately suppressed rather than detected. Speeds are in box-diagonals
+    # per second, so they do not depend on camera distance or zoom.
+    "crash_enabled": True,
+    "crash_min_speed": 0.45,       # prior speed needed to count as "was moving"
+    "crash_decel_ratio": 0.25,     # recent/prior speed ratio that counts as a stop
+    "crash_recent_window": 0.5,    # seconds averaged for the "after" speed
+    "crash_prior_window": 0.8,     # seconds averaged for the "before" speed
+    "crash_iou_spike": 0.25,       # overlap two vehicles must reach on contact
+    "crash_iou_prior": 0.08,       # overlap they must have come from
+    "crash_pair_min_speed": 0.30,  # at least one of the pair must have been moving
+    "crash_iou_lookback": 0.6,     # overlap must jump from separate to contact within this
+    "crash_contact_window": 4.0,   # seconds after contact in which the wreck may be confirmed
+    "crash_stopped_ratio": 0.30,   # post-contact speed vs peak that counts as stopped
+    "crash_stopped_speed": 0.10,   # absolute speed below which a vehicle counts as stopped
+    "crash_duration": 0.7,         # seconds the signature must hold
+    "crash_cooldown": 30.0,        # seconds between alerts per track/pair
 
     # --- Notification fan-out ---
     # Master switch, plus a per-channel enable + severity threshold.

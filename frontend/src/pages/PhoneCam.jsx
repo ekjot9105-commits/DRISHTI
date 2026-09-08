@@ -171,9 +171,10 @@ export default function PhoneCam() {
         </div>
 
         <p style={{ color: '#64748b', fontSize: 12, marginTop: 16 }}>
-          Browsers only allow camera access over https:// or localhost. On a plain
-          LAN http:// address, allow "insecure origin" for this host in your
-          browser flags, or run the dev server with HTTPS.
+          This page is served over HTTPS with a self-signed certificate, which is
+          what lets the browser grant camera access on a LAN address. The first
+          time you open it your phone will warn that the connection is not
+          private — choose Advanced and continue to accept it.
         </p>
       </div>
     </div>
