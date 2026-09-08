@@ -4,9 +4,10 @@
 import CameraGrid from '../components/CameraGrid/CameraGrid';
 import AlertPanel from '../components/AlertPanel/AlertPanel';
 import SystemMonitor from '../components/SystemMonitor';
+import DemoLauncher from '../components/DemoLauncher';
 import { useLanguage } from '../context/LanguageContext';
 
-export default function Dashboard({ cameras, alerts, humanCount, vehicleCount, onNavigate }) {
+export default function Dashboard({ cameras, alerts, humanCount, vehicleCount, onNavigate, onCamerasChange }) {
   const { t } = useLanguage();
   const activeCameras = cameras.filter((c) => c.status === 'active').length;
 
@@ -48,6 +49,8 @@ export default function Dashboard({ cameras, alerts, humanCount, vehicleCount, o
               <span className="font-data-display text-headline-lg text-on-surface">{cameras.length}</span>
             </div>
           </div>
+
+          <DemoLauncher onCamerasChange={onCamerasChange} />
 
           <CameraGrid cameras={cameras} />
           

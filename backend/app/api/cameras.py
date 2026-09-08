@@ -8,7 +8,7 @@ from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db, Camera
-from app.core.config import SAMPLE_VIDEOS_DIR
+from app.core.config import SAMPLE_VIDEOS_DIR, DEMO_VIDEOS_DIR
 from app.services.video_ingestion import stream_manager
 
 logger = logging.getLogger(__name__)
@@ -52,8 +52,8 @@ async def add_camera(
     - For file sources: upload a video file.
     - For RTSP sources: provide the RTSP URL.
     """
-    if source_type not in ("file", "rtsp"):
-        raise HTTPException(status_code=400, detail="source_type must be 'file' or 'rtsp'")
+    if source_type not in ("file", "rtsp", "phone"):
+        raise HTTPException(status_code=400, detail="source_type must be 'file', 'rtsp' or 'phone'")
 
     if source_type == "file":
         if video_file is None:
@@ -69,6 +69,10 @@ async def add_camera(
     elif source_type == "rtsp":
         if not source_url:
             raise HTTPException(status_code=400, detail="RTSP URL is required")
+
+    elif source_type == "phone":
+        # Frames arrive over WS at /ws/cameras/{id}/push — nothing to store.
+        source_url = "push"
 
     # Save to database
     camera = Camera(
@@ -99,11 +103,15 @@ def start_camera(camera_id: int, db: Session = Depends(get_db)):
     if not camera:
         raise HTTPException(status_code=404, detail="Camera not found")
 
-    success = stream_manager.start_stream(
-        camera_id=camera.id,
-        source=camera.source_url,
-        source_type=camera.source_type,
-    )
+    if camera.source_type == "phone":
+        stream_manager.start_push_stream(camera.id)
+        success = True
+    else:
+        success = stream_manager.start_stream(
+            camera_id=camera.id,
+            source=camera.source_url,
+            source_type=camera.source_type,
+        )
 
     if success:
         camera.status = "active"
@@ -141,7 +149,9 @@ def delete_camera(camera_id: int, db: Session = Depends(get_db)):
     # Delete video file if it was uploaded
     if camera.source_type == "file":
         file_path = Path(camera.source_url)
-        if file_path.exists():
+        # Demo clips are shipped assets shared by every demo camera — keep them.
+        is_demo = DEMO_VIDEOS_DIR.resolve() in file_path.resolve().parents
+        if file_path.exists() and not is_demo:
             file_path.unlink()
 
     db.delete(camera)
@@ -163,6 +173,75 @@ def update_tripwire(camera_id: int, data: TripwireUpdate, db: Session = Depends(
     camera.tripwire_line = data.tripwire_line
     db.commit()
     return {"message": "Tripwire updated", "tripwire_line": camera.tripwire_line}
+
+# ---- Demo mode -------------------------------------------------------------
+
+DEMO_EXTENSIONS = {".mp4", ".avi", ".mov", ".mkv", ".webm"}
+
+
+@router.get("/demo/list")
+def list_demo_videos(db: Session = Depends(get_db)):
+    """List the canned clips in backend/demo_videos/ for one-click demo cameras."""
+    videos = []
+    for path in sorted(DEMO_VIDEOS_DIR.glob("*")):
+        if path.suffix.lower() not in DEMO_EXTENSIONS:
+            continue
+        existing = db.query(Camera).filter(Camera.source_url == str(path)).first()
+        videos.append({
+            "file": path.name,
+            "label": path.stem.replace("_", " ").replace("-", " ").title(),
+            "size_mb": round(path.stat().st_size / (1024 * 1024), 1),
+            "camera_id": existing.id if existing else None,
+        })
+    return videos
+
+
+@router.post("/demo/{filename}/launch")
+def launch_demo_video(filename: str, db: Session = Depends(get_db)):
+    """Register (if needed) and start a camera for a demo clip. Idempotent."""
+    path = (DEMO_VIDEOS_DIR / filename).resolve()
+    if DEMO_VIDEOS_DIR.resolve() not in path.parents or not path.exists():
+        raise HTTPException(status_code=404, detail=f"Demo video not found: {filename}")
+
+    camera = db.query(Camera).filter(Camera.source_url == str(path)).first()
+    if not camera:
+        camera = Camera(
+            name=f"DEMO — {path.stem.replace('_', ' ').title()}",
+            source_type="file",
+            source_url=str(path),
+            location="Demo Feed",
+            status="inactive",
+        )
+        db.add(camera)
+        db.commit()
+        db.refresh(camera)
+
+    stream = stream_manager.get_stream(camera.id)
+    if not (stream and stream.is_active()):
+        if not stream_manager.start_stream(camera.id, camera.source_url, "file"):
+            err = stream_manager.get_stream(camera.id)
+            raise HTTPException(status_code=500,
+                                detail=f"Failed to start demo: {err.error if err else 'unknown'}")
+    camera.status = "active"
+    db.commit()
+    return {"camera_id": camera.id, "name": camera.name, "status": "active"}
+
+
+@router.post("/phone/register")
+def register_phone_camera(name: str = Form("Phone Camera"),
+                          location: str = Form("Mobile Unit"),
+                          db: Session = Depends(get_db)):
+    """Create a phone-source camera and open it for pushed frames."""
+    camera = Camera(name=name, source_type="phone", source_url="push",
+                    location=location, status="inactive")
+    db.add(camera)
+    db.commit()
+    db.refresh(camera)
+    stream_manager.start_push_stream(camera.id)
+    camera.status = "active"
+    db.commit()
+    return {"camera_id": camera.id, "name": camera.name, "status": "active"}
+
 
 @router.get("/streams/status")
 def stream_status():

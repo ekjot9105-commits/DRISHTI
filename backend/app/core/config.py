@@ -12,6 +12,7 @@ DATA_DIR = PROJECT_ROOT / "data"
 SAMPLE_VIDEOS_DIR = DATA_DIR / "sample_videos"
 FACES_DIR = DATA_DIR / "faces"
 PLATES_DIR = DATA_DIR / "plates"
+DEMO_VIDEOS_DIR = BASE_DIR / "demo_videos"   # canned clips shipped for the demo
 
 # Database
 DATABASE_URL = f"sqlite:///{BASE_DIR / 'ibvap.db'}"
@@ -30,5 +31,5 @@ JPEG_QUALITY = int(os.getenv("JPEG_QUALITY", "70"))
 FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173")
 
 # Ensure directories exist
-for d in [DATA_DIR, SAMPLE_VIDEOS_DIR, FACES_DIR, PLATES_DIR]:
+for d in [DATA_DIR, SAMPLE_VIDEOS_DIR, FACES_DIR, PLATES_DIR, DEMO_VIDEOS_DIR]:
     d.mkdir(parents=True, exist_ok=True)

@@ -16,6 +16,7 @@ import MapView from './pages/MapView';
 import EvidenceVault from './pages/EvidenceVault';
 import Settings from './pages/Settings';
 import Landing from './pages/Landing';
+import PhoneCam from './pages/PhoneCam';
 import { fetchCameras, createAlertWebSocket } from './services/api';
 
 const PAGE_TITLES = {
@@ -106,6 +107,7 @@ export default function App() {
             humanCount={humanCount}
             vehicleCount={vehicleCount}
             onNavigate={setActivePage}
+            onCamerasChange={loadCameras}
           />
         );
       case 'cameras':
@@ -131,6 +133,11 @@ export default function App() {
         return <Dashboard cameras={cameras} alerts={alerts} onNavigate={setActivePage} />;
     }
   };
+
+  // Phones joining as cameras open /phone directly — no dashboard chrome.
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/phone')) {
+    return <PhoneCam />;
+  }
 
   if (activePage === 'landing') {
     return <Landing onNavigate={setActivePage} />;

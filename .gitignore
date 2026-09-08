@@ -39,3 +39,8 @@ data/sample_videos/*.mov
 .gemini/
 backend/data/evidence/
 backend/data/reports/
+
+.venv/
+backend/demo_videos/*.mp4
+
+*.part

@@ -12,6 +12,8 @@ from app.core.settings_manager import load_settings
 logger = logging.getLogger(__name__)
 
 from app.services.recognition import recognition_service
+from app.services.detectors import base as detector_base
+import app.services.detectors  # noqa: F401  (registers built-in detectors)
 
 class MLService:
     def __init__(self):
@@ -88,8 +90,26 @@ class MLService:
             return 0 # Within buffer zone
         return 1 if cp > 0 else -1
 
+    def _run_detectors(self, camera_id, frame, drawn_boxes, settings, current_time, path="main"):
+        """Run every registered detector for this frame (fight, fire, ...)."""
+        logger.debug(f"[detectors] cam={camera_id} path={path} boxes={len(drawn_boxes)} "
+                     f"registry={[d.name for d in detector_base.get_detectors()]}")
+        ctx = detector_base.DetectorContext(
+            camera_id=camera_id,
+            frame=frame,
+            boxes=drawn_boxes,
+            history=self.object_history.get(camera_id, {}),
+            settings=settings,
+            now=current_time,
+        )
+        return detector_base.run_all(ctx)
+
     def process_frame(self, camera_id: int, frame):
         if not self.active or self.model is None:
+            # NOTE: this also disables every registered detector (fire/fight),
+            # none of which actually need the YOLO model.
+            logger.debug(f"[detectors] cam={camera_id} SKIPPED ENTIRELY — "
+                         f"ml active={self.active} model={self.model is not None}")
             return [], []
 
         settings = load_settings()
@@ -135,6 +155,9 @@ class MLService:
                 for tid in list(self.object_history.get(camera_id, {}).keys()):
                     if current_time - self.object_history[camera_id][tid]["last_seen"] > 2.0:
                         del self.object_history[camera_id][tid]
+                # Detectors still run on empty frames (fire/smoke need no objects)
+                alerts.extend(self._run_detectors(camera_id, frame, drawn_boxes,
+                                                  settings, current_time, path="no-detections"))
                 return alerts, drawn_boxes
                 
             boxes = results[0].boxes
@@ -412,6 +435,9 @@ class MLService:
                     del self.crowd_start_time[camera_id]
 
 
+            # --- PLUGGABLE DETECTORS (fight, fire, ...) ---
+            alerts.extend(self._run_detectors(camera_id, frame, drawn_boxes, settings, current_time))
+
             # Clean up old tracks that left the frame (grace period of 2 seconds)
             # Also inject 'Ghost Boxes' for objects that momentarily disappeared but are still in grace period
             for tid in list(self.object_history[camera_id].keys()):
@@ -432,7 +458,9 @@ class MLService:
             return alerts, drawn_boxes
             
         except Exception as e:
-            logger.error(f"Inference error on camera {camera_id}: {e}")
+            # Anything raised above this point (tracking, recognition, tripwire)
+            # also prevents the detectors from ever running for this frame.
+            logger.exception(f"Inference error on camera {camera_id} — detectors did NOT run: {e}")
             return [], []
 
 ml_service = MLService()

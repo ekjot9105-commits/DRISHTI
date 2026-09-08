@@ -5,6 +5,7 @@ Main FastAPI Application Entry Point
 Run with: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 """
 import logging
+import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -25,8 +26,9 @@ from app.ws.video_stream import broadcast_alert
 
 
 # Configure logging
+# LOG_LEVEL=DEBUG surfaces the per-frame detector diagnostics.
 logging.basicConfig(
-    level=logging.INFO,
+    level=getattr(logging, os.getenv("LOG_LEVEL", "INFO").upper(), logging.INFO),
     format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
 )
@@ -174,6 +176,8 @@ app.mount("/evidence", StaticFiles(directory="data/evidence"), name="evidence")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[FRONTEND_URL, "http://localhost:5173", "http://127.0.0.1:5173"],
+    # Phones joining from the LAN hit the dev server on a private IP origin
+    allow_origin_regex=r"http://(192\.168|10\.|172\.(1[6-9]|2\d|3[01]))[\d.]*(:\d+)?",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

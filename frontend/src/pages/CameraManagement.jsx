@@ -5,6 +5,7 @@
 import { useState, useRef } from 'react';
 import { addCamera, startCamera, stopCamera, deleteCamera } from '../services/api';
 import TripwireModal from './TripwireModal';
+import PhoneJoinCard from '../components/PhoneJoinCard';
 
 export default function CameraManagement({ cameras, onCamerasChange }) {
   const [showModal, setShowModal] = useState(false);
@@ -108,6 +109,11 @@ export default function CameraManagement({ cameras, onCamerasChange }) {
         <button className="bg-primary/20 text-primary border border-primary/50 hover:bg-primary/30 px-4 py-2 rounded-sm font-label-caps flex items-center transition-colors" onClick={() => setShowModal(true)}>
           <span className="material-symbols-outlined mr-2 text-[18px]">add</span> ADD CAMERA
         </button>
+      </div>
+
+      {/* Phone-as-camera QR join */}
+      <div className="mb-6 relative z-10">
+        <PhoneJoinCard />
       </div>
 
       {/* Camera cards */}

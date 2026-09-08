@@ -8,7 +8,7 @@ import json
 import logging
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 
-from app.services.video_ingestion import stream_manager
+from app.services.video_ingestion import stream_manager, PushStream
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -68,6 +68,61 @@ async def camera_stream(websocket: WebSocket, camera_id: int):
         logger.info(f"WebSocket client disconnected for camera {camera_id}")
     except Exception as e:
         logger.error(f"WebSocket error for camera {camera_id}: {e}")
+
+
+@router.websocket("/ws/cameras/{camera_id}/push")
+async def camera_push(websocket: WebSocket, camera_id: int):
+    """Receive JPEG frames pushed from a phone browser and feed the pipeline.
+
+    The phone page (/phone) grabs its webcam, encodes each frame as JPEG and
+    sends it as a binary message. Frames enter the same render + inference path
+    as any other camera, so tripwires, fight and fire detection all apply.
+    """
+    await websocket.accept()
+
+    from app.core.database import SessionLocal, Camera
+    db = SessionLocal()
+    try:
+        camera = db.query(Camera).filter(Camera.id == camera_id).first()
+        if camera is None:
+            await websocket.send_json({"type": "error", "message": "Camera not found"})
+            await websocket.close()
+            return
+
+        stream = stream_manager.get_stream(camera_id)
+        if not isinstance(stream, PushStream) or not stream.running:
+            stream = stream_manager.start_push_stream(camera_id)
+        camera.status = "active"
+        db.commit()
+    finally:
+        db.close()
+
+    logger.info(f"Phone camera {camera_id}: push connection opened")
+    await websocket.send_json({"type": "ready", "camera_id": camera_id})
+
+    frames = 0
+    try:
+        while True:
+            message = await websocket.receive()
+            if message.get("type") == "websocket.disconnect":
+                break
+
+            data = message.get("bytes")
+            if data is None:
+                # Text messages are control/keepalive pings; ignore the content.
+                continue
+
+            if stream.push_jpeg(data):
+                frames += 1
+                if frames % 30 == 0:
+                    await websocket.send_json({"type": "ack", "frames": frames,
+                                               "fps": round(stream.fps_actual, 1)})
+    except WebSocketDisconnect:
+        pass
+    except Exception as e:
+        logger.error(f"Phone camera {camera_id} push error: {e}")
+    finally:
+        logger.info(f"Phone camera {camera_id}: push connection closed after {frames} frames")
 
 
 @router.websocket("/ws/alerts")

@@ -3,8 +3,15 @@
  * Central API client for communicating with the FastAPI backend.
  */
 
-const API_BASE = 'http://localhost:8000';
-const WS_BASE = 'ws://localhost:8000';
+// The backend always runs on :8000 of whatever host served this page, so a
+// phone opening the LAN URL talks to the LAN backend rather than its own
+// localhost. Override with VITE_API_HOST when the backend lives elsewhere.
+const API_HOST =
+  import.meta.env?.VITE_API_HOST ||
+  `${window.location.hostname || 'localhost'}:8000`;
+
+export const API_BASE = `http://${API_HOST}`;
+const WS_BASE = `ws://${API_HOST}`;
 
 /**
  * Generic fetch wrapper with error handling.
@@ -64,6 +71,46 @@ export async function fetchHealth() {
   return request('/api/health');
 }
 
+// ---- Demo mode / phone camera / QR ----
+
+export async function fetchDemoVideos() {
+  return request('/api/cameras/demo/list');
+}
+
+export async function launchDemoVideo(filename) {
+  return request(`/api/cameras/demo/${encodeURIComponent(filename)}/launch`, { method: 'POST' });
+}
+
+export async function registerPhoneCamera(name = 'Phone Camera', location = 'Mobile Unit') {
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('location', location);
+  const response = await fetch(`${API_BASE}/api/cameras/phone/register`, {
+    method: 'POST',
+    body: formData,
+  });
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({ detail: 'Unknown error' }));
+    throw new Error(error.detail || `HTTP ${response.status}`);
+  }
+  return response.json();
+}
+
+export async function fetchLanUrl(path = '/phone', port = window.location.port || 5173) {
+  return request(`/api/system/lan-url?path=${encodeURIComponent(path)}&port=${port}`);
+}
+
+export function qrImageUrl(data) {
+  return `${API_BASE}/api/system/qr?data=${encodeURIComponent(data)}`;
+}
+
+/** Open the frame-push socket used by the phone camera page. */
+export function createPushWebSocket(cameraId) {
+  const ws = new WebSocket(`${WS_BASE}/ws/cameras/${cameraId}/push`);
+  ws.binaryType = 'arraybuffer';
+  return ws;
+}
+
 // ---- WebSocket Connections ----
 
 export function createCameraWebSocket(cameraId, onMessage, onError) {
@@ -121,7 +168,7 @@ export async function addFace(name, description, imageFile, isAuthorized = false
   formData.append('description', description);
   formData.append('image', imageFile);
   formData.append('is_authorized', isAuthorized);
-  
+
   const response = await fetch(`${API_BASE}/api/watchlist/faces`, {
     method: 'POST',
     body: formData,
@@ -148,7 +195,7 @@ export async function addPlate(plateNumber, vehicleDesc, ownerName) {
   formData.append('owner_name', ownerName);
   // Setting a default critical level as designed in Phase 3
   formData.append('alert_level', 'critical');
-  
+
   const response = await fetch(`${API_BASE}/api/watchlist/plates`, {
     method: 'POST',
     body: formData,
@@ -186,7 +233,7 @@ export async function getEventHeatmap() {
   return request('/api/events/heatmap');
 }
 
-export { API_BASE, WS_BASE };
+export { WS_BASE };
 
 
 export const getBlockchainStatus = async (eventId) => {

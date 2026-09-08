@@ -3,6 +3,7 @@ Video Ingestion Service — Captures frames from video files and RTSP streams.
 Supports both pre-recorded videos (for demo) and live CCTV cameras.
 """
 import cv2
+import numpy as np
 import time
 import threading
 import logging
@@ -84,6 +85,83 @@ class VideoStream:
             logger.error(f"Camera {self.camera_id}: Error starting stream: {e}")
             return False
 
+    def _render(self, frame):
+        """Queue the frame for inference, draw overlays, and publish it as JPEG.
+
+        Shared by the capture loop (file/RTSP) and by PushStream (phone camera).
+        """
+        # Send every 3rd frame to the async inference queue
+        if self.frame_count % 3 == 0:
+            try:
+                if self.inference_queue.full():
+                    self.inference_queue.get_nowait()
+            except queue.Empty:
+                pass
+            try:
+                self.inference_queue.put_nowait(frame.copy())
+            except queue.Full:
+                pass
+
+        with self.lock:
+            current_boxes = list(self.latest_boxes)
+
+        # Draw Tripwires if exist
+        from app.services.ml_inference import ml_service
+        tripwires = ml_service.tripwires.get(self.camera_id)
+        if tripwires and isinstance(tripwires, list) and len(tripwires) > 0:
+            h, w = frame.shape[:2]
+            
+            # Check if new multi-line format
+            if isinstance(tripwires[0], list):
+                for line in tripwires:
+                    if len(line) == 2:
+                        pt1 = (int(line[0]['x'] * w), int(line[0]['y'] * h))
+                        pt2 = (int(line[1]['x'] * w), int(line[1]['y'] * h))
+                        cv2.line(frame, pt1, pt2, (0, 0, 255), 2)
+                        # Security Boundary UI Enhancements
+                        cx, cy = (pt1[0] + pt2[0]) // 2, (pt1[1] + pt2[1]) // 2
+                        cv2.putText(frame, f"RESTRICTED BOUNDARY [ARMED]", (cx - 100, cy - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
+                        # Direction arrows (simple offset)
+                        cv2.arrowedLine(frame, (cx, cy), (cx, cy - 30), (0, 255, 255), 1, tipLength=0.3)
+            # Fallback for old single-line format
+            elif len(tripwires) == 2:
+                pt1 = (int(tripwires[0]['x'] * w), int(tripwires[0]['y'] * h))
+                pt2 = (int(tripwires[1]['x'] * w), int(tripwires[1]['y'] * h))
+                cv2.line(frame, pt1, pt2, (0, 0, 255), 2)
+
+        # Draw bounding boxes onto the frame
+        for obj in current_boxes:
+            x1, y1, x2, y2 = [int(v) for v in obj['box']]
+            
+            identity = obj.get('identity')
+            if identity:
+                label = f"[{identity}]"
+                color = (0, 0, 255) # Red for identified matches
+            else:
+                conf_pct = int(obj.get('conf', 0.0) * 100)
+                label = f"{obj['class']} {conf_pct}%"
+                # Cyan color for person, Amber for vehicle (BGR format for OpenCV)
+                color = (255, 235, 138) if obj['class'] == 'person' else (0, 165, 255)
+            
+            # Draw box
+            cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
+            
+            # Draw label background
+            (tw, th), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
+            cv2.rectangle(frame, (x1, y1 - th - 5), (x1 + tw, y1), color, -1)
+            
+            # Draw label text
+            cv2.putText(frame, label, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
+
+        # Encode as JPEG for streaming
+        encode_params = [cv2.IMWRITE_JPEG_QUALITY, JPEG_QUALITY]
+        _, jpeg = cv2.imencode('.jpg', frame, encode_params)
+
+        with self.lock:
+            self.frame = frame
+            self.jpeg_frame = jpeg.tobytes()
+            self.frame_count += 1
+
     def _capture_loop(self):
         """Background thread that continuously captures frames."""
         frame_interval = 1.0 / self.target_fps
@@ -119,77 +197,7 @@ class VideoStream:
             # Resize frame to standard dimensions
             frame = cv2.resize(frame, (FRAME_WIDTH, FRAME_HEIGHT))
 
-            # Send every 3rd frame to the async inference queue
-            if self.frame_count % 3 == 0:
-                try:
-                    if self.inference_queue.full():
-                        self.inference_queue.get_nowait()
-                except queue.Empty:
-                    pass
-                try:
-                    self.inference_queue.put_nowait(frame.copy())
-                except queue.Full:
-                    pass
-
-            with self.lock:
-                current_boxes = list(self.latest_boxes)
-
-            # Draw Tripwires if exist
-            from app.services.ml_inference import ml_service
-            tripwires = ml_service.tripwires.get(self.camera_id)
-            if tripwires and isinstance(tripwires, list) and len(tripwires) > 0:
-                h, w = frame.shape[:2]
-                
-                # Check if new multi-line format
-                if isinstance(tripwires[0], list):
-                    for line in tripwires:
-                        if len(line) == 2:
-                            pt1 = (int(line[0]['x'] * w), int(line[0]['y'] * h))
-                            pt2 = (int(line[1]['x'] * w), int(line[1]['y'] * h))
-                            cv2.line(frame, pt1, pt2, (0, 0, 255), 2)
-                            # Security Boundary UI Enhancements
-                            cx, cy = (pt1[0] + pt2[0]) // 2, (pt1[1] + pt2[1]) // 2
-                            cv2.putText(frame, f"RESTRICTED BOUNDARY [ARMED]", (cx - 100, cy - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
-                            # Direction arrows (simple offset)
-                            cv2.arrowedLine(frame, (cx, cy), (cx, cy - 30), (0, 255, 255), 1, tipLength=0.3)
-                # Fallback for old single-line format
-                elif len(tripwires) == 2:
-                    pt1 = (int(tripwires[0]['x'] * w), int(tripwires[0]['y'] * h))
-                    pt2 = (int(tripwires[1]['x'] * w), int(tripwires[1]['y'] * h))
-                    cv2.line(frame, pt1, pt2, (0, 0, 255), 2)
-
-            # Draw bounding boxes onto the frame
-            for obj in current_boxes:
-                x1, y1, x2, y2 = [int(v) for v in obj['box']]
-                
-                identity = obj.get('identity')
-                if identity:
-                    label = f"[{identity}]"
-                    color = (0, 0, 255) # Red for identified matches
-                else:
-                    conf_pct = int(obj.get('conf', 0.0) * 100)
-                    label = f"{obj['class']} {conf_pct}%"
-                    # Cyan color for person, Amber for vehicle (BGR format for OpenCV)
-                    color = (255, 235, 138) if obj['class'] == 'person' else (0, 165, 255)
-                
-                # Draw box
-                cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
-                
-                # Draw label background
-                (tw, th), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
-                cv2.rectangle(frame, (x1, y1 - th - 5), (x1 + tw, y1), color, -1)
-                
-                # Draw label text
-                cv2.putText(frame, label, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
-
-            # Encode as JPEG for streaming
-            encode_params = [cv2.IMWRITE_JPEG_QUALITY, JPEG_QUALITY]
-            _, jpeg = cv2.imencode('.jpg', frame, encode_params)
-
-            with self.lock:
-                self.frame = frame
-                self.jpeg_frame = jpeg.tobytes()
-                self.frame_count += 1
+            self._render(frame)
 
             # Calculate actual FPS
             fps_count += 1
@@ -281,6 +289,62 @@ class VideoStream:
         }
 
 
+class PushStream(VideoStream):
+    """A camera whose frames are pushed in over a WebSocket (phone-as-camera).
+
+    There is no cv2.VideoCapture: the browser on the phone sends JPEG frames to
+    /ws/cameras/{id}/push, and each one goes through the exact same render +
+    inference path as a file or RTSP source.
+    """
+
+    STALE_AFTER = 15.0  # seconds without a pushed frame before we call it dead
+
+    def __init__(self, camera_id: int, target_fps: int = DEFAULT_FPS):
+        super().__init__(source="push", source_type="phone",
+                         camera_id=camera_id, target_fps=target_fps)
+        self.last_push = 0.0
+        self._fps_timer = time.time()
+        self._fps_count = 0
+
+    def start(self) -> bool:
+        """No capture thread — only the inference worker."""
+        self.running = True
+        self.error = None
+        self.last_push = 0.0
+        self._fps_timer = time.time()
+        self.inference_thread = threading.Thread(target=self._inference_loop, daemon=True)
+        self.inference_thread.start()
+        logger.info(f"Camera {self.camera_id}: Awaiting pushed frames (phone source)")
+        return True
+
+    def push_jpeg(self, data: bytes) -> bool:
+        """Decode and publish one pushed JPEG frame. Returns False if undecodable."""
+        if not self.running:
+            return False
+        frame = cv2.imdecode(np.frombuffer(data, np.uint8), cv2.IMREAD_COLOR)
+        if frame is None:
+            return False
+
+        frame = cv2.resize(frame, (FRAME_WIDTH, FRAME_HEIGHT))
+        self._render(frame)
+
+        self.last_push = time.time()
+        self._fps_count += 1
+        elapsed = self.last_push - self._fps_timer
+        if elapsed >= 1.0:
+            self.fps_actual = self._fps_count / elapsed
+            self._fps_count = 0
+            self._fps_timer = self.last_push
+        return True
+
+    def is_active(self) -> bool:
+        if not self.running or self.error:
+            return False
+        if self.last_push == 0.0:
+            return True  # connected, first frame not in yet
+        return (time.time() - self.last_push) < self.STALE_AFTER
+
+
 class StreamManager:
     """
     Manages all active video streams.
@@ -305,6 +369,16 @@ class StreamManager:
             if success:
                 self.streams[camera_id] = stream
             return success
+
+    def start_push_stream(self, camera_id: int) -> "PushStream":
+        """Create (or restart) a phone-pushed stream and return it."""
+        with self.lock:
+            if camera_id in self.streams:
+                self.streams[camera_id].stop()
+            stream = PushStream(camera_id)
+            stream.start()
+            self.streams[camera_id] = stream
+            return stream
 
     def stop_stream(self, camera_id: int):
         """Stop a camera stream."""
