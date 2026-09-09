@@ -44,3 +44,12 @@ backend/data/reports/
 backend/demo_videos/*.mp4
 
 *.part
+
+# Evaluation harness: clips are large third-party footage, results are regenerable
+backend/eval_clips/
+backend/eval/results/*.json
+!backend/eval/results/final.json
+!backend/eval/results/baseline_before_tuning.json
+data/RLVS/
+data/*.zip
+data/*.kaggle-partial

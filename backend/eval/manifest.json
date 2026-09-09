@@ -1,0 +1,507 @@
+{
+  "_comment": "Generated from filename prefixes; edit any entry and set \"source\": \"manual\" to protect it from regeneration.",
+  "conventions": {
+    "fight": [
+      "fight"
+    ],
+    "fire": [
+      "fire"
+    ],
+    "crash": [
+      "crash"
+    ],
+    "smoke": [
+      "smoke"
+    ],
+    "neg": []
+  },
+  "clips": {
+    "fight_00.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_01.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_02.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_03.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_04.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_05.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_06.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_07.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_08.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_09.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_10.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_11.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_12.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_13.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_14.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_15.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_16.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fight_17.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "fight_18.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "fight_19.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "fight_20.mp4": {
+      "expected": [
+        "fight"
+      ],
+      "label": "fight",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "fire_01.mp4": {
+      "expected": [
+        "fire"
+      ],
+      "label": "fire",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "fire_02.mp4": {
+      "expected": [
+        "fire"
+      ],
+      "label": "fire",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_01.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_02.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_03.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_04.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_05.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_06.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_07.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_08.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_09.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_10.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_11.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_12.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_13.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_14.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_15.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_16.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_17.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_18.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_19.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_20.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_21.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_22.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_23.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_24.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": true
+    },
+    "neg_25.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_26.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_27.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_28.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_29.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_30.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_31.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_32.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_33.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_34.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_35.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_36.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_37.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_38.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_39.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    },
+    "neg_40.mp4": {
+      "expected": [],
+      "label": "neg",
+      "source": "auto",
+      "note": "",
+      "present": false
+    }
+  }
+}

@@ -17,9 +17,9 @@ DEFAULT_SETTINGS = {
     "webhook_url": "",
     # --- Detectors ---
     "fight_enabled": True,
-    "fight_iou": 0.10,             # min box overlap between two persons
-    "fight_motion_energy": 12.0,   # mean frame-diff inside the pair ROI
-    "fight_duration": 0.5,         # seconds both conditions must hold.
+    "fight_iou": 0.05,             # min box overlap between two persons
+    "fight_motion_energy": 30.0,   # mean frame-diff inside the pair ROI
+    "fight_duration": 0.3,         # seconds both conditions must hold.
                                    # Measured on real CCTV (UCF-Crime style
                                    # school brawl): motion energy is never the
                                    # limit (97% of contact frames clear 12.0,
@@ -31,8 +31,8 @@ DEFAULT_SETTINGS = {
                                    # stretch; 0.6 landed exactly on the
                                    # boundary, where float accumulation in
                                    # the frame clock decided it.
-    "fight_streak_tolerance": 3,   # sub-threshold frames forgiven before reset
-    "fight_min_hit_ratio": 0.30,   # min share of frames in the window that hit
+    "fight_streak_tolerance": 2,   # sub-threshold frames forgiven before reset
+    "fight_min_hit_ratio": 0.60,   # min share of frames in the window that hit
     "fight_max_gap": 0.5,          # wall-clock seconds allowed between hits
     "fight_cooldown": 20.0,        # seconds between alerts on the same camera
     "fire_enabled": True,
@@ -43,7 +43,13 @@ DEFAULT_SETTINGS = {
     "fire_core_frac_min": 0.01,    # must have SOME bright core
     "fire_core_frac_max": 0.95,    # but not be all core (sky, glare, headlights)
     "fire_adjacency_min": 0.15,    # core must physically touch the orange surround
-    "fire_sat_std_min": 12.0,      # saturation must vary (paintwork is uniform)
+    "fire_sat_std_min": 48.0,   # measured: the ONLY gate separating flame from
+                                # skin, warm indoor light and road glare. Real
+                                # flame is a white->yellow->orange gradient
+                                # (sat_std 81-92); the 9 false-positive clips
+                                # peaked at 62 and sustained far less. Zero FP
+                                # holds across 36-60, full recall to 60; 48 is
+                                # the midpoint of that window.      # saturation must vary (paintwork is uniform)
     "fire_hue_std_min": 1.5,       # hue must vary (flame shifts, panels do not)
     "fire_flicker": 6.0,           # min mean frame-diff INSIDE the region
     "fire_duration": 1.5,          # seconds the signature must hold

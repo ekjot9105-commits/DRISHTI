@@ -1,0 +1,2033 @@
+{
+  "label": "baseline-current-settings",
+  "settings_provenance": {
+    "source": "app.core.settings_manager.load_settings()",
+    "settings_file": "data\\settings.json",
+    "settings_file_exists": true,
+    "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+    "shadowed_by_file": {
+      "dwelling_time": {
+        "default": 10.0,
+        "file": 20
+      },
+      "intrusion_cooldown": {
+        "default": 10.0,
+        "file": 1
+      },
+      "night_mode": {
+        "default": false,
+        "file": true
+      }
+    },
+    "keys_only_in_file": [],
+    "cli_overrides": {}
+  },
+  "clips_evaluated": [
+    "fight_00.mp4",
+    "fight_01.mp4",
+    "fight_02.mp4",
+    "fight_03.mp4",
+    "fight_04.mp4",
+    "fight_05.mp4",
+    "fight_06.mp4",
+    "fight_07.mp4",
+    "fight_08.mp4",
+    "fight_09.mp4",
+    "fight_10.mp4",
+    "fight_11.mp4",
+    "fight_12.mp4",
+    "fight_13.mp4",
+    "fight_14.mp4",
+    "fight_15.mp4",
+    "fire_01.mp4",
+    "fire_02.mp4",
+    "neg_01.mp4",
+    "neg_02.mp4",
+    "neg_10.mp4",
+    "neg_11.mp4",
+    "neg_12.mp4",
+    "neg_13.mp4",
+    "neg_14.mp4",
+    "neg_15.mp4",
+    "neg_16.mp4",
+    "neg_17.mp4",
+    "neg_18.mp4",
+    "neg_19.mp4",
+    "neg_20.mp4",
+    "neg_21.mp4",
+    "neg_22.mp4",
+    "neg_23.mp4",
+    "neg_24.mp4"
+  ],
+  "missing_clips": [
+    "fight_16.mp4",
+    "fight_17.mp4",
+    "fight_18.mp4",
+    "fight_19.mp4",
+    "fight_20.mp4",
+    "neg_03.mp4",
+    "neg_04.mp4",
+    "neg_05.mp4",
+    "neg_06.mp4",
+    "neg_07.mp4",
+    "neg_08.mp4",
+    "neg_09.mp4",
+    "neg_25.mp4",
+    "neg_26.mp4",
+    "neg_27.mp4",
+    "neg_28.mp4",
+    "neg_29.mp4",
+    "neg_30.mp4",
+    "neg_31.mp4",
+    "neg_32.mp4",
+    "neg_33.mp4",
+    "neg_34.mp4",
+    "neg_35.mp4",
+    "neg_36.mp4",
+    "neg_37.mp4",
+    "neg_38.mp4",
+    "neg_39.mp4",
+    "neg_40.mp4"
+  ],
+  "results": {
+    "fight_00.mp4": {
+      "clip": "fight_00.mp4",
+      "frames_read": 141,
+      "frames_processed": 47,
+      "duration_s": 4.7,
+      "eval_fps": 9.99,
+      "source_fps": 29.97,
+      "wall_s": 5.4,
+      "alert_counts": {
+        "fire": 1
+      },
+      "alerts": [
+        {
+          "type": "fire",
+          "severity": "critical",
+          "t": 2.7,
+          "detail": "Sustained flame signature (region 0.018 of frame, in-region flicker 63.7) held for over 1.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.05091471354166666,
+        "core_frac": 0.3988149040875766,
+        "adj_frac": 0.0,
+        "sat_std": 11.84372329711914,
+        "hue_std": 3.5369584560394287,
+        "in_region_flicker": 35.99804098854732,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 47,
+        "_frames_with_flame_region": 47,
+        "_frames_passing_fire_gates": 32,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_01.mp4": {
+      "clip": "fight_01.mp4",
+      "frames_read": 103,
+      "frames_processed": 34,
+      "duration_s": 6.62,
+      "eval_fps": 5.14,
+      "source_fps": 15.42,
+      "wall_s": 4.8,
+      "alert_counts": {
+        "fight": 1
+      },
+      "alerts": [
+        {
+          "type": "fight",
+          "severity": "critical",
+          "t": 1.75,
+          "detail": "Two subjects in sustained contact with violent motion (overlap 0.43, motion energy 14.3) for over 0.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.5783984375,
+        "core_frac": 0.0096176110640688,
+        "adj_frac": 6.676425132636945,
+        "sat_std": 28.226155281066895,
+        "hue_std": 1.471131443977356,
+        "in_region_flicker": 5.872197756829365,
+        "pair_iou": 0.23087482203923212,
+        "motion_energy": 14.25885192071844,
+        "longest_contact_s": 4.09,
+        "_frames": 34,
+        "_frames_with_flame_region": 34,
+        "_frames_passing_fire_gates": 5,
+        "_frames_with_contact_pair": 21
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_02.mp4": {
+      "clip": "fight_02.mp4",
+      "frames_read": 123,
+      "frames_processed": 41,
+      "duration_s": 4.1,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 5.0,
+      "alert_counts": {
+        "fire": 1
+      },
+      "alerts": [
+        {
+          "type": "fire",
+          "severity": "critical",
+          "t": 1.7,
+          "detail": "Sustained flame signature (region 0.022 of frame, in-region flicker 101.1) held for over 1.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.09544921875,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 7.376439571380615,
+        "hue_std": 2.1822686195373535,
+        "in_region_flicker": 20.79129530600119,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 41,
+        "_frames_with_flame_region": 41,
+        "_frames_passing_fire_gates": 26,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_03.mp4": {
+      "clip": "fight_03.mp4",
+      "frames_read": 177,
+      "frames_processed": 59,
+      "duration_s": 5.9,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 6.1,
+      "alert_counts": {
+        "fight": 1
+      },
+      "alerts": [
+        {
+          "type": "fight",
+          "severity": "critical",
+          "t": 3.6,
+          "detail": "Two subjects in sustained contact with violent motion (overlap 0.10, motion energy 25.4) for over 0.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.010234375,
+        "core_frac": 0.0,
+        "adj_frac": 0.12078651685393259,
+        "sat_std": 29.823118209838867,
+        "hue_std": 2.155163049697876,
+        "in_region_flicker": 32.3063872255489,
+        "pair_iou": 0.13347436253735379,
+        "motion_energy": 25.695544299002627,
+        "longest_contact_s": 0.2,
+        "_frames": 59,
+        "_frames_with_flame_region": 53,
+        "_frames_passing_fire_gates": 9,
+        "_frames_with_contact_pair": 4
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_04.mp4": {
+      "clip": "fight_04.mp4",
+      "frames_read": 168,
+      "frames_processed": 56,
+      "duration_s": 5.61,
+      "eval_fps": 9.99,
+      "source_fps": 29.97,
+      "wall_s": 6.1,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0056298828125000006,
+        "core_frac": 0.0,
+        "adj_frac": 0.0,
+        "sat_std": 12.078025341033936,
+        "hue_std": 1.9872629046440125,
+        "in_region_flicker": 17.523705502630932,
+        "pair_iou": 0.13331061969699626,
+        "motion_energy": 18.63576765825462,
+        "longest_contact_s": 0.3,
+        "_frames": 56,
+        "_frames_with_flame_region": 56,
+        "_frames_passing_fire_gates": 8,
+        "_frames_with_contact_pair": 5
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_05.mp4": {
+      "clip": "fight_05.mp4",
+      "frames_read": 147,
+      "frames_processed": 49,
+      "duration_s": 4.9,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 5.4,
+      "alert_counts": {
+        "fire": 1
+      },
+      "alerts": [
+        {
+          "type": "fire",
+          "severity": "critical",
+          "t": 4.5,
+          "detail": "Sustained flame signature (region 0.014 of frame, in-region flicker 8.9) held for over 1.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.01787760416666667,
+        "core_frac": 0.8166973926784303,
+        "adj_frac": 0.177734375,
+        "sat_std": 25.583219528198242,
+        "hue_std": 5.150744438171387,
+        "in_region_flicker": 14.253646477132262,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 49,
+        "_frames_with_flame_region": 49,
+        "_frames_passing_fire_gates": 30,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_06.mp4": {
+      "clip": "fight_06.mp4",
+      "frames_read": 165,
+      "frames_processed": 55,
+      "duration_s": 5.51,
+      "eval_fps": 9.99,
+      "source_fps": 29.97,
+      "wall_s": 5.9,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.005546875,
+        "core_frac": 0.04923599320882852,
+        "adj_frac": 0.667590027700831,
+        "sat_std": 14.9127779006958,
+        "hue_std": 1.8354692459106445,
+        "in_region_flicker": 13.021122510561256,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 55,
+        "_frames_with_flame_region": 55,
+        "_frames_passing_fire_gates": 24,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_07.mp4": {
+      "clip": "fight_07.mp4",
+      "frames_read": 102,
+      "frames_processed": 34,
+      "duration_s": 3.41,
+      "eval_fps": 9.98,
+      "source_fps": 29.93,
+      "wall_s": 4.2,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.034195963541666666,
+        "core_frac": 0.09144904308475535,
+        "adj_frac": 1.5565939771547248,
+        "sat_std": 20.584592819213867,
+        "hue_std": 1.871315360069275,
+        "in_region_flicker": 0.11013802950975726,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 34,
+        "_frames_with_flame_region": 3,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_08.mp4": {
+      "clip": "fight_08.mp4",
+      "frames_read": 132,
+      "frames_processed": 44,
+      "duration_s": 4.4,
+      "eval_fps": 9.99,
+      "source_fps": 29.97,
+      "wall_s": 5.2,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.07214680989583333,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 2.187166452407837,
+        "hue_std": 2.6475725173950195,
+        "in_region_flicker": 10.203633515334618,
+        "pair_iou": 0.11512969103987275,
+        "motion_energy": 23.466502106556035,
+        "longest_contact_s": 0.2,
+        "_frames": 44,
+        "_frames_with_flame_region": 44,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 2
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_09.mp4": {
+      "clip": "fight_09.mp4",
+      "frames_read": 185,
+      "frames_processed": 61,
+      "duration_s": 4.95,
+      "eval_fps": 12.33,
+      "source_fps": 37.0,
+      "wall_s": 6.3,
+      "alert_counts": {
+        "fire": 1,
+        "fight": 1
+      },
+      "alerts": [
+        {
+          "type": "fire",
+          "severity": "critical",
+          "t": 2.11,
+          "detail": "Sustained flame signature (region 0.006 of frame, in-region flicker 35.8) held for over 1.5s."
+        },
+        {
+          "type": "fight",
+          "severity": "critical",
+          "t": 3.73,
+          "detail": "Two subjects in sustained contact with violent motion (overlap 0.11, motion energy 42.2) for over 0.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.056142578125,
+        "core_frac": 0.03780392156862745,
+        "adj_frac": 1.03125,
+        "sat_std": 13.191300392150879,
+        "hue_std": 2.635207414627075,
+        "in_region_flicker": 18.295162589562047,
+        "pair_iou": 0.2092329360836126,
+        "motion_energy": 42.24203785154515,
+        "longest_contact_s": 0.41,
+        "_frames": 61,
+        "_frames_with_flame_region": 59,
+        "_frames_passing_fire_gates": 28,
+        "_frames_with_contact_pair": 21
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_10.mp4": {
+      "clip": "fight_10.mp4",
+      "frames_read": 185,
+      "frames_processed": 61,
+      "duration_s": 4.95,
+      "eval_fps": 12.33,
+      "source_fps": 37.0,
+      "wall_s": 6.1,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0015071614583333332,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 5.017769813537598,
+        "hue_std": 4.52777099609375,
+        "in_region_flicker": 1.9823008849557522,
+        "pair_iou": 0.17409714472778445,
+        "motion_energy": 9.157773833141903,
+        "longest_contact_s": 0.08,
+        "_frames": 61,
+        "_frames_with_flame_region": 5,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 1
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_11.mp4": {
+      "clip": "fight_11.mp4",
+      "frames_read": 125,
+      "frames_processed": 41,
+      "duration_s": 4.92,
+      "eval_fps": 8.33,
+      "source_fps": 25.0,
+      "wall_s": 4.9,
+      "alert_counts": {
+        "fight": 1,
+        "fire": 1
+      },
+      "alerts": [
+        {
+          "type": "fight",
+          "severity": "critical",
+          "t": 0.96,
+          "detail": "Two subjects in sustained contact with violent motion (overlap 0.22, motion energy 22.9) for over 0.5s."
+        },
+        {
+          "type": "fire",
+          "severity": "critical",
+          "t": 2.88,
+          "detail": "Sustained flame signature (region 0.010 of frame, in-region flicker 16.2) held for over 1.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.010247395833333334,
+        "core_frac": 0.008609516756156267,
+        "adj_frac": 5.0,
+        "sat_std": 26.14134979248047,
+        "hue_std": 4.6811418533325195,
+        "in_region_flicker": 30.5088515660463,
+        "pair_iou": 0.23158986103416884,
+        "motion_energy": 28.730304669190552,
+        "longest_contact_s": 1.92,
+        "_frames": 41,
+        "_frames_with_flame_region": 41,
+        "_frames_passing_fire_gates": 27,
+        "_frames_with_contact_pair": 37
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_12.mp4": {
+      "clip": "fight_12.mp4",
+      "frames_read": 115,
+      "frames_processed": 38,
+      "duration_s": 4.96,
+      "eval_fps": 7.67,
+      "source_fps": 23.0,
+      "wall_s": 4.5,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.003986002604166667,
+        "core_frac": 0.0,
+        "adj_frac": 0.0,
+        "sat_std": 1.7779224514961243,
+        "hue_std": 0.9787841439247131,
+        "in_region_flicker": 1.9609169597096936,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 38,
+        "_frames_with_flame_region": 24,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_13.mp4": {
+      "clip": "fight_13.mp4",
+      "frames_read": 153,
+      "frames_processed": 51,
+      "duration_s": 5.1,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 5.4,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.011741536458333333,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 13.86962604522705,
+        "hue_std": 5.17708683013916,
+        "in_region_flicker": 35.77219512195122,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 51,
+        "_frames_with_flame_region": 51,
+        "_frames_passing_fire_gates": 4,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_14.mp4": {
+      "clip": "fight_14.mp4",
+      "frames_read": 159,
+      "frames_processed": 53,
+      "duration_s": 5.3,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 5.9,
+      "alert_counts": {
+        "fight": 1
+      },
+      "alerts": [
+        {
+          "type": "fight",
+          "severity": "critical",
+          "t": 1.9,
+          "detail": "Two subjects in sustained contact with violent motion (overlap 0.17, motion energy 46.0) for over 0.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.010504557291666666,
+        "core_frac": 0.7627175368139224,
+        "adj_frac": 0.0,
+        "sat_std": 14.560627937316895,
+        "hue_std": 2.5356063842773438,
+        "in_region_flicker": 36.23472028668127,
+        "pair_iou": 0.158592524231915,
+        "motion_energy": 33.81971005917762,
+        "longest_contact_s": 0.7,
+        "_frames": 53,
+        "_frames_with_flame_region": 53,
+        "_frames_passing_fire_gates": 8,
+        "_frames_with_contact_pair": 8
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_15.mp4": {
+      "clip": "fight_15.mp4",
+      "frames_read": 125,
+      "frames_processed": 41,
+      "duration_s": 4.24,
+      "eval_fps": 9.67,
+      "source_fps": 29.0,
+      "wall_s": 5.1,
+      "alert_counts": {
+        "fire": 1
+      },
+      "alerts": [
+        {
+          "type": "fire",
+          "severity": "critical",
+          "t": 1.76,
+          "detail": "Sustained flame signature (region 0.015 of frame, in-region flicker 62.0) held for over 1.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.16489583333333332,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 13.624539375305176,
+        "hue_std": 5.7633185386657715,
+        "in_region_flicker": 19.090327120837213,
+        "pair_iou": 0.11734991818725155,
+        "motion_energy": 47.90455683662553,
+        "longest_contact_s": 0.21,
+        "_frames": 41,
+        "_frames_with_flame_region": 41,
+        "_frames_passing_fire_gates": 20,
+        "_frames_with_contact_pair": 6
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fire_01.mp4": {
+      "clip": "fire_01.mp4",
+      "frames_read": 1801,
+      "frames_processed": 600,
+      "duration_s": 30.0,
+      "eval_fps": 20.0,
+      "source_fps": 60.0,
+      "wall_s": 60.5,
+      "alert_counts": {
+        "fire": 1
+      },
+      "alerts": [
+        {
+          "type": "fire",
+          "severity": "critical",
+          "t": 1.6,
+          "detail": "Sustained flame signature (region 0.255 of frame, in-region flicker 42.5) held for over 1.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.26360188802083334,
+        "core_frac": 0.08367663957778709,
+        "adj_frac": 1.091832244440811,
+        "sat_std": 61.94716835021973,
+        "hue_std": 7.873239517211914,
+        "in_region_flicker": 47.8921035790553,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 600,
+        "_frames_with_flame_region": 600,
+        "_frames_passing_fire_gates": 599,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fire_02.mp4": {
+      "clip": "fire_02.mp4",
+      "frames_read": 508,
+      "frames_processed": 169,
+      "duration_s": 16.9,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 28.9,
+      "alert_counts": {
+        "fire": 1
+      },
+      "alerts": [
+        {
+          "type": "fire",
+          "severity": "critical",
+          "t": 1.9,
+          "detail": "Sustained flame signature (region 0.007 of frame, in-region flicker 26.5) held for over 1.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.011389973958333334,
+        "core_frac": 0.5590551181102362,
+        "adj_frac": 0.06650544135429262,
+        "sat_std": 26.780776977539062,
+        "hue_std": 5.710051536560059,
+        "in_region_flicker": 28.740225118483412,
+        "pair_iou": 0.1054565596107163,
+        "motion_energy": 2.529986962190352,
+        "longest_contact_s": 0.1,
+        "_frames": 169,
+        "_frames_with_flame_region": 169,
+        "_frames_passing_fire_gates": 114,
+        "_frames_with_contact_pair": 1
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_01.mp4": {
+      "clip": "neg_01.mp4",
+      "frames_read": 115,
+      "frames_processed": 38,
+      "duration_s": 4.96,
+      "eval_fps": 7.67,
+      "source_fps": 23.0,
+      "wall_s": 5.0,
+      "alert_counts": {
+        "fire": 1
+      },
+      "alerts": [
+        {
+          "type": "fire",
+          "severity": "critical",
+          "t": 1.83,
+          "detail": "Sustained flame signature (region 0.120 of frame, in-region flicker 15.9) held for over 1.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.1317822265625,
+        "core_frac": 0.2210304912111306,
+        "adj_frac": 0.5765238562207236,
+        "sat_std": 21.490793228149414,
+        "hue_std": 2.7590558528900146,
+        "in_region_flicker": 13.12273609974883,
+        "pair_iou": 0.13011035699574303,
+        "motion_energy": 7.4378471604499,
+        "longest_contact_s": 0.91,
+        "_frames": 38,
+        "_frames_with_flame_region": 38,
+        "_frames_passing_fire_gates": 36,
+        "_frames_with_contact_pair": 9
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_02.mp4": {
+      "clip": "neg_02.mp4",
+      "frames_read": 55,
+      "frames_processed": 18,
+      "duration_s": 4.91,
+      "eval_fps": 3.67,
+      "source_fps": 11.0,
+      "wall_s": 3.1,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.003986002604166667,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 1.9239696860313416,
+        "hue_std": 4.47540545463562,
+        "in_region_flicker": 19.320380938482007,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 18,
+        "_frames_with_flame_region": 18,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_10.mp4": {
+      "clip": "neg_10.mp4",
+      "frames_read": 66,
+      "frames_processed": 22,
+      "duration_s": 2.65,
+      "eval_fps": 8.3,
+      "source_fps": 24.9,
+      "wall_s": 3.7,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.03467122395833333,
+        "core_frac": 0.0,
+        "adj_frac": 15.0,
+        "sat_std": 12.55214262008667,
+        "hue_std": 1.0742403268814087,
+        "in_region_flicker": 2.6237083817025075,
+        "pair_iou": 0.16973216151210435,
+        "motion_energy": 5.800777517939441,
+        "longest_contact_s": 1.45,
+        "_frames": 22,
+        "_frames_with_flame_region": 22,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 16
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_11.mp4": {
+      "clip": "neg_11.mp4",
+      "frames_read": 150,
+      "frames_processed": 50,
+      "duration_s": 5.0,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 5.2,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0037190755208333336,
+        "core_frac": 0.0,
+        "adj_frac": 0.0,
+        "sat_std": 19.907172203063965,
+        "hue_std": 5.954901456832886,
+        "in_region_flicker": 47.699077864857486,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 50,
+        "_frames_with_flame_region": 50,
+        "_frames_passing_fire_gates": 3,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_12.mp4": {
+      "clip": "neg_12.mp4",
+      "frames_read": 150,
+      "frames_processed": 50,
+      "duration_s": 5.0,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 5.3,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0016585286458333333,
+        "core_frac": 0.0,
+        "adj_frac": 0.0,
+        "sat_std": 32.5375862121582,
+        "hue_std": 1.668214499950409,
+        "in_region_flicker": 37.349130335114694,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 50,
+        "_frames_with_flame_region": 30,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_13.mp4": {
+      "clip": "neg_13.mp4",
+      "frames_read": 113,
+      "frames_processed": 37,
+      "duration_s": 4.44,
+      "eval_fps": 8.33,
+      "source_fps": 25.0,
+      "wall_s": 4.4,
+      "alert_counts": {
+        "fight": 1
+      },
+      "alerts": [
+        {
+          "type": "fight",
+          "severity": "critical",
+          "t": 0.84,
+          "detail": "Two subjects in sustained contact with violent motion (overlap 0.26, motion energy 21.0) for over 0.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.025208333333333333,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 1.975805640220642,
+        "hue_std": 2.774778127670288,
+        "in_region_flicker": 9.888756833848348,
+        "pair_iou": 0.28906995470333724,
+        "motion_energy": 14.368787213380553,
+        "longest_contact_s": 1.56,
+        "_frames": 37,
+        "_frames_with_flame_region": 37,
+        "_frames_passing_fire_gates": 5,
+        "_frames_with_contact_pair": 20
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_14.mp4": {
+      "clip": "neg_14.mp4",
+      "frames_read": 108,
+      "frames_processed": 36,
+      "duration_s": 4.32,
+      "eval_fps": 8.33,
+      "source_fps": 25.0,
+      "wall_s": 4.6,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.012635091145833333,
+        "core_frac": 0.008480158469148371,
+        "adj_frac": 1.6266339869281046,
+        "sat_std": 28.502005577087402,
+        "hue_std": 2.85241961479187,
+        "in_region_flicker": 45.81408932013761,
+        "pair_iou": 0.294484172002968,
+        "motion_energy": 34.227845963292424,
+        "longest_contact_s": 0.48,
+        "_frames": 36,
+        "_frames_with_flame_region": 36,
+        "_frames_passing_fire_gates": 21,
+        "_frames_with_contact_pair": 7
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_15.mp4": {
+      "clip": "neg_15.mp4",
+      "frames_read": 108,
+      "frames_processed": 36,
+      "duration_s": 3.6,
+      "eval_fps": 9.99,
+      "source_fps": 29.97,
+      "wall_s": 4.6,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.09087239583333334,
+        "core_frac": 0.052963384900058835,
+        "adj_frac": 2.8096685829920798,
+        "sat_std": 8.047908782958984,
+        "hue_std": 1.2805712819099426,
+        "in_region_flicker": 1.7763555698947449,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 36,
+        "_frames_with_flame_region": 36,
+        "_frames_passing_fire_gates": 1,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_16.mp4": {
+      "clip": "neg_16.mp4",
+      "frames_read": 55,
+      "frames_processed": 18,
+      "duration_s": 4.91,
+      "eval_fps": 3.67,
+      "source_fps": 11.0,
+      "wall_s": 3.2,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0288818359375,
+        "core_frac": 0.0,
+        "adj_frac": 0.0,
+        "sat_std": 34.28877067565918,
+        "hue_std": 1.6817572116851807,
+        "in_region_flicker": 20.130892171155857,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 18,
+        "_frames_with_flame_region": 18,
+        "_frames_passing_fire_gates": 2,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_17.mp4": {
+      "clip": "neg_17.mp4",
+      "frames_read": 115,
+      "frames_processed": 38,
+      "duration_s": 4.96,
+      "eval_fps": 7.67,
+      "source_fps": 23.0,
+      "wall_s": 4.6,
+      "alert_counts": {
+        "fire": 1
+      },
+      "alerts": [
+        {
+          "type": "fire",
+          "severity": "critical",
+          "t": 4.83,
+          "detail": "Sustained flame signature (region 0.493 of frame, in-region flicker 15.7) held for over 1.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.43809895833333334,
+        "core_frac": 0.5178208112868172,
+        "adj_frac": 0.308863370182094,
+        "sat_std": 17.091039657592773,
+        "hue_std": 3.3054453134536743,
+        "in_region_flicker": 14.842663423609281,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 38,
+        "_frames_with_flame_region": 38,
+        "_frames_passing_fire_gates": 16,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_18.mp4": {
+      "clip": "neg_18.mp4",
+      "frames_read": 145,
+      "frames_processed": 48,
+      "duration_s": 4.97,
+      "eval_fps": 9.67,
+      "source_fps": 29.0,
+      "wall_s": 4.9,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": null,
+        "core_frac": null,
+        "adj_frac": null,
+        "sat_std": null,
+        "hue_std": null,
+        "in_region_flicker": null,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 48,
+        "_frames_with_flame_region": 0,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_19.mp4": {
+      "clip": "neg_19.mp4",
+      "frames_read": 105,
+      "frames_processed": 35,
+      "duration_s": 5.0,
+      "eval_fps": 7.0,
+      "source_fps": 21.0,
+      "wall_s": 4.3,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0022884114583333333,
+        "core_frac": 0.0,
+        "adj_frac": 9.0,
+        "sat_std": 24.917903900146484,
+        "hue_std": 1.3142290115356445,
+        "in_region_flicker": 7.761989342806395,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 35,
+        "_frames_with_flame_region": 35,
+        "_frames_passing_fire_gates": 2,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_20.mp4": {
+      "clip": "neg_20.mp4",
+      "frames_read": 120,
+      "frames_processed": 40,
+      "duration_s": 5.0,
+      "eval_fps": 8.0,
+      "source_fps": 24.0,
+      "wall_s": 4.5,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0011328125,
+        "core_frac": 0.1140501197715128,
+        "adj_frac": 1.3950044208664898,
+        "sat_std": 14.391695976257324,
+        "hue_std": 1.7741479277610779,
+        "in_region_flicker": 13.91585385353374,
+        "pair_iou": 0.10820470313030128,
+        "motion_energy": 7.0088154660616375,
+        "longest_contact_s": 0.12,
+        "_frames": 40,
+        "_frames_with_flame_region": 20,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 3
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_21.mp4": {
+      "clip": "neg_21.mp4",
+      "frames_read": 153,
+      "frames_processed": 51,
+      "duration_s": 5.11,
+      "eval_fps": 9.99,
+      "source_fps": 29.97,
+      "wall_s": 5.4,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.00666015625,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 7.361657619476318,
+        "hue_std": 15.04033613204956,
+        "in_region_flicker": 0.18899609247330512,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 51,
+        "_frames_with_flame_region": 12,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_22.mp4": {
+      "clip": "neg_22.mp4",
+      "frames_read": 115,
+      "frames_processed": 38,
+      "duration_s": 4.96,
+      "eval_fps": 7.67,
+      "source_fps": 23.0,
+      "wall_s": 4.9,
+      "alert_counts": {
+        "fight": 1,
+        "fire": 1
+      },
+      "alerts": [
+        {
+          "type": "fight",
+          "severity": "critical",
+          "t": 0.78,
+          "detail": "Two subjects in sustained contact with violent motion (overlap 0.28, motion energy 28.4) for over 0.5s."
+        },
+        {
+          "type": "fire",
+          "severity": "critical",
+          "t": 1.83,
+          "detail": "Sustained flame signature (region 0.042 of frame, in-region flicker 10.9) held for over 1.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.04722330729166667,
+        "core_frac": 0.28704339811191115,
+        "adj_frac": 0.5334346490591751,
+        "sat_std": 34.952938079833984,
+        "hue_std": 3.345607280731201,
+        "in_region_flicker": 8.403786811532072,
+        "pair_iou": 0.2462637995694194,
+        "motion_energy": 13.075444712434024,
+        "longest_contact_s": 4.96,
+        "_frames": 38,
+        "_frames_with_flame_region": 38,
+        "_frames_passing_fire_gates": 31,
+        "_frames_with_contact_pair": 38
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_23.mp4": {
+      "clip": "neg_23.mp4",
+      "frames_read": 125,
+      "frames_processed": 41,
+      "duration_s": 4.92,
+      "eval_fps": 8.33,
+      "source_fps": 25.0,
+      "wall_s": 5.2,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.04000325520833333,
+        "core_frac": 0.0,
+        "adj_frac": 0.0,
+        "sat_std": 5.730372428894043,
+        "hue_std": 0.994869589805603,
+        "in_region_flicker": 0.19877173254908745,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 41,
+        "_frames_with_flame_region": 41,
+        "_frames_passing_fire_gates": 9,
+        "_frames_with_contact_pair": 0
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_24.mp4": {
+      "clip": "neg_24.mp4",
+      "frames_read": 145,
+      "frames_processed": 48,
+      "duration_s": 4.97,
+      "eval_fps": 9.67,
+      "source_fps": 29.0,
+      "wall_s": 5.3,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0021337890624999996,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 9.50476884841919,
+        "hue_std": 4.444858551025391,
+        "in_region_flicker": 4.228021318892241,
+        "pair_iou": 0.2516753950608392,
+        "motion_energy": 0.6989858490566038,
+        "longest_contact_s": 0.31,
+        "_frames": 48,
+        "_frames_with_flame_region": 48,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 3
+      },
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    }
+  },
+  "scores": {
+    "per_detector": {
+      "fight": {
+        "tp": 5,
+        "fp": 2,
+        "fn": 11,
+        "tn": 17,
+        "precision": 0.7142857142857143,
+        "recall": 0.3125,
+        "false_positive_rate": 0.10526315789473684,
+        "false_positive_clips": [
+          "neg_13.mp4",
+          "neg_22.mp4"
+        ],
+        "false_negative_clips": [
+          "fight_00.mp4",
+          "fight_02.mp4",
+          "fight_04.mp4",
+          "fight_05.mp4",
+          "fight_06.mp4",
+          "fight_07.mp4",
+          "fight_08.mp4",
+          "fight_10.mp4",
+          "fight_12.mp4",
+          "fight_13.mp4",
+          "fight_15.mp4"
+        ]
+      },
+      "fire": {
+        "tp": 2,
+        "fp": 9,
+        "fn": 0,
+        "tn": 24,
+        "precision": 0.18181818181818182,
+        "recall": 1.0,
+        "false_positive_rate": 0.2727272727272727,
+        "false_positive_clips": [
+          "fight_00.mp4",
+          "fight_02.mp4",
+          "fight_05.mp4",
+          "fight_09.mp4",
+          "fight_11.mp4",
+          "fight_15.mp4",
+          "neg_01.mp4",
+          "neg_17.mp4",
+          "neg_22.mp4"
+        ],
+        "false_negative_clips": []
+      },
+      "crash": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 35,
+        "precision": null,
+        "recall": null,
+        "false_positive_rate": 0.0,
+        "false_positive_clips": [],
+        "false_negative_clips": []
+      },
+      "smoke": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 35,
+        "precision": null,
+        "recall": null,
+        "false_positive_rate": 0.0,
+        "false_positive_clips": [],
+        "false_negative_clips": []
+      }
+    },
+    "confusion_matrix": {
+      "fight": {
+        "fight": 5,
+        "fire": 6,
+        "crash": 0,
+        "smoke": 0,
+        "none": 7
+      },
+      "fire": {
+        "fight": 0,
+        "fire": 2,
+        "crash": 0,
+        "smoke": 0,
+        "none": 0
+      },
+      "neg": {
+        "fight": 2,
+        "fire": 3,
+        "crash": 0,
+        "smoke": 0,
+        "none": 13
+      }
+    },
+    "confusion_columns": [
+      "fight",
+      "fire",
+      "crash",
+      "smoke",
+      "none"
+    ]
+  }
+}

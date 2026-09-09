@@ -1,0 +1,10552 @@
+{
+  "label": "final-tuned",
+  "settings_provenance": {
+    "source": "app.core.settings_manager.load_settings()",
+    "settings_file": "data\\settings.json",
+    "settings_file_exists": true,
+    "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+    "shadowed_by_file": {
+      "dwelling_time": {
+        "default": 10.0,
+        "file": 20
+      },
+      "intrusion_cooldown": {
+        "default": 10.0,
+        "file": 1
+      },
+      "night_mode": {
+        "default": false,
+        "file": true
+      }
+    },
+    "keys_only_in_file": [],
+    "cli_overrides": {}
+  },
+  "clips_evaluated": [
+    "fight_00.mp4",
+    "fight_01.mp4",
+    "fight_02.mp4",
+    "fight_03.mp4",
+    "fight_04.mp4",
+    "fight_05.mp4",
+    "fight_06.mp4",
+    "fight_07.mp4",
+    "fight_08.mp4",
+    "fight_09.mp4",
+    "fight_10.mp4",
+    "fight_11.mp4",
+    "fight_12.mp4",
+    "fight_13.mp4",
+    "fight_14.mp4",
+    "fight_15.mp4",
+    "fight_16.mp4",
+    "fire_01.mp4",
+    "fire_02.mp4",
+    "neg_01.mp4",
+    "neg_02.mp4",
+    "neg_03.mp4",
+    "neg_10.mp4",
+    "neg_11.mp4",
+    "neg_12.mp4",
+    "neg_13.mp4",
+    "neg_14.mp4",
+    "neg_15.mp4",
+    "neg_16.mp4",
+    "neg_17.mp4",
+    "neg_18.mp4",
+    "neg_19.mp4",
+    "neg_20.mp4",
+    "neg_21.mp4",
+    "neg_22.mp4",
+    "neg_23.mp4",
+    "neg_24.mp4"
+  ],
+  "missing_clips": [
+    "fight_17.mp4",
+    "fight_18.mp4",
+    "fight_19.mp4",
+    "fight_20.mp4",
+    "neg_04.mp4",
+    "neg_05.mp4",
+    "neg_06.mp4",
+    "neg_07.mp4",
+    "neg_08.mp4",
+    "neg_09.mp4",
+    "neg_25.mp4",
+    "neg_26.mp4",
+    "neg_27.mp4",
+    "neg_28.mp4",
+    "neg_29.mp4",
+    "neg_30.mp4",
+    "neg_31.mp4",
+    "neg_32.mp4",
+    "neg_33.mp4",
+    "neg_34.mp4",
+    "neg_35.mp4",
+    "neg_36.mp4",
+    "neg_37.mp4",
+    "neg_38.mp4",
+    "neg_39.mp4",
+    "neg_40.mp4"
+  ],
+  "results": {
+    "fight_00.mp4": {
+      "clip": "fight_00.mp4",
+      "frames_read": 141,
+      "frames_processed": 47,
+      "duration_s": 4.7,
+      "eval_fps": 9.99,
+      "source_fps": 29.97,
+      "wall_s": 5.4,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.05091471354166666,
+        "core_frac": 0.3988149040875766,
+        "adj_frac": 0.0,
+        "sat_std": 11.84372329711914,
+        "hue_std": 3.5369584560394287,
+        "in_region_flicker": 35.99804098854732,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 47,
+        "_frames_with_flame_region": 47,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_01.mp4": {
+      "clip": "fight_01.mp4",
+      "frames_read": 103,
+      "frames_processed": 34,
+      "duration_s": 6.62,
+      "eval_fps": 5.14,
+      "source_fps": 15.42,
+      "wall_s": 4.8,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.5783984375,
+        "core_frac": 0.0096176110640688,
+        "adj_frac": 6.676425132636945,
+        "sat_std": 28.226155281066895,
+        "hue_std": 1.471131443977356,
+        "in_region_flicker": 5.872197756829365,
+        "pair_iou": 0.22841877366619132,
+        "motion_energy": 14.977705176280214,
+        "longest_contact_s": 4.28,
+        "_frames": 34,
+        "_frames_with_flame_region": 34,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 22
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [
+          [
+            "1",
+            "2",
+            0.0805,
+            15.697
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1463,
+            17.301
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1959,
+            13.39
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.226,
+            12.65
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2351,
+            0.007
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.4307,
+            14.259
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.5357,
+            10.239
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.3701,
+            7.146
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.3229,
+            7.148
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2854,
+            9.624
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2857,
+            12.947
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2718,
+            17.979
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1967,
+            21.026
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.171,
+            0.003
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1771,
+            19.978
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2091,
+            20.565
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1853,
+            20.914
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1148,
+            21.082
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1963,
+            20.213
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2309,
+            0.025
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2523,
+            18.249
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.3663,
+            16.277
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_02.mp4": {
+      "clip": "fight_02.mp4",
+      "frames_read": 123,
+      "frames_processed": 41,
+      "duration_s": 4.1,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 4.9,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.09544921875,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 7.376439571380615,
+        "hue_std": 2.1822686195373535,
+        "in_region_flicker": 20.79129530600119,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 41,
+        "_frames_with_flame_region": 41,
+        "_frames_passing_fire_gates": 4,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_03.mp4": {
+      "clip": "fight_03.mp4",
+      "frames_read": 177,
+      "frames_processed": 59,
+      "duration_s": 5.9,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 6.0,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.010234375,
+        "core_frac": 0.0,
+        "adj_frac": 0.12078651685393259,
+        "sat_std": 29.823118209838867,
+        "hue_std": 2.155163049697876,
+        "in_region_flicker": 32.3063872255489,
+        "pair_iou": 0.0959658755759728,
+        "motion_energy": 26.687944293360573,
+        "longest_contact_s": 0.4,
+        "_frames": 59,
+        "_frames_with_flame_region": 53,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 8
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "4",
+            "3",
+            0.0041,
+            23.846
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "4",
+            "3",
+            0.0667,
+            27.398
+          ]
+        ],
+        [
+          [
+            "4",
+            "3",
+            0.1268,
+            17.254
+          ]
+        ],
+        [],
+        [
+          [
+            "4",
+            "3",
+            0.0735,
+            22.069
+          ]
+        ],
+        [
+          [
+            "4",
+            "3",
+            0.0625,
+            34.106
+          ]
+        ],
+        [
+          [
+            "4",
+            "3",
+            0.0885,
+            29.161
+          ]
+        ],
+        [
+          [
+            "4",
+            "3",
+            0.1035,
+            25.413
+          ]
+        ],
+        [],
+        [],
+        [
+          [
+            "4",
+            "3",
+            0.1607,
+            43.55
+          ]
+        ],
+        [
+          [
+            "4",
+            "3",
+            0.1402,
+            25.978
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_04.mp4": {
+      "clip": "fight_04.mp4",
+      "frames_read": 168,
+      "frames_processed": 56,
+      "duration_s": 5.61,
+      "eval_fps": 9.99,
+      "source_fps": 29.97,
+      "wall_s": 6.1,
+      "alert_counts": {
+        "fight": 1
+      },
+      "alerts": [
+        {
+          "type": "fight",
+          "severity": "critical",
+          "t": 2.6,
+          "detail": "Two subjects in sustained contact with violent motion (overlap 0.17, motion energy 31.6) for over 0.3s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.0056298828125000006,
+        "core_frac": 0.0,
+        "adj_frac": 0.0,
+        "sat_std": 12.078025341033936,
+        "hue_std": 1.9872629046440125,
+        "in_region_flicker": 17.523705502630932,
+        "pair_iou": 0.09497272114067039,
+        "motion_energy": 17.324096504671974,
+        "longest_contact_s": 0.5,
+        "_frames": 56,
+        "_frames_with_flame_region": 56,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 13
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "10",
+            "11",
+            0.0404,
+            22.798
+          ]
+        ],
+        [],
+        [],
+        [],
+        [
+          [
+            "12",
+            "11",
+            0.057,
+            32.796
+          ],
+          [
+            "8",
+            "1",
+            0.0717,
+            12.988
+          ]
+        ],
+        [
+          [
+            "12",
+            "11",
+            0.0701,
+            31.585
+          ],
+          [
+            "8",
+            "1",
+            0.0436,
+            11.735
+          ]
+        ],
+        [
+          [
+            "12",
+            "11",
+            0.1277,
+            30.955
+          ]
+        ],
+        [
+          [
+            "12",
+            "11",
+            0.1799,
+            18.339
+          ],
+          [
+            "8",
+            "1",
+            0.0103,
+            5.318
+          ]
+        ],
+        [
+          [
+            "12",
+            "11",
+            0.1728,
+            30.337
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "8",
+            "10",
+            0.0611,
+            10.126
+          ]
+        ],
+        [],
+        [
+          [
+            "16",
+            "17",
+            0.1076,
+            18.636
+          ]
+        ],
+        [
+          [
+            "16",
+            "17",
+            0.095,
+            14.452
+          ]
+        ],
+        [
+          [
+            "16",
+            "17",
+            0.0808,
+            16.397
+          ]
+        ],
+        [
+          [
+            "16",
+            "17",
+            0.0635,
+            14.126
+          ],
+          [
+            "8",
+            "10",
+            0.1333,
+            5.873
+          ],
+          [
+            "18",
+            "10",
+            0.0894,
+            7.83
+          ]
+        ],
+        [],
+        [
+          [
+            "19",
+            "14",
+            0.0165,
+            8.102
+          ],
+          [
+            "10",
+            "14",
+            0.0145,
+            10.479
+          ]
+        ],
+        [
+          [
+            "19",
+            "14",
+            0.0077,
+            7.627
+          ],
+          [
+            "10",
+            "14",
+            0.006,
+            9.27
+          ]
+        ],
+        [
+          [
+            "11",
+            "10",
+            0.0281,
+            10.343
+          ]
+        ],
+        [
+          [
+            "11",
+            "10",
+            0.084,
+            9.75
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "10",
+            "12",
+            0.0452,
+            17.828
+          ]
+        ],
+        [
+          [
+            "10",
+            "12",
+            0.0864,
+            18.596
+          ]
+        ],
+        [
+          [
+            "10",
+            "12",
+            0.0962,
+            17.324
+          ],
+          [
+            "10",
+            "20",
+            0.0299,
+            15.072
+          ]
+        ]
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_05.mp4": {
+      "clip": "fight_05.mp4",
+      "frames_read": 147,
+      "frames_processed": 49,
+      "duration_s": 4.9,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 5.4,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.01787760416666667,
+        "core_frac": 0.8166973926784303,
+        "adj_frac": 0.177734375,
+        "sat_std": 25.583219528198242,
+        "hue_std": 5.150744438171387,
+        "in_region_flicker": 14.253646477132262,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 49,
+        "_frames_with_flame_region": 49,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_06.mp4": {
+      "clip": "fight_06.mp4",
+      "frames_read": 165,
+      "frames_processed": 55,
+      "duration_s": 5.51,
+      "eval_fps": 9.99,
+      "source_fps": 29.97,
+      "wall_s": 5.9,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.005546875,
+        "core_frac": 0.04923599320882852,
+        "adj_frac": 0.667590027700831,
+        "sat_std": 14.9127779006958,
+        "hue_std": 1.8354692459106445,
+        "in_region_flicker": 13.021122510561256,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 55,
+        "_frames_with_flame_region": 55,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "1",
+            "4",
+            0.0072,
+            10.829
+          ]
+        ],
+        [
+          [
+            "1",
+            "4",
+            0.0063,
+            16.044
+          ]
+        ],
+        [
+          [
+            "1",
+            "4",
+            0.0056,
+            18.682
+          ]
+        ],
+        [
+          [
+            "1",
+            "4",
+            0.0049,
+            12.56
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_07.mp4": {
+      "clip": "fight_07.mp4",
+      "frames_read": 102,
+      "frames_processed": 34,
+      "duration_s": 3.41,
+      "eval_fps": 9.98,
+      "source_fps": 29.93,
+      "wall_s": 4.3,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.034195963541666666,
+        "core_frac": 0.09144904308475535,
+        "adj_frac": 1.5565939771547248,
+        "sat_std": 20.584592819213867,
+        "hue_std": 1.871315360069275,
+        "in_region_flicker": 0.11013802950975726,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 34,
+        "_frames_with_flame_region": 3,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_08.mp4": {
+      "clip": "fight_08.mp4",
+      "frames_read": 132,
+      "frames_processed": 44,
+      "duration_s": 4.4,
+      "eval_fps": 9.99,
+      "source_fps": 29.97,
+      "wall_s": 5.1,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.07214680989583333,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 2.187166452407837,
+        "hue_std": 2.6475725173950195,
+        "in_region_flicker": 10.203633515334618,
+        "pair_iou": 0.08674470171609104,
+        "motion_energy": 27.666904306497422,
+        "longest_contact_s": 0.3,
+        "_frames": 44,
+        "_frames_with_flame_region": 44,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 5
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [
+          [
+            "1",
+            "2",
+            0.0867,
+            31.475
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.0831,
+            36.843
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "2",
+            "3",
+            0.116,
+            20.17
+          ]
+        ],
+        [
+          [
+            "2",
+            "3",
+            0.1142,
+            26.763
+          ]
+        ],
+        [
+          [
+            "2",
+            "3",
+            0.0653,
+            27.667
+          ]
+        ],
+        [
+          [
+            "2",
+            "3",
+            0.0216,
+            24.218
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_09.mp4": {
+      "clip": "fight_09.mp4",
+      "frames_read": 185,
+      "frames_processed": 61,
+      "duration_s": 4.95,
+      "eval_fps": 12.33,
+      "source_fps": 37.0,
+      "wall_s": 6.2,
+      "alert_counts": {
+        "fight": 1
+      },
+      "alerts": [
+        {
+          "type": "fight",
+          "severity": "critical",
+          "t": 3.73,
+          "detail": "Two subjects in sustained contact with violent motion (overlap 0.11, motion energy 42.2) for over 0.3s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.056142578125,
+        "core_frac": 0.03780392156862745,
+        "adj_frac": 1.03125,
+        "sat_std": 13.191300392150879,
+        "hue_std": 2.635207414627075,
+        "in_region_flicker": 18.295162589562047,
+        "pair_iou": 0.19875938491064826,
+        "motion_energy": 41.11658081145029,
+        "longest_contact_s": 0.41,
+        "_frames": 61,
+        "_frames_with_flame_region": 59,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 24
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "5",
+            "6",
+            0.0193,
+            20.192
+          ]
+        ],
+        [
+          [
+            "5",
+            "6",
+            0.0365,
+            17.286
+          ]
+        ],
+        [
+          [
+            "5",
+            "6",
+            0.0606,
+            18.14
+          ]
+        ],
+        [
+          [
+            "5",
+            "6",
+            0.0716,
+            18.809
+          ]
+        ],
+        [
+          [
+            "5",
+            "6",
+            0.0857,
+            21.107
+          ],
+          [
+            "5",
+            "7",
+            0.167,
+            26.983
+          ]
+        ],
+        [
+          [
+            "5",
+            "6",
+            0.141,
+            23.262
+          ],
+          [
+            "5",
+            "7",
+            0.1384,
+            28.626
+          ]
+        ],
+        [],
+        [
+          [
+            "5",
+            "7",
+            0.2173,
+            37.972
+          ]
+        ],
+        [
+          [
+            "5",
+            "6",
+            0.1728,
+            45.057
+          ]
+        ],
+        [],
+        [],
+        [
+          [
+            "7",
+            "6",
+            0.1944,
+            34.957
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "14",
+            "6",
+            0.0575,
+            31.621
+          ]
+        ],
+        [
+          [
+            "14",
+            "6",
+            0.0307,
+            36.725
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "14",
+            "6",
+            0.0241,
+            35.114
+          ]
+        ],
+        [],
+        [],
+        [
+          [
+            "14",
+            "22",
+            0.1255,
+            38.533
+          ],
+          [
+            "6",
+            "22",
+            0.2092,
+            48.752
+          ]
+        ],
+        [
+          [
+            "14",
+            "22",
+            0.2615,
+            42.242
+          ],
+          [
+            "6",
+            "22",
+            0.0458,
+            38.324
+          ]
+        ],
+        [],
+        [],
+        [],
+        [
+          [
+            "6",
+            "7",
+            0.1003,
+            57.727
+          ]
+        ],
+        [],
+        [
+          [
+            "14",
+            "22",
+            0.11,
+            36.559
+          ],
+          [
+            "6",
+            "22",
+            0.1401,
+            52.354
+          ]
+        ],
+        [
+          [
+            "14",
+            "22",
+            0.1747,
+            46.403
+          ],
+          [
+            "6",
+            "22",
+            0.1287,
+            58.269
+          ],
+          [
+            "6",
+            "7",
+            0.2232,
+            71.523
+          ]
+        ],
+        [
+          [
+            "6",
+            "7",
+            0.1632,
+            73.602
+          ]
+        ],
+        [
+          [
+            "15",
+            "29",
+            0.2032,
+            45.102
+          ]
+        ],
+        [],
+        [],
+        [
+          [
+            "29",
+            "15",
+            0.1338,
+            40.251
+          ],
+          [
+            "6",
+            "7",
+            0.0878,
+            29.279
+          ],
+          [
+            "7",
+            "15",
+            0.0224,
+            32.692
+          ]
+        ],
+        [
+          [
+            "29",
+            "15",
+            0.0306,
+            38.764
+          ],
+          [
+            "6",
+            "7",
+            0.2458,
+            36.559
+          ],
+          [
+            "7",
+            "15",
+            0.1785,
+            32.319
+          ]
+        ],
+        [
+          [
+            "6",
+            "7",
+            0.3181,
+            39.889
+          ],
+          [
+            "6",
+            "34",
+            0.1695,
+            45.37
+          ],
+          [
+            "7",
+            "15",
+            0.2793,
+            36.193
+          ],
+          [
+            "34",
+            "36",
+            0.1395,
+            47.597
+          ]
+        ],
+        [
+          [
+            "29",
+            "35",
+            0.0044,
+            39.467
+          ],
+          [
+            "6",
+            "7",
+            0.3021,
+            40.927
+          ],
+          [
+            "6",
+            "15",
+            0.0054,
+            36.666
+          ],
+          [
+            "6",
+            "34",
+            0.2881,
+            46.013
+          ],
+          [
+            "7",
+            "15",
+            0.269,
+            35.485
+          ]
+        ],
+        [],
+        [
+          [
+            "29",
+            "38",
+            0.1299,
+            40.703
+          ],
+          [
+            "6",
+            "7",
+            0.2463,
+            47.677
+          ],
+          [
+            "6",
+            "34",
+            0.1628,
+            54.106
+          ],
+          [
+            "15",
+            "7",
+            0.3034,
+            40.883
+          ],
+          [
+            "35",
+            "38",
+            0.0151,
+            36.8
+          ]
+        ],
+        [
+          [
+            "29",
+            "38",
+            0.1602,
+            44.91
+          ],
+          [
+            "6",
+            "7",
+            0.4345,
+            46.537
+          ],
+          [
+            "15",
+            "7",
+            0.1522,
+            39.652
+          ],
+          [
+            "35",
+            "38",
+            0.0053,
+            36.274
+          ]
+        ],
+        [
+          [
+            "29",
+            "38",
+            0.1753,
+            41.306
+          ],
+          [
+            "6",
+            "15",
+            0.0049,
+            47.751
+          ],
+          [
+            "35",
+            "38",
+            0.0526,
+            28.209
+          ]
+        ],
+        [
+          [
+            "29",
+            "38",
+            0.2226,
+            44.918
+          ],
+          [
+            "15",
+            "7",
+            0.076,
+            48.859
+          ],
+          [
+            "35",
+            "38",
+            0.0519,
+            25.084
+          ]
+        ],
+        [
+          [
+            "29",
+            "38",
+            0.2218,
+            42.057
+          ],
+          [
+            "15",
+            "7",
+            0.237,
+            49.13
+          ],
+          [
+            "35",
+            "38",
+            0.0419,
+            23.443
+          ]
+        ]
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_10.mp4": {
+      "clip": "fight_10.mp4",
+      "frames_read": 185,
+      "frames_processed": 61,
+      "duration_s": 4.95,
+      "eval_fps": 12.33,
+      "source_fps": 37.0,
+      "wall_s": 6.0,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0015071614583333332,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 5.017769813537598,
+        "hue_std": 4.52777099609375,
+        "in_region_flicker": 1.9823008849557522,
+        "pair_iou": 0.17409714472778445,
+        "motion_energy": 9.157773833141903,
+        "longest_contact_s": 0.08,
+        "_frames": 61,
+        "_frames_with_flame_region": 5,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 1
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "21",
+            "28",
+            0.1741,
+            9.158
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_11.mp4": {
+      "clip": "fight_11.mp4",
+      "frames_read": 125,
+      "frames_processed": 41,
+      "duration_s": 4.92,
+      "eval_fps": 8.33,
+      "source_fps": 25.0,
+      "wall_s": 4.8,
+      "alert_counts": {
+        "fight": 1
+      },
+      "alerts": [
+        {
+          "type": "fight",
+          "severity": "critical",
+          "t": 1.44,
+          "detail": "Two subjects in sustained contact with violent motion (overlap 0.13, motion energy 42.7) for over 0.3s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.010247395833333334,
+        "core_frac": 0.008609516756156267,
+        "adj_frac": 5.0,
+        "sat_std": 26.14134979248047,
+        "hue_std": 4.6811418533325195,
+        "in_region_flicker": 30.5088515660463,
+        "pair_iou": 0.2241875163524798,
+        "motion_energy": 28.66995899631512,
+        "longest_contact_s": 3.0,
+        "_frames": 41,
+        "_frames_with_flame_region": 41,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 40
+      },
+      "pair_frames": [
+        [
+          [
+            "2",
+            "5",
+            0.0889,
+            0.0
+          ],
+          [
+            "3",
+            "4",
+            0.1506,
+            0.0
+          ]
+        ],
+        [
+          [
+            "2",
+            "5",
+            0.1279,
+            14.454
+          ],
+          [
+            "3",
+            "4",
+            0.1769,
+            12.516
+          ]
+        ],
+        [
+          [
+            "2",
+            "5",
+            0.1798,
+            15.81
+          ],
+          [
+            "3",
+            "4",
+            0.2713,
+            18.683
+          ]
+        ],
+        [
+          [
+            "2",
+            "5",
+            0.1753,
+            11.051
+          ],
+          [
+            "3",
+            "4",
+            0.2411,
+            15.177
+          ]
+        ],
+        [
+          [
+            "2",
+            "5",
+            0.1986,
+            9.173
+          ],
+          [
+            "3",
+            "4",
+            0.1939,
+            10.582
+          ]
+        ],
+        [
+          [
+            "2",
+            "5",
+            0.1913,
+            9.855
+          ],
+          [
+            "3",
+            "4",
+            0.1336,
+            12.792
+          ]
+        ],
+        [
+          [
+            "2",
+            "5",
+            0.185,
+            6.44
+          ],
+          [
+            "3",
+            "4",
+            0.1422,
+            11.728
+          ]
+        ],
+        [
+          [
+            "2",
+            "5",
+            0.1389,
+            13.139
+          ],
+          [
+            "3",
+            "4",
+            0.2238,
+            22.863
+          ]
+        ],
+        [
+          [
+            "2",
+            "5",
+            0.1012,
+            23.023
+          ],
+          [
+            "3",
+            "4",
+            0.2379,
+            31.297
+          ]
+        ],
+        [
+          [
+            "2",
+            "5",
+            0.081,
+            23.024
+          ],
+          [
+            "3",
+            "4",
+            0.2748,
+            33.394
+          ],
+          [
+            "3",
+            "6",
+            0.0671,
+            31.099
+          ]
+        ],
+        [
+          [
+            "2",
+            "5",
+            0.0525,
+            26.101
+          ],
+          [
+            "3",
+            "4",
+            0.2795,
+            42.694
+          ],
+          [
+            "3",
+            "6",
+            0.4057,
+            43.873
+          ],
+          [
+            "4",
+            "6",
+            0.143,
+            42.292
+          ]
+        ],
+        [
+          [
+            "2",
+            "5",
+            0.0233,
+            12.976
+          ],
+          [
+            "3",
+            "4",
+            0.1292,
+            31.661
+          ],
+          [
+            "3",
+            "6",
+            0.5247,
+            43.058
+          ],
+          [
+            "4",
+            "6",
+            0.0823,
+            34.492
+          ]
+        ],
+        [
+          [
+            "2",
+            "4",
+            0.0127,
+            21.22
+          ],
+          [
+            "3",
+            "6",
+            0.234,
+            46.033
+          ],
+          [
+            "4",
+            "6",
+            0.3259,
+            37.35
+          ]
+        ],
+        [
+          [
+            "2",
+            "6",
+            0.0539,
+            21.905
+          ]
+        ],
+        [
+          [
+            "2",
+            "4",
+            0.1129,
+            20.227
+          ]
+        ],
+        [
+          [
+            "2",
+            "5",
+            0.0051,
+            18.936
+          ]
+        ],
+        [
+          [
+            "2",
+            "4",
+            0.3348,
+            17.683
+          ]
+        ],
+        [
+          [
+            "2",
+            "4",
+            0.3552,
+            28.61
+          ],
+          [
+            "3",
+            "9",
+            0.1233,
+            24.609
+          ]
+        ],
+        [
+          [
+            "3",
+            "9",
+            0.2316,
+            28.005
+          ]
+        ],
+        [
+          [
+            "3",
+            "9",
+            0.103,
+            22.041
+          ]
+        ],
+        [
+          [
+            "3",
+            "13",
+            0.2047,
+            28.73
+          ],
+          [
+            "5",
+            "6",
+            0.0108,
+            26.407
+          ]
+        ],
+        [
+          [
+            "3",
+            "13",
+            0.1656,
+            20.671
+          ]
+        ],
+        [
+          [
+            "3",
+            "13",
+            0.0489,
+            22.313
+          ],
+          [
+            "4",
+            "13",
+            0.0748,
+            28.765
+          ]
+        ],
+        [
+          [
+            "3",
+            "13",
+            0.0771,
+            18.46
+          ],
+          [
+            "5",
+            "4",
+            0.0581,
+            26.005
+          ],
+          [
+            "5",
+            "14",
+            0.2944,
+            21.869
+          ],
+          [
+            "4",
+            "13",
+            0.0249,
+            27.649
+          ]
+        ],
+        [
+          [
+            "3",
+            "13",
+            0.0909,
+            15.282
+          ],
+          [
+            "4",
+            "13",
+            0.0263,
+            21.793
+          ],
+          [
+            "4",
+            "14",
+            0.0237,
+            26.019
+          ]
+        ],
+        [
+          [
+            "5",
+            "4",
+            0.154,
+            39.289
+          ],
+          [
+            "5",
+            "14",
+            0.3471,
+            35.642
+          ],
+          [
+            "4",
+            "13",
+            0.1246,
+            31.941
+          ],
+          [
+            "4",
+            "14",
+            0.0151,
+            37.406
+          ]
+        ],
+        [
+          [
+            "5",
+            "4",
+            0.194,
+            26.146
+          ],
+          [
+            "5",
+            "14",
+            0.3682,
+            26.599
+          ],
+          [
+            "4",
+            "13",
+            0.1585,
+            19.625
+          ],
+          [
+            "4",
+            "14",
+            0.0514,
+            27.393
+          ]
+        ],
+        [
+          [
+            "4",
+            "13",
+            0.1326,
+            26.982
+          ],
+          [
+            "4",
+            "14",
+            0.0723,
+            39.007
+          ]
+        ],
+        [
+          [
+            "4",
+            "13",
+            0.1406,
+            63.606
+          ],
+          [
+            "4",
+            "14",
+            0.2072,
+            60.401
+          ]
+        ],
+        [
+          [
+            "3",
+            "13",
+            0.0339,
+            33.899
+          ],
+          [
+            "3",
+            "16",
+            0.2913,
+            40.05
+          ],
+          [
+            "3",
+            "17",
+            0.044,
+            36.102
+          ],
+          [
+            "4",
+            "5",
+            0.0497,
+            58.84
+          ],
+          [
+            "13",
+            "16",
+            0.0783,
+            39.879
+          ],
+          [
+            "13",
+            "17",
+            0.2381,
+            36.628
+          ],
+          [
+            "16",
+            "17",
+            0.1325,
+            40.248
+          ]
+        ],
+        [
+          [
+            "3",
+            "16",
+            0.2206,
+            50.63
+          ],
+          [
+            "3",
+            "17",
+            0.0094,
+            46.613
+          ],
+          [
+            "13",
+            "16",
+            0.0065,
+            48.036
+          ],
+          [
+            "13",
+            "17",
+            0.1856,
+            46.176
+          ],
+          [
+            "16",
+            "17",
+            0.1371,
+            48.999
+          ]
+        ],
+        [
+          [
+            "3",
+            "16",
+            0.1754,
+            21.328
+          ],
+          [
+            "4",
+            "13",
+            0.0481,
+            44.569
+          ],
+          [
+            "13",
+            "17",
+            0.175,
+            33.996
+          ],
+          [
+            "16",
+            "17",
+            0.1307,
+            25.231
+          ]
+        ],
+        [
+          [
+            "3",
+            "16",
+            0.1368,
+            35.928
+          ],
+          [
+            "4",
+            "13",
+            0.1361,
+            40.529
+          ],
+          [
+            "13",
+            "17",
+            0.1627,
+            32.973
+          ],
+          [
+            "16",
+            "17",
+            0.1142,
+            35.444
+          ]
+        ],
+        [
+          [
+            "3",
+            "16",
+            0.1828,
+            39.851
+          ],
+          [
+            "4",
+            "13",
+            0.0368,
+            46.625
+          ],
+          [
+            "4",
+            "1",
+            0.0458,
+            44.664
+          ],
+          [
+            "13",
+            "17",
+            0.2346,
+            44.442
+          ],
+          [
+            "16",
+            "17",
+            0.1093,
+            45.764
+          ],
+          [
+            "1",
+            "5",
+            0.1422,
+            44.416
+          ]
+        ],
+        [
+          [
+            "3",
+            "16",
+            0.2072,
+            37.007
+          ],
+          [
+            "4",
+            "13",
+            0.0359,
+            42.287
+          ],
+          [
+            "4",
+            "1",
+            0.1305,
+            40.098
+          ],
+          [
+            "13",
+            "16",
+            0.0121,
+            39.502
+          ],
+          [
+            "13",
+            "17",
+            0.2614,
+            41.297
+          ],
+          [
+            "16",
+            "17",
+            0.1163,
+            40.509
+          ],
+          [
+            "1",
+            "5",
+            0.1308,
+            38.982
+          ]
+        ],
+        [
+          [
+            "4",
+            "13",
+            0.0958,
+            43.113
+          ],
+          [
+            "4",
+            "1",
+            0.1235,
+            38.475
+          ],
+          [
+            "13",
+            "17",
+            0.2246,
+            41.591
+          ],
+          [
+            "16",
+            "17",
+            0.102,
+            39.348
+          ],
+          [
+            "18",
+            "1",
+            0.0385,
+            37.747
+          ],
+          [
+            "1",
+            "12",
+            0.0854,
+            38.246
+          ]
+        ],
+        [
+          [
+            "4",
+            "13",
+            0.1586,
+            35.11
+          ],
+          [
+            "4",
+            "17",
+            0.0141,
+            27.076
+          ],
+          [
+            "4",
+            "1",
+            0.1181,
+            20.13
+          ],
+          [
+            "13",
+            "16",
+            0.0001,
+            28.346
+          ],
+          [
+            "13",
+            "17",
+            0.2001,
+            31.323
+          ],
+          [
+            "16",
+            "17",
+            0.0856,
+            30.126
+          ],
+          [
+            "18",
+            "1",
+            0.0913,
+            19.933
+          ]
+        ],
+        [
+          [
+            "4",
+            "13",
+            0.1669,
+            33.713
+          ],
+          [
+            "4",
+            "17",
+            0.0509,
+            29.823
+          ],
+          [
+            "4",
+            "1",
+            0.0528,
+            31.581
+          ],
+          [
+            "13",
+            "16",
+            0.0232,
+            35.231
+          ],
+          [
+            "13",
+            "17",
+            0.1841,
+            32.545
+          ],
+          [
+            "16",
+            "17",
+            0.0623,
+            36.863
+          ]
+        ],
+        [
+          [
+            "4",
+            "13",
+            0.2708,
+            35.244
+          ],
+          [
+            "4",
+            "17",
+            0.0906,
+            27.6
+          ],
+          [
+            "4",
+            "1",
+            0.0478,
+            30.928
+          ],
+          [
+            "13",
+            "17",
+            0.1682,
+            30.198
+          ],
+          [
+            "16",
+            "17",
+            0.0396,
+            34.611
+          ],
+          [
+            "16",
+            "19",
+            0.3356,
+            39.99
+          ],
+          [
+            "17",
+            "19",
+            0.0155,
+            35.69
+          ]
+        ],
+        [
+          [
+            "4",
+            "13",
+            0.3029,
+            36.223
+          ],
+          [
+            "4",
+            "17",
+            0.1034,
+            27.564
+          ],
+          [
+            "4",
+            "1",
+            0.0459,
+            35.845
+          ],
+          [
+            "13",
+            "17",
+            0.1495,
+            32.36
+          ],
+          [
+            "16",
+            "17",
+            0.0066,
+            30.214
+          ],
+          [
+            "16",
+            "19",
+            0.3963,
+            30.507
+          ],
+          [
+            "17",
+            "19",
+            0.0037,
+            31.905
+          ],
+          [
+            "1",
+            "18",
+            0.3745,
+            39.352
+          ]
+        ],
+        [
+          [
+            "4",
+            "13",
+            0.3316,
+            54.116
+          ],
+          [
+            "4",
+            "17",
+            0.0777,
+            47.35
+          ],
+          [
+            "4",
+            "1",
+            0.1531,
+            50.264
+          ],
+          [
+            "13",
+            "17",
+            0.1574,
+            50.441
+          ],
+          [
+            "13",
+            "19",
+            0.0109,
+            38.011
+          ],
+          [
+            "16",
+            "19",
+            0.2996,
+            27.408
+          ],
+          [
+            "1",
+            "18",
+            0.3207,
+            46.429
+          ]
+        ]
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_12.mp4": {
+      "clip": "fight_12.mp4",
+      "frames_read": 115,
+      "frames_processed": 38,
+      "duration_s": 4.96,
+      "eval_fps": 7.67,
+      "source_fps": 23.0,
+      "wall_s": 4.4,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.003986002604166667,
+        "core_frac": 0.0,
+        "adj_frac": 0.0,
+        "sat_std": 1.7779224514961243,
+        "hue_std": 0.9787841439247131,
+        "in_region_flicker": 1.9609169597096936,
+        "pair_iou": 0.07657545219028913,
+        "motion_energy": 10.697868081912942,
+        "longest_contact_s": 0.13,
+        "_frames": 38,
+        "_frames_with_flame_region": 24,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 2
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "6",
+            "1",
+            0.0853,
+            13.204
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "4",
+            "5",
+            0.0679,
+            8.191
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_13.mp4": {
+      "clip": "fight_13.mp4",
+      "frames_read": 153,
+      "frames_processed": 51,
+      "duration_s": 5.1,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 5.5,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.011741536458333333,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 13.86962604522705,
+        "hue_std": 5.17708683013916,
+        "in_region_flicker": 35.77219512195122,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 51,
+        "_frames_with_flame_region": 51,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_14.mp4": {
+      "clip": "fight_14.mp4",
+      "frames_read": 159,
+      "frames_processed": 53,
+      "duration_s": 5.3,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 5.7,
+      "alert_counts": {
+        "fight": 1
+      },
+      "alerts": [
+        {
+          "type": "fight",
+          "severity": "critical",
+          "t": 1.6,
+          "detail": "Two subjects in sustained contact with violent motion (overlap 0.28, motion energy 46.0) for over 0.3s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.010504557291666666,
+        "core_frac": 0.7627175368139224,
+        "adj_frac": 0.0,
+        "sat_std": 14.560627937316895,
+        "hue_std": 2.5356063842773438,
+        "in_region_flicker": 36.23472028668127,
+        "pair_iou": 0.09017950358956403,
+        "motion_energy": 33.103853659968934,
+        "longest_contact_s": 0.8,
+        "_frames": 53,
+        "_frames_with_flame_region": 53,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 20
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "1",
+            "2",
+            0.0448,
+            22.699
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.0566,
+            17.63
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.0372,
+            25.862
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.0897,
+            29.917
+          ]
+        ],
+        [],
+        [
+          [
+            "1",
+            "3",
+            0.0642,
+            33.609
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.0501,
+            43.753
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.0381,
+            31.401
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.1512,
+            26.228
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.1247,
+            46.008
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.2757,
+            36.676
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.2755,
+            30.281
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.2101,
+            37.454
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.166,
+            32.702
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.1124,
+            33.506
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.0616,
+            33.876
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.0072,
+            21.291
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "3",
+            "2",
+            0.0523,
+            33.836
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.0687,
+            29.546
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.0239,
+            18.957
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "3",
+            "2",
+            0.0989,
+            28.862
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.1464,
+            34.133
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.077,
+            38.79
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.0313,
+            24.16
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.0907,
+            27.811
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.0859,
+            23.626
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.016,
+            26.803
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.0401,
+            33.101
+          ]
+        ],
+        [],
+        [],
+        [],
+        [
+          [
+            "3",
+            "2",
+            0.0115,
+            25.225
+          ]
+        ],
+        [
+          [
+            "3",
+            "2",
+            0.055,
+            25.272
+          ]
+        ],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_15.mp4": {
+      "clip": "fight_15.mp4",
+      "frames_read": 125,
+      "frames_processed": 41,
+      "duration_s": 4.24,
+      "eval_fps": 9.67,
+      "source_fps": 29.0,
+      "wall_s": 5.0,
+      "alert_counts": {
+        "fight": 1
+      },
+      "alerts": [
+        {
+          "type": "fight",
+          "severity": "critical",
+          "t": 2.38,
+          "detail": "Two subjects in sustained contact with violent motion (overlap 0.11, motion energy 47.7) for over 0.3s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.16489583333333332,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 13.624539375305176,
+        "hue_std": 5.7633185386657715,
+        "in_region_flicker": 19.090327120837213,
+        "pair_iou": 0.11734991818725155,
+        "motion_energy": 47.90455683662553,
+        "longest_contact_s": 0.21,
+        "_frames": 41,
+        "_frames_with_flame_region": 41,
+        "_frames_passing_fire_gates": 4,
+        "_frames_with_contact_pair": 6
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "1",
+            "2",
+            0.1045,
+            61.563
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1138,
+            47.663
+          ]
+        ],
+        [],
+        [
+          [
+            "1",
+            "2",
+            0.1118,
+            31.807
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1209,
+            43.64
+          ],
+          [
+            "1",
+            "3",
+            0.0205,
+            40.762
+          ],
+          [
+            "2",
+            "3",
+            0.0193,
+            32.607
+          ]
+        ],
+        [
+          [
+            "2",
+            "3",
+            0.0175,
+            62.385
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "1",
+            "4",
+            0.2401,
+            48.686
+          ]
+        ],
+        [
+          [
+            "1",
+            "4",
+            0.2382,
+            48.146
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fight_16.mp4": {
+      "clip": "fight_16.mp4",
+      "frames_read": 624,
+      "frames_processed": 208,
+      "duration_s": 20.82,
+      "eval_fps": 9.99,
+      "source_fps": 29.97,
+      "wall_s": 17.6,
+      "alert_counts": {
+        "fight": 1
+      },
+      "alerts": [
+        {
+          "type": "fight",
+          "severity": "critical",
+          "t": 12.91,
+          "detail": "Two subjects in sustained contact with violent motion (overlap 0.12, motion energy 43.0) for over 0.3s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.019895833333333335,
+        "core_frac": 0.22093395792170933,
+        "adj_frac": 0.23479335574451254,
+        "sat_std": 28.153654098510742,
+        "hue_std": 4.037968397140503,
+        "in_region_flicker": 32.71302863969777,
+        "pair_iou": 0.1699177026649545,
+        "motion_energy": 30.60357048322108,
+        "longest_contact_s": 0.7,
+        "_frames": 208,
+        "_frames_with_flame_region": 198,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 43
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "1",
+            "2",
+            0.1165,
+            30.589
+          ],
+          [
+            "1",
+            "3",
+            0.4179,
+            30.475
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1615,
+            20.151
+          ],
+          [
+            "1",
+            "3",
+            0.4279,
+            20.041
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1476,
+            22.95
+          ],
+          [
+            "1",
+            "3",
+            0.455,
+            22.91
+          ]
+        ],
+        [],
+        [
+          [
+            "3",
+            "6",
+            0.0807,
+            34.309
+          ]
+        ],
+        [
+          [
+            "6",
+            "1",
+            0.127,
+            30.604
+          ],
+          [
+            "7",
+            "1",
+            0.08,
+            31.715
+          ]
+        ],
+        [
+          [
+            "7",
+            "1",
+            0.0318,
+            25.476
+          ]
+        ],
+        [
+          [
+            "6",
+            "1",
+            0.0578,
+            38.943
+          ],
+          [
+            "7",
+            "1",
+            0.0064,
+            37.866
+          ]
+        ],
+        [],
+        [],
+        [
+          [
+            "10",
+            "6",
+            0.0594,
+            32.608
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "10",
+            "3",
+            0.0473,
+            21.388
+          ]
+        ],
+        [
+          [
+            "10",
+            "3",
+            0.0815,
+            0.091
+          ]
+        ],
+        [
+          [
+            "10",
+            "3",
+            0.113,
+            0.235
+          ]
+        ],
+        [
+          [
+            "10",
+            "3",
+            0.1338,
+            35.29
+          ]
+        ],
+        [
+          [
+            "10",
+            "3",
+            0.1082,
+            34.108
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "10",
+            "3",
+            0.1135,
+            33.079
+          ]
+        ],
+        [
+          [
+            "10",
+            "3",
+            0.0291,
+            20.669
+          ]
+        ],
+        [
+          [
+            "10",
+            "12",
+            0.3177,
+            20.914
+          ]
+        ],
+        [
+          [
+            "10",
+            "12",
+            0.308,
+            14.662
+          ]
+        ],
+        [
+          [
+            "10",
+            "12",
+            0.2847,
+            25.412
+          ]
+        ],
+        [
+          [
+            "10",
+            "12",
+            0.2499,
+            26.92
+          ]
+        ],
+        [
+          [
+            "10",
+            "12",
+            0.2312,
+            27.856
+          ]
+        ],
+        [
+          [
+            "10",
+            "12",
+            0.2276,
+            23.629
+          ]
+        ],
+        [
+          [
+            "10",
+            "12",
+            0.146,
+            33.283
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "17",
+            "15",
+            0.0479,
+            61.082
+          ]
+        ],
+        [
+          [
+            "12",
+            "15",
+            0.2467,
+            28.83
+          ]
+        ],
+        [
+          [
+            "12",
+            "15",
+            0.0367,
+            18.401
+          ]
+        ],
+        [],
+        [],
+        [],
+        [
+          [
+            "15",
+            "18",
+            0.2794,
+            57.693
+          ]
+        ],
+        [
+          [
+            "15",
+            "18",
+            0.2573,
+            34.754
+          ]
+        ],
+        [
+          [
+            "15",
+            "18",
+            0.142,
+            43.016
+          ]
+        ],
+        [
+          [
+            "15",
+            "18",
+            0.1245,
+            39.505
+          ],
+          [
+            "18",
+            "17",
+            0.1026,
+            50.337
+          ]
+        ],
+        [
+          [
+            "18",
+            "17",
+            0.0493,
+            51.202
+          ]
+        ],
+        [],
+        [],
+        [
+          [
+            "15",
+            "18",
+            0.1248,
+            37.142
+          ]
+        ],
+        [
+          [
+            "15",
+            "18",
+            0.2563,
+            28.502
+          ],
+          [
+            "15",
+            "12",
+            0.0996,
+            24.061
+          ]
+        ],
+        [
+          [
+            "15",
+            "18",
+            0.2437,
+            34.562
+          ],
+          [
+            "15",
+            "12",
+            0.0643,
+            29.194
+          ],
+          [
+            "18",
+            "17",
+            0.0193,
+            40.566
+          ]
+        ],
+        [],
+        [],
+        [],
+        [
+          [
+            "15",
+            "17",
+            0.1014,
+            37.947
+          ]
+        ],
+        [],
+        [
+          [
+            "22",
+            "18",
+            0.2025,
+            37.832
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "22",
+            "18",
+            0.1339,
+            26.794
+          ]
+        ],
+        [
+          [
+            "22",
+            "18",
+            0.1684,
+            24.932
+          ]
+        ],
+        [
+          [
+            "22",
+            "18",
+            0.1236,
+            26.185
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "25",
+            "18",
+            0.1496,
+            48.02
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "26",
+            "18",
+            0.0305,
+            26.498
+          ]
+        ],
+        [
+          [
+            "18",
+            "17",
+            0.1401,
+            26.701
+          ]
+        ],
+        [
+          [
+            "18",
+            "17",
+            0.3012,
+            36.649
+          ]
+        ],
+        [
+          [
+            "26",
+            "18",
+            0.005,
+            20.177
+          ],
+          [
+            "18",
+            "17",
+            0.1963,
+            21.951
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "30",
+            "22",
+            0.0462,
+            41.111
+          ]
+        ],
+        [
+          [
+            "30",
+            "22",
+            0.1969,
+            32.124
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "32",
+            "22",
+            0.2089,
+            28.407
+          ]
+        ],
+        [
+          [
+            "32",
+            "22",
+            0.0331,
+            26.374
+          ]
+        ],
+        [
+          [
+            "32",
+            "22",
+            0.0524,
+            25.123
+          ]
+        ],
+        [
+          [
+            "32",
+            "22",
+            0.0622,
+            24.007
+          ],
+          [
+            "32",
+            "35",
+            0.1709,
+            24.778
+          ],
+          [
+            "22",
+            "35",
+            0.187,
+            28.625
+          ]
+        ],
+        [
+          [
+            "32",
+            "22",
+            0.1073,
+            33.042
+          ],
+          [
+            "32",
+            "35",
+            0.2064,
+            34.158
+          ],
+          [
+            "22",
+            "35",
+            0.1042,
+            37.949
+          ]
+        ],
+        [
+          [
+            "22",
+            "35",
+            0.1699,
+            31.68
+          ]
+        ],
+        [
+          [
+            "22",
+            "35",
+            0.1152,
+            42.334
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "37",
+            "32",
+            0.0199,
+            37.654
+          ]
+        ]
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fire_01.mp4": {
+      "clip": "fire_01.mp4",
+      "frames_read": 1801,
+      "frames_processed": 600,
+      "duration_s": 30.0,
+      "eval_fps": 20.0,
+      "source_fps": 60.0,
+      "wall_s": 57.6,
+      "alert_counts": {
+        "fire": 1
+      },
+      "alerts": [
+        {
+          "type": "fire",
+          "severity": "critical",
+          "t": 1.6,
+          "detail": "Sustained flame signature (region 0.255 of frame, in-region flicker 42.5) held for over 1.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.26360188802083334,
+        "core_frac": 0.08367663957778709,
+        "adj_frac": 1.091832244440811,
+        "sat_std": 61.94716835021973,
+        "hue_std": 7.873239517211914,
+        "in_region_flicker": 47.8921035790553,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 600,
+        "_frames_with_flame_region": 600,
+        "_frames_passing_fire_gates": 599,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "fire_02.mp4": {
+      "clip": "fire_02.mp4",
+      "frames_read": 508,
+      "frames_processed": 169,
+      "duration_s": 16.9,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 16.3,
+      "alert_counts": {
+        "fire": 1
+      },
+      "alerts": [
+        {
+          "type": "fire",
+          "severity": "critical",
+          "t": 1.9,
+          "detail": "Sustained flame signature (region 0.006 of frame, in-region flicker 40.0) held for over 1.5s."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.011389973958333334,
+        "core_frac": 0.5590551181102362,
+        "adj_frac": 0.06650544135429262,
+        "sat_std": 26.780776977539062,
+        "hue_std": 5.710051536560059,
+        "in_region_flicker": 28.740225118483412,
+        "pair_iou": 0.1054565596107163,
+        "motion_energy": 2.529986962190352,
+        "longest_contact_s": 0.1,
+        "_frames": 169,
+        "_frames_with_flame_region": 169,
+        "_frames_passing_fire_gates": 106,
+        "_frames_with_contact_pair": 1
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "24",
+            "29",
+            0.0,
+            33.76
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "43",
+            "46",
+            0.1055,
+            2.53
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_01.mp4": {
+      "clip": "neg_01.mp4",
+      "frames_read": 115,
+      "frames_processed": 38,
+      "duration_s": 4.96,
+      "eval_fps": 7.67,
+      "source_fps": 23.0,
+      "wall_s": 5.1,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.1317822265625,
+        "core_frac": 0.2210304912111306,
+        "adj_frac": 0.5765238562207236,
+        "sat_std": 21.490793228149414,
+        "hue_std": 2.7590558528900146,
+        "in_region_flicker": 13.12273609974883,
+        "pair_iou": 0.07753324790356286,
+        "motion_energy": 7.104986691508387,
+        "longest_contact_s": 4.17,
+        "_frames": 38,
+        "_frames_with_flame_region": 38,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 32
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "1",
+            "2",
+            0.028,
+            23.71
+          ],
+          [
+            "1",
+            "3",
+            0.0636,
+            23.797
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.0269,
+            26.048
+          ],
+          [
+            "1",
+            "3",
+            0.0605,
+            25.881
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.019,
+            27.548
+          ],
+          [
+            "1",
+            "3",
+            0.0597,
+            27.49
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.0161,
+            26.419
+          ],
+          [
+            "1",
+            "3",
+            0.0586,
+            26.701
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.0192,
+            20.512
+          ],
+          [
+            "1",
+            "3",
+            0.0572,
+            21.001
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.1081,
+            16.152
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.1067,
+            13.988
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.1351,
+            11.072
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.143,
+            8.18
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.1337,
+            6.729
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.1356,
+            5.298
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.1301,
+            7.438
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0701,
+            4.84
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0923,
+            3.989
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.1101,
+            4.637
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.1123,
+            4.291
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0964,
+            32.506
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0912,
+            6.113
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0822,
+            8.749
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0788,
+            8.217
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0667,
+            6.834
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0703,
+            6.238
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0703,
+            5.805
+          ],
+          [
+            "1",
+            "7",
+            0.0162,
+            6.325
+          ],
+          [
+            "3",
+            "7",
+            0.0121,
+            3.524
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0719,
+            6.892
+          ],
+          [
+            "1",
+            "7",
+            0.0165,
+            7.827
+          ],
+          [
+            "3",
+            "7",
+            0.0115,
+            3.228
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0747,
+            7.318
+          ],
+          [
+            "1",
+            "7",
+            0.0167,
+            8.251
+          ],
+          [
+            "3",
+            "7",
+            0.0133,
+            3.231
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0763,
+            7.94
+          ],
+          [
+            "1",
+            "7",
+            0.0167,
+            9.119
+          ],
+          [
+            "3",
+            "7",
+            0.0144,
+            2.897
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0756,
+            8.383
+          ],
+          [
+            "1",
+            "7",
+            0.0164,
+            9.51
+          ],
+          [
+            "3",
+            "7",
+            0.0171,
+            3.113
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0748,
+            6.775
+          ],
+          [
+            "1",
+            "7",
+            0.0163,
+            7.677
+          ],
+          [
+            "1",
+            "8",
+            0.0232,
+            7.088
+          ],
+          [
+            "3",
+            "7",
+            0.0182,
+            2.787
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0732,
+            6.128
+          ],
+          [
+            "1",
+            "8",
+            0.0228,
+            6.301
+          ],
+          [
+            "2",
+            "8",
+            0.0014,
+            3.211
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0744,
+            5.392
+          ],
+          [
+            "1",
+            "7",
+            0.0152,
+            5.914
+          ],
+          [
+            "1",
+            "8",
+            0.0219,
+            5.585
+          ],
+          [
+            "3",
+            "7",
+            0.0121,
+            3.422
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0828,
+            5.124
+          ],
+          [
+            "1",
+            "7",
+            0.0134,
+            5.557
+          ],
+          [
+            "1",
+            "8",
+            0.0017,
+            5.299
+          ],
+          [
+            "3",
+            "7",
+            0.008,
+            2.294
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.0808,
+            4.778
+          ],
+          [
+            "1",
+            "7",
+            0.0139,
+            5.21
+          ],
+          [
+            "3",
+            "7",
+            0.006,
+            2.38
+          ]
+        ]
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_02.mp4": {
+      "clip": "neg_02.mp4",
+      "frames_read": 55,
+      "frames_processed": 18,
+      "duration_s": 4.91,
+      "eval_fps": 3.67,
+      "source_fps": 11.0,
+      "wall_s": 3.2,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.003986002604166667,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 1.9239696860313416,
+        "hue_std": 4.47540545463562,
+        "in_region_flicker": 19.320380938482007,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 18,
+        "_frames_with_flame_region": 18,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_03.mp4": {
+      "clip": "neg_03.mp4",
+      "frames_read": 5395,
+      "frames_processed": 1798,
+      "duration_s": 179.98,
+      "eval_fps": 9.99,
+      "source_fps": 29.97,
+      "wall_s": 144.3,
+      "alert_counts": {
+        "dwelling": 2
+      },
+      "alerts": [
+        {
+          "type": "dwelling",
+          "severity": "high",
+          "t": 51.45,
+          "detail": "A vehicle has been stationary/present for over 20 seconds."
+        },
+        {
+          "type": "dwelling",
+          "severity": "high",
+          "t": 167.07,
+          "detail": "A vehicle has been stationary/present for over 20 seconds."
+        }
+      ],
+      "features": {
+        "flame_area_frac": 0.006943359375,
+        "core_frac": 0.5781584582441114,
+        "adj_frac": 0.0,
+        "sat_std": 5.049278259277344,
+        "hue_std": 1.254546046257019,
+        "in_region_flicker": 0.2304015296367113,
+        "pair_iou": 0.10660958795833564,
+        "motion_energy": 16.702719062888555,
+        "longest_contact_s": 0.2,
+        "_frames": 1798,
+        "_frames_with_flame_region": 1263,
+        "_frames_passing_fire_gates": 2,
+        "_frames_with_contact_pair": 6
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "71",
+            "64",
+            0.0106,
+            7.205
+          ]
+        ],
+        [],
+        [
+          [
+            "71",
+            "64",
+            0.02,
+            6.168
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0421,
+            5.411
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0329,
+            12.275
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0256,
+            7.015
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0251,
+            1.771
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0251,
+            11.269
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0377,
+            9.265
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0351,
+            8.985
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0533,
+            8.282
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0471,
+            9.458
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0365,
+            3.178
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0353,
+            3.379
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0301,
+            7.287
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0305,
+            10.773
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0147,
+            4.482
+          ]
+        ],
+        [],
+        [
+          [
+            "71",
+            "64",
+            0.0101,
+            14.947
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0135,
+            11.653
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0207,
+            8.071
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0218,
+            5.516
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0151,
+            9.96
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.012,
+            3.082
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0116,
+            7.03
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0126,
+            14.184
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0162,
+            1.81
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0121,
+            7.966
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0231,
+            6.682
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0332,
+            9.666
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0401,
+            4.029
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.028,
+            5.871
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0417,
+            15.9
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0372,
+            2.979
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0346,
+            8.711
+          ]
+        ],
+        [
+          [
+            "71",
+            "64",
+            0.0511,
+            11.136
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "116",
+            "117",
+            0.0872,
+            17.477
+          ]
+        ],
+        [
+          [
+            "116",
+            "117",
+            0.126,
+            27.498
+          ]
+        ],
+        [],
+        [
+          [
+            "116",
+            "117",
+            0.1751,
+            15.929
+          ]
+        ],
+        [],
+        [],
+        [],
+        [
+          [
+            "116",
+            "117",
+            0.1539,
+            29.073
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_10.mp4": {
+      "clip": "neg_10.mp4",
+      "frames_read": 66,
+      "frames_processed": 22,
+      "duration_s": 2.65,
+      "eval_fps": 8.3,
+      "source_fps": 24.9,
+      "wall_s": 8.1,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.03467122395833333,
+        "core_frac": 0.0,
+        "adj_frac": 15.0,
+        "sat_std": 12.55214262008667,
+        "hue_std": 1.0742403268814087,
+        "in_region_flicker": 2.6237083817025075,
+        "pair_iou": 0.16888318718441736,
+        "motion_energy": 5.822209211553474,
+        "longest_contact_s": 1.45,
+        "_frames": 22,
+        "_frames_with_flame_region": 22,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 17
+      },
+      "pair_frames": [
+        [
+          [
+            "1",
+            "2",
+            0.1689,
+            0.0
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1629,
+            3.708
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1588,
+            5.779
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1548,
+            5.822
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1507,
+            4.227
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1555,
+            6.147
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.1706,
+            7.408
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.202,
+            7.118
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.263,
+            5.99
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2894,
+            5.283
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.247,
+            3.885
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2449,
+            3.032
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "1",
+            "2",
+            0.3174,
+            5.172
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2345,
+            7.666
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.165,
+            9.497
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.128,
+            12.728
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.0806,
+            15.194
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.0174,
+            17.38
+          ]
+        ]
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_11.mp4": {
+      "clip": "neg_11.mp4",
+      "frames_read": 150,
+      "frames_processed": 50,
+      "duration_s": 5.0,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 8.9,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0037190755208333336,
+        "core_frac": 0.0,
+        "adj_frac": 0.0,
+        "sat_std": 19.907172203063965,
+        "hue_std": 5.954901456832886,
+        "in_region_flicker": 47.699077864857486,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 50,
+        "_frames_with_flame_region": 50,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_12.mp4": {
+      "clip": "neg_12.mp4",
+      "frames_read": 150,
+      "frames_processed": 50,
+      "duration_s": 5.0,
+      "eval_fps": 10.0,
+      "source_fps": 30.0,
+      "wall_s": 9.2,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0016585286458333333,
+        "core_frac": 0.0,
+        "adj_frac": 0.0,
+        "sat_std": 32.5375862121582,
+        "hue_std": 1.668214499950409,
+        "in_region_flicker": 37.349130335114694,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 50,
+        "_frames_with_flame_region": 30,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "17",
+            "29",
+            0.0284,
+            12.127
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "29",
+            "27",
+            0.0048,
+            17.221
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_13.mp4": {
+      "clip": "neg_13.mp4",
+      "frames_read": 113,
+      "frames_processed": 37,
+      "duration_s": 4.44,
+      "eval_fps": 8.33,
+      "source_fps": 25.0,
+      "wall_s": 7.5,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.025208333333333333,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 1.975805640220642,
+        "hue_std": 2.774778127670288,
+        "in_region_flicker": 9.888756833848348,
+        "pair_iou": 0.28906995470333724,
+        "motion_energy": 14.368787213380553,
+        "longest_contact_s": 1.56,
+        "_frames": 37,
+        "_frames_with_flame_region": 37,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 20
+      },
+      "pair_frames": [
+        [
+          [
+            "1",
+            "3",
+            0.317,
+            0.0
+          ],
+          [
+            "1",
+            "6",
+            0.1838,
+            0.0
+          ],
+          [
+            "2",
+            "3",
+            0.0508,
+            0.0
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.3433,
+            17.387
+          ],
+          [
+            "1",
+            "6",
+            0.1805,
+            12.148
+          ],
+          [
+            "2",
+            "3",
+            0.0622,
+            22.407
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.3614,
+            20.973
+          ],
+          [
+            "1",
+            "6",
+            0.1795,
+            15.906
+          ],
+          [
+            "2",
+            "3",
+            0.0564,
+            27.598
+          ],
+          [
+            "2",
+            "4",
+            0.0009,
+            21.708
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.3359,
+            17.287
+          ],
+          [
+            "1",
+            "6",
+            0.1822,
+            13.772
+          ],
+          [
+            "2",
+            "3",
+            0.0508,
+            25.956
+          ],
+          [
+            "2",
+            "4",
+            0.0327,
+            23.878
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.3129,
+            14.825
+          ],
+          [
+            "1",
+            "6",
+            0.2007,
+            15.983
+          ],
+          [
+            "2",
+            "3",
+            0.0289,
+            25.418
+          ],
+          [
+            "2",
+            "4",
+            0.0709,
+            25.858
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.2837,
+            13.913
+          ],
+          [
+            "1",
+            "6",
+            0.231,
+            17.534
+          ],
+          [
+            "2",
+            "3",
+            0.0163,
+            20.84
+          ],
+          [
+            "2",
+            "4",
+            0.1208,
+            20.751
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.2641,
+            13.74
+          ],
+          [
+            "1",
+            "6",
+            0.2448,
+            14.749
+          ],
+          [
+            "2",
+            "4",
+            0.1601,
+            14.479
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.2095,
+            11.119
+          ],
+          [
+            "1",
+            "6",
+            0.2677,
+            11.876
+          ],
+          [
+            "2",
+            "4",
+            0.1811,
+            11.311
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.1853,
+            9.093
+          ],
+          [
+            "1",
+            "6",
+            0.2815,
+            11.027
+          ],
+          [
+            "2",
+            "4",
+            0.1844,
+            9.722
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.1785,
+            9.714
+          ],
+          [
+            "1",
+            "6",
+            0.2857,
+            10.818
+          ],
+          [
+            "2",
+            "4",
+            0.1978,
+            9.089
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.1731,
+            10.656
+          ],
+          [
+            "1",
+            "6",
+            0.2839,
+            12.701
+          ],
+          [
+            "2",
+            "4",
+            0.1999,
+            5.596
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.1743,
+            11.631
+          ],
+          [
+            "1",
+            "6",
+            0.2845,
+            12.24
+          ],
+          [
+            "2",
+            "4",
+            0.1949,
+            5.328
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.1637,
+            7.847
+          ],
+          [
+            "1",
+            "6",
+            0.2924,
+            7.905
+          ],
+          [
+            "2",
+            "4",
+            0.1722,
+            6.949
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "2",
+            "3",
+            0.0131,
+            9.071
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "5",
+            "4",
+            0.1374,
+            26.65
+          ],
+          [
+            "3",
+            "2",
+            0.3279,
+            23.354
+          ],
+          [
+            "4",
+            "2",
+            0.3358,
+            19.674
+          ]
+        ],
+        [
+          [
+            "5",
+            "4",
+            0.0508,
+            13.862
+          ],
+          [
+            "3",
+            "2",
+            0.3058,
+            24.344
+          ],
+          [
+            "4",
+            "2",
+            0.2317,
+            22.132
+          ]
+        ],
+        [
+          [
+            "5",
+            "4",
+            0.0677,
+            12.787
+          ],
+          [
+            "3",
+            "2",
+            0.2233,
+            20.127
+          ],
+          [
+            "4",
+            "2",
+            0.2406,
+            13.219
+          ]
+        ],
+        [
+          [
+            "5",
+            "4",
+            0.1408,
+            17.195
+          ],
+          [
+            "3",
+            "2",
+            0.2488,
+            24.57
+          ],
+          [
+            "4",
+            "2",
+            0.248,
+            17.783
+          ]
+        ],
+        [
+          [
+            "5",
+            "4",
+            0.147,
+            18.884
+          ],
+          [
+            "3",
+            "2",
+            0.1656,
+            25.427
+          ],
+          [
+            "4",
+            "2",
+            0.274,
+            22.575
+          ]
+        ],
+        [
+          [
+            "5",
+            "4",
+            0.1435,
+            19.525
+          ],
+          [
+            "3",
+            "2",
+            0.1035,
+            20.458
+          ],
+          [
+            "4",
+            "2",
+            0.3053,
+            19.788
+          ]
+        ],
+        [
+          [
+            "5",
+            "4",
+            0.1484,
+            21.781
+          ],
+          [
+            "3",
+            "2",
+            0.035,
+            23.677
+          ],
+          [
+            "4",
+            "2",
+            0.317,
+            21.356
+          ]
+        ]
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_14.mp4": {
+      "clip": "neg_14.mp4",
+      "frames_read": 108,
+      "frames_processed": 36,
+      "duration_s": 4.32,
+      "eval_fps": 8.33,
+      "source_fps": 25.0,
+      "wall_s": 5.2,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.012635091145833333,
+        "core_frac": 0.008480158469148371,
+        "adj_frac": 1.6266339869281046,
+        "sat_std": 28.502005577087402,
+        "hue_std": 2.85241961479187,
+        "in_region_flicker": 45.81408932013761,
+        "pair_iou": 0.2826009173221122,
+        "motion_energy": 33.8864624872524,
+        "longest_contact_s": 0.48,
+        "_frames": 36,
+        "_frames_with_flame_region": 36,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 8
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "5",
+            "16",
+            0.0031,
+            29.929
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "12",
+            "16",
+            0.0695,
+            26.979
+          ]
+        ],
+        [
+          [
+            "12",
+            "16",
+            0.1037,
+            33.545
+          ]
+        ],
+        [
+          [
+            "5",
+            "12",
+            0.0563,
+            31.019
+          ],
+          [
+            "5",
+            "16",
+            0.0642,
+            30.445
+          ],
+          [
+            "12",
+            "16",
+            0.2945,
+            37.616
+          ]
+        ],
+        [
+          [
+            "5",
+            "12",
+            0.0328,
+            31.042
+          ],
+          [
+            "5",
+            "16",
+            0.0556,
+            30.753
+          ],
+          [
+            "12",
+            "16",
+            0.2707,
+            34.228
+          ]
+        ],
+        [
+          [
+            "5",
+            "16",
+            0.0418,
+            31.988
+          ]
+        ],
+        [
+          [
+            "5",
+            "16",
+            0.0061,
+            33.455
+          ]
+        ],
+        [],
+        [],
+        [],
+        [
+          [
+            "5",
+            "19",
+            0.0003,
+            34.431
+          ]
+        ],
+        [],
+        [
+          [
+            "5",
+            "21",
+            0.0014,
+            35.71
+          ],
+          [
+            "20",
+            "22",
+            0.1913,
+            36.503
+          ]
+        ],
+        [
+          [
+            "20",
+            "22",
+            0.3045,
+            25.405
+          ]
+        ],
+        [
+          [
+            "20",
+            "22",
+            0.3168,
+            24.707
+          ]
+        ],
+        [
+          [
+            "20",
+            "22",
+            0.335,
+            40.493
+          ]
+        ],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_15.mp4": {
+      "clip": "neg_15.mp4",
+      "frames_read": 108,
+      "frames_processed": 36,
+      "duration_s": 3.6,
+      "eval_fps": 9.99,
+      "source_fps": 29.97,
+      "wall_s": 4.7,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.09087239583333334,
+        "core_frac": 0.052963384900058835,
+        "adj_frac": 2.8096685829920798,
+        "sat_std": 8.047908782958984,
+        "hue_std": 1.2805712819099426,
+        "in_region_flicker": 1.7763555698947449,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 36,
+        "_frames_with_flame_region": 36,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_16.mp4": {
+      "clip": "neg_16.mp4",
+      "frames_read": 55,
+      "frames_processed": 18,
+      "duration_s": 4.91,
+      "eval_fps": 3.67,
+      "source_fps": 11.0,
+      "wall_s": 3.2,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0288818359375,
+        "core_frac": 0.0,
+        "adj_frac": 0.0,
+        "sat_std": 34.28877067565918,
+        "hue_std": 1.6817572116851807,
+        "in_region_flicker": 20.130892171155857,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 18,
+        "_frames_with_flame_region": 18,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_17.mp4": {
+      "clip": "neg_17.mp4",
+      "frames_read": 115,
+      "frames_processed": 38,
+      "duration_s": 4.96,
+      "eval_fps": 7.67,
+      "source_fps": 23.0,
+      "wall_s": 4.6,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.43809895833333334,
+        "core_frac": 0.5178208112868172,
+        "adj_frac": 0.308863370182094,
+        "sat_std": 17.091039657592773,
+        "hue_std": 3.3054453134536743,
+        "in_region_flicker": 14.842663423609281,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 38,
+        "_frames_with_flame_region": 38,
+        "_frames_passing_fire_gates": 1,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_18.mp4": {
+      "clip": "neg_18.mp4",
+      "frames_read": 145,
+      "frames_processed": 48,
+      "duration_s": 4.97,
+      "eval_fps": 9.67,
+      "source_fps": 29.0,
+      "wall_s": 5.1,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": null,
+        "core_frac": null,
+        "adj_frac": null,
+        "sat_std": null,
+        "hue_std": null,
+        "in_region_flicker": null,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 48,
+        "_frames_with_flame_region": 0,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_19.mp4": {
+      "clip": "neg_19.mp4",
+      "frames_read": 105,
+      "frames_processed": 35,
+      "duration_s": 5.0,
+      "eval_fps": 7.0,
+      "source_fps": 21.0,
+      "wall_s": 4.3,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0022884114583333333,
+        "core_frac": 0.0,
+        "adj_frac": 9.0,
+        "sat_std": 24.917903900146484,
+        "hue_std": 1.3142290115356445,
+        "in_region_flicker": 7.761989342806395,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 35,
+        "_frames_with_flame_region": 35,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_20.mp4": {
+      "clip": "neg_20.mp4",
+      "frames_read": 120,
+      "frames_processed": 40,
+      "duration_s": 5.0,
+      "eval_fps": 8.0,
+      "source_fps": 24.0,
+      "wall_s": 4.7,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0011328125,
+        "core_frac": 0.1140501197715128,
+        "adj_frac": 1.3950044208664898,
+        "sat_std": 14.391695976257324,
+        "hue_std": 1.7741479277610779,
+        "in_region_flicker": 13.91585385353374,
+        "pair_iou": 0.08362040635558712,
+        "motion_energy": 6.985098414216273,
+        "longest_contact_s": 0.38,
+        "_frames": 40,
+        "_frames_with_flame_region": 20,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 9
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [
+          [
+            "2",
+            "4",
+            0.0711,
+            6.985
+          ]
+        ],
+        [
+          [
+            "2",
+            "4",
+            0.1061,
+            7.807
+          ]
+        ],
+        [],
+        [
+          [
+            "1",
+            "6",
+            0.0865,
+            6.012
+          ]
+        ],
+        [
+          [
+            "1",
+            "6",
+            0.083,
+            6.918
+          ]
+        ],
+        [
+          [
+            "1",
+            "6",
+            0.1082,
+            7.009
+          ]
+        ],
+        [],
+        [
+          [
+            "1",
+            "6",
+            0.0833,
+            7.449
+          ]
+        ],
+        [],
+        [],
+        [
+          [
+            "1",
+            "6",
+            0.0836,
+            8.653
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "8",
+            "4",
+            0.2391,
+            4.413
+          ]
+        ],
+        [],
+        [],
+        [
+          [
+            "6",
+            "1",
+            0.0624,
+            6.46
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_21.mp4": {
+      "clip": "neg_21.mp4",
+      "frames_read": 153,
+      "frames_processed": 51,
+      "duration_s": 5.11,
+      "eval_fps": 9.99,
+      "source_fps": 29.97,
+      "wall_s": 5.4,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.00666015625,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 7.361657619476318,
+        "hue_std": 15.04033613204956,
+        "in_region_flicker": 0.18899609247330512,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 51,
+        "_frames_with_flame_region": 12,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_22.mp4": {
+      "clip": "neg_22.mp4",
+      "frames_read": 115,
+      "frames_processed": 38,
+      "duration_s": 4.96,
+      "eval_fps": 7.67,
+      "source_fps": 23.0,
+      "wall_s": 4.9,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.04722330729166667,
+        "core_frac": 0.28704339811191115,
+        "adj_frac": 0.5334346490591751,
+        "sat_std": 34.952938079833984,
+        "hue_std": 3.345607280731201,
+        "in_region_flicker": 8.403786811532072,
+        "pair_iou": 0.2462637995694194,
+        "motion_energy": 13.075444712434024,
+        "longest_contact_s": 4.96,
+        "_frames": 38,
+        "_frames_with_flame_region": 38,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 38
+      },
+      "pair_frames": [
+        [
+          [
+            "1",
+            "2",
+            0.3185,
+            0.0
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2997,
+            27.613
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2814,
+            28.425
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2625,
+            26.173
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2612,
+            22.403
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2761,
+            17.085
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2709,
+            16.111
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2699,
+            14.802
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2569,
+            13.321
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2469,
+            17.75
+          ],
+          [
+            "3",
+            "4",
+            0.0457,
+            10.454
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2513,
+            17.124
+          ],
+          [
+            "3",
+            "4",
+            0.0473,
+            7.287
+          ],
+          [
+            "4",
+            "5",
+            0.0118,
+            6.767
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2758,
+            16.842
+          ],
+          [
+            "2",
+            "5",
+            0.0001,
+            16.445
+          ],
+          [
+            "3",
+            "4",
+            0.0138,
+            8.482
+          ],
+          [
+            "4",
+            "5",
+            0.0104,
+            10.88
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.238,
+            10.352
+          ],
+          [
+            "3",
+            "4",
+            0.0134,
+            12.102
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2173,
+            15.878
+          ],
+          [
+            "2",
+            "5",
+            0.0004,
+            12.401
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2145,
+            12.256
+          ],
+          [
+            "2",
+            "5",
+            0.0015,
+            10.798
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2259,
+            11.073
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2817,
+            12.044
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2944,
+            12.626
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2827,
+            11.403
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2557,
+            14.76
+          ],
+          [
+            "3",
+            "4",
+            0.0008,
+            20.469
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.239,
+            14.856
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2384,
+            12.565
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.235,
+            10.92
+          ],
+          [
+            "3",
+            "4",
+            0.0002,
+            18.173
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2271,
+            12.284
+          ],
+          [
+            "3",
+            "4",
+            0.0057,
+            17.855
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2313,
+            13.179
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2433,
+            12.972
+          ],
+          [
+            "3",
+            "4",
+            0.0007,
+            19.032
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.239,
+            11.392
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2283,
+            13.206
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2336,
+            13.435
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2457,
+            12.333
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2519,
+            12.512
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2585,
+            13.635
+          ],
+          [
+            "3",
+            "6",
+            0.0324,
+            12.418
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2587,
+            14.664
+          ],
+          [
+            "4",
+            "5",
+            0.0285,
+            12.307
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2389,
+            11.065
+          ],
+          [
+            "4",
+            "5",
+            0.0296,
+            11.68
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2224,
+            11.714
+          ],
+          [
+            "4",
+            "5",
+            0.0226,
+            13.642
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2284,
+            8.107
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2239,
+            9.865
+          ]
+        ],
+        [
+          [
+            "1",
+            "2",
+            0.2238,
+            11.317
+          ],
+          [
+            "4",
+            "5",
+            0.0032,
+            11.81
+          ]
+        ]
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_23.mp4": {
+      "clip": "neg_23.mp4",
+      "frames_read": 125,
+      "frames_processed": 41,
+      "duration_s": 4.92,
+      "eval_fps": 8.33,
+      "source_fps": 25.0,
+      "wall_s": 5.2,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.04000325520833333,
+        "core_frac": 0.0,
+        "adj_frac": 0.0,
+        "sat_std": 5.730372428894043,
+        "hue_std": 0.994869589805603,
+        "in_region_flicker": 0.19877173254908745,
+        "pair_iou": null,
+        "motion_energy": null,
+        "longest_contact_s": 0.0,
+        "_frames": 41,
+        "_frames_with_flame_region": 41,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 0
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    },
+    "neg_24.mp4": {
+      "clip": "neg_24.mp4",
+      "frames_read": 145,
+      "frames_processed": 48,
+      "duration_s": 4.97,
+      "eval_fps": 9.67,
+      "source_fps": 29.0,
+      "wall_s": 5.3,
+      "alert_counts": {},
+      "alerts": [],
+      "features": {
+        "flame_area_frac": 0.0021337890624999996,
+        "core_frac": 1.0,
+        "adj_frac": 0.0,
+        "sat_std": 9.50476884841919,
+        "hue_std": 4.444858551025391,
+        "in_region_flicker": 4.228021318892241,
+        "pair_iou": 0.2516753950608392,
+        "motion_energy": 0.6989858490566038,
+        "longest_contact_s": 0.31,
+        "_frames": 48,
+        "_frames_with_flame_region": 48,
+        "_frames_passing_fire_gates": 0,
+        "_frames_with_contact_pair": 3
+      },
+      "pair_frames": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [
+          [
+            "1",
+            "3",
+            0.244,
+            0.677
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.2517,
+            1.831
+          ]
+        ],
+        [
+          [
+            "1",
+            "3",
+            0.2606,
+            0.699
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "settings_provenance": {
+        "source": "app.core.settings_manager.load_settings()",
+        "settings_file": "data\\settings.json",
+        "settings_file_exists": true,
+        "precedence": "DEFAULT_SETTINGS <- data/settings.json <- --set overrides",
+        "shadowed_by_file": {
+          "dwelling_time": {
+            "default": 10.0,
+            "file": 20
+          },
+          "intrusion_cooldown": {
+            "default": 10.0,
+            "file": 1
+          },
+          "night_mode": {
+            "default": false,
+            "file": true
+          }
+        },
+        "keys_only_in_file": [],
+        "cli_overrides": {}
+      }
+    }
+  },
+  "scores": {
+    "per_detector": {
+      "fight": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 11,
+        "tn": 20,
+        "precision": 1.0,
+        "recall": 0.35294117647058826,
+        "false_positive_rate": 0.0,
+        "false_positive_clips": [],
+        "false_negative_clips": [
+          "fight_00.mp4",
+          "fight_01.mp4",
+          "fight_02.mp4",
+          "fight_03.mp4",
+          "fight_05.mp4",
+          "fight_06.mp4",
+          "fight_07.mp4",
+          "fight_08.mp4",
+          "fight_10.mp4",
+          "fight_12.mp4",
+          "fight_13.mp4"
+        ]
+      },
+      "fire": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "tn": 35,
+        "precision": 1.0,
+        "recall": 1.0,
+        "false_positive_rate": 0.0,
+        "false_positive_clips": [],
+        "false_negative_clips": []
+      },
+      "crash": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 37,
+        "precision": null,
+        "recall": null,
+        "false_positive_rate": 0.0,
+        "false_positive_clips": [],
+        "false_negative_clips": []
+      },
+      "smoke": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 37,
+        "precision": null,
+        "recall": null,
+        "false_positive_rate": 0.0,
+        "false_positive_clips": [],
+        "false_negative_clips": []
+      }
+    },
+    "confusion_matrix": {
+      "fight": {
+        "fight": 6,
+        "fire": 0,
+        "crash": 0,
+        "smoke": 0,
+        "none": 11
+      },
+      "fire": {
+        "fight": 0,
+        "fire": 2,
+        "crash": 0,
+        "smoke": 0,
+        "none": 0
+      },
+      "neg": {
+        "fight": 0,
+        "fire": 0,
+        "crash": 0,
+        "smoke": 0,
+        "none": 18
+      }
+    },
+    "confusion_columns": [
+      "fight",
+      "fire",
+      "crash",
+      "smoke",
+      "none"
+    ]
+  }
+}
